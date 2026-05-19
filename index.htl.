@@ -16,9 +16,9 @@
 const C = {
   whatsapp  : 'NUMERO_WHATSAPP',    // ej: 56912345678 (sin + ni espacios)
   email     : 'correo@ejemplo.com', // tu correo real
-  instagram : 'USUARIO_INSTAGRAM',  // sin @
+  instagram : 'angeloleon.cl',  // sin @
   payLink   : 'LINK_DE_PAGO_AQUI',  // URL de tu link de pago
-  precio    : 'XX.XXX',             // solo el número, ej: 49.990
+  precio    : '49.990',             // solo el número, ej: 49.990
   moneda    : 'CLP',                // CLP / USD / EUR
   duracion  : 'XX minutos',         // ej: 60 minutos
   foto      : 'foto-angelo.jpg',    // ruta a tu foto
