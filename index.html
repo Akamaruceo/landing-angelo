@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angelo León — Mentoría Personalizada</title>
+<meta name="description" content="Mentoría 1 a 1 con Angelo León. Ordena tus ideas, define tu siguiente paso y avanza con una guía clara.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ╔══════════════════════════════════════╗
+     ║  CONFIGURACIÓN — edita solo aquí    ║
+     ╚══════════════════════════════════════╝ -->
+<script>
+const C = {
+  whatsapp  : 'NUMERO_WHATSAPP',    // ej: 56912345678 (sin + ni espacios)
+  email     : 'correo@ejemplo.com', // tu correo real
+  instagram : 'USUARIO_INSTAGRAM',  // sin @
+  payLink   : 'LINK_DE_PAGO_AQUI',  // URL de tu link de pago
+  precio      : '49.990',             // precio actual (con descuento)
+  precioAntes : '89.990',             // precio anterior (tachado). Dejar '' si no hay descuento
+  moneda      : 'CLP',                // CLP / USD / EUR
+  duracion  : 'XX minutos',         // ej: 60 minutos
+  foto      : 'foto-angelo.jpg',    // ruta a tu foto
+  video     : '',                   // ruta al video (dejar vacío si no hay)
+  msg       : encodeURIComponent('Hola Angelo, vengo desde tu página y quiero consultar por la mentoría.'),
+};
+C.waHref = 'https://wa.me/' + C.whatsapp + '?text=' + C.msg;
+</script>
+
+<style>
+/* ── TOKENS ── */
+:root{
+  --bg:#080808; --bg2:#0D0D0D; --bg3:#111116;
+  --surf:rgba(255,255,255,.04); --s2:rgba(255,255,255,.07);
+  --brd:rgba(255,255,255,.07);  --brd2:rgba(255,255,255,.13);
+  --w:#F2EFE8; --w2:#A8A5A0; --mu:rgba(242,239,232,.38);
+  --gold:#C9A96E; --g2:#DFC08A;
+  --wa:#25D366;  --wa2:#1AAF57;
+  --max:1060px; --px:22px; --py:88px;
+  --tr:.28s cubic-bezier(.4,0,.2,1);
+  --r:13px; --rr:20px; --rrr:28px;
+  --f:'Inter',system-ui,-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--f);background:var(--bg);color:var(--w);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--f)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+/* ── LAYOUT ── */
+.W{max-width:var(--max);margin:0 auto;padding:0 var(--px)}
+.S{padding:var(--py) 0}
+.Sm{padding:calc(var(--py)*.8) 0}
+
+/* ── TYPE ── */
+.ey{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.ey::before{content:'';width:20px;height:1px;background:var(--gold)}
+.h2{font-size:clamp(26px,3.8vw,46px);font-weight:700;line-height:1.1;letter-spacing:-.03em}
+.lead{font-size:16px;color:var(--w2);line-height:1.8}
+.sm{font-size:14px;color:var(--w2);line-height:1.7}
+
+/* ── ANIMATIONS ── */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.9);opacity:0}}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rv.on{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-18px);transition:opacity .65s ease,transform .65s ease}
+.rv-l.on{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(18px);transition:opacity .65s ease,transform .65s ease}
+.rv-r.on{opacity:1;transform:none}
+.sg>*{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.sg.on>*:nth-child(1){opacity:1;transform:none;transition-delay:.00s}
+.sg.on>*:nth-child(2){opacity:1;transform:none;transition-delay:.07s}
+.sg.on>*:nth-child(3){opacity:1;transform:none;transition-delay:.14s}
+.sg.on>*:nth-child(4){opacity:1;transform:none;transition-delay:.21s}
+.sg.on>*:nth-child(5){opacity:1;transform:none;transition-delay:.28s}
+.sg.on>*:nth-child(6){opacity:1;transform:none;transition-delay:.35s}
+.sg.on>*:nth-child(7){opacity:1;transform:none;transition-delay:.42s}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f);font-size:14px;font-weight:600;border:none;cursor:pointer;border-radius:9999px;padding:14px 26px;transition:var(--tr);white-space:nowrap;letter-spacing:-.01em}
+.btn svg{width:16px;height:16px;flex-shrink:0;fill:currentColor}
+.btn-gold{background:var(--gold);color:#0A0A0A}
+.btn-gold:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,169,110,.28)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:var(--wa2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.25)}
+.btn-out{background:transparent;color:var(--w);border:1px solid var(--brd2)}
+.btn-out:hover{border-color:rgba(255,255,255,.28);background:var(--surf);transform:translateY(-2px)}
+.btn-lg{padding:15px 30px;font-size:15px}
+
+/* ── WA ICON PATH ── */
+.wa-path{d:path("M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z")}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:900;padding:18px var(--px);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:var(--tr)}
+#hdr.sc{background:rgba(8,8,8,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);padding:12px var(--px)}
+.logo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;letter-spacing:-.02em;flex-shrink:0}
+.lm{width:30px;height:30px;border-radius:7px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#0A0A0A;flex-shrink:0}
+.nav-l{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-l a{font-size:13px;font-weight:500;color:var(--w2);padding:6px 12px;border-radius:8px;transition:var(--tr)}
+.nav-l a:hover{color:var(--w);background:var(--surf)}
+.hcta{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.hbg{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--w);flex-direction:column;gap:5px}
+.hbg span{display:block;width:21px;height:2px;background:currentColor;border-radius:2px;transition:var(--tr)}
+
+/* ── MOBILE NAV ── */
+.mob{display:none;position:fixed;inset:0;z-index:800;background:rgba(8,8,8,.97);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:24px}
+.mob.open{display:flex}
+.mob a{font-size:22px;font-weight:700;color:var(--w2);padding:10px 24px;transition:var(--tr)}
+.mob a:hover{color:var(--w)}
+.mob-b{display:flex;flex-direction:column;gap:10px;margin-top:20px;width:100%;max-width:270px}
+.mob-b .btn{width:100%}
+
+/* ── HERO ── */
+#hero{min-height:100svh;display:flex;align-items:center;padding-top:76px;position:relative;overflow:hidden}
+.hglow{position:absolute;inset:0;pointer-events:none}
+.hglow::before{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:80%;background:radial-gradient(ellipse,rgba(201,169,110,.07) 0%,transparent 60%)}
+.hglow::after{content:'';position:absolute;bottom:-5%;left:-10%;width:40%;height:60%;background:radial-gradient(ellipse,rgba(201,169,110,.04) 0%,transparent 60%)}
+.hgrid{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;width:100%}
+
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);border-radius:9999px;padding:6px 14px;font-size:11.5px;font-weight:600;color:var(--gold);letter-spacing:.04em;margin-bottom:24px}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;position:relative}
+.bdot::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-out infinite}
+
+.hh1{font-size:clamp(30px,5vw,58px);font-weight:800;line-height:1.05;letter-spacing:-.04em;margin-bottom:20px}
+.hh1 em{font-style:normal;color:var(--gold)}
+.hsub{font-size:16.5px;color:var(--w2);line-height:1.78;max-width:480px;margin-bottom:28px}
+.hbtns{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.hmicro{font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:28px}
+.htags{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.htag{font-size:12px;font-weight:500;color:var(--w2);display:inline-flex;align-items:center;gap:5px}
+.htag::before{content:'·';color:var(--gold)}
+
+/* Hero foto */
+.hvis{position:relative;display:flex;justify-content:center}
+.himg-wrap{position:relative;width:100%}
+.himg{width:100%;aspect-ratio:3/4;border-radius:var(--rrr);background:var(--bg3);border:1px solid var(--brd);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--w2)}
+.himg img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hph{display:flex;flex-direction:column;align-items:center;gap:10px}
+.hph svg{width:48px;height:48px;opacity:.22}
+.hph span{font-size:12.5px;opacity:.38}
+
+/* Card flotante */
+.fcard{position:absolute;bottom:-10px;left:-18px;background:rgba(13,13,13,.93);border:1px solid var(--brd2);backdrop-filter:blur(16px);border-radius:var(--rr);padding:18px 20px;width:186px;animation:float 5s ease-in-out infinite;z-index:2}
+.fcl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.fci{display:flex;flex-direction:column;gap:8px}
+.fci-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--w2)}
+.fci-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* Pills */
+.hpill{position:absolute;display:flex;align-items:center;gap:7px;background:rgba(13,13,13,.93);border:1px solid var(--brd2);backdrop-filter:blur(12px);border-radius:9999px;padding:7px 13px;font-size:12px;font-weight:600;white-space:nowrap}
+.hpill::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.hp1{top:9%;right:-17%;animation:float 4s ease-in-out infinite}
+.hp2{top:42%;right:-21%;animation:float 4s ease-in-out -.9s infinite}
+
+/* ── PROBLEMA + PARA QUIÉN ── */
+#problema .pg{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:52px}
+.prob-cards{display:flex;flex-direction:column;gap:10px}
+.pcard{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;background:var(--surf);border:1px solid var(--brd);border-radius:var(--r);transition:var(--tr)}
+.pcard:hover{border-color:rgba(201,169,110,.2);background:rgba(201,169,110,.04);transform:translateX(3px)}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0}
+.pcard span{font-size:14px;color:var(--w2);line-height:1.6}
+.pq-wrap{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rr);padding:28px 24px}
+.pq-title{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.pq-list{list-style:none;display:flex;flex-direction:column;gap:11px}
+.pq-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--w2);line-height:1.58}
+.pq-item::before{content:'✓';color:var(--gold);font-weight:700;font-size:12px;margin-top:2px;flex-shrink:0}
+.confianza-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.ccard{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rr);padding:28px 22px;transition:var(--tr);position:relative;overflow:hidden}
+.ccard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:var(--tr)}
+.ccard:hover{border-color:var(--brd2);transform:translateY(-3px)}
+.ccard:hover::before{opacity:1}
+.ccard-i{font-size:20px;margin-bottom:14px}
+.ccard h3{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.ccard p{font-size:13.5px;color:var(--w2);line-height:1.68}
+
+/* ── QUIÉN ES ANGELO ── */
+#angelo .ag{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.aimg{width:100%;aspect-ratio:4/5;border-radius:var(--rrr);background:var(--bg3);border:1px solid var(--brd);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--w2)}
+.aimg img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.aph{display:flex;flex-direction:column;align-items:center;gap:10px}
+.aph svg{width:46px;height:46px;opacity:.22}
+.aph span{font-size:12px;opacity:.38}
+.atxt{font-size:15.5px;color:var(--w2);line-height:1.8;margin-bottom:28px}
+.afeats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.afeat{background:var(--surf);border:1px solid var(--brd);border-radius:var(--r);padding:14px 16px;transition:var(--tr)}
+.afeat:hover{border-color:rgba(201,169,110,.2);background:rgba(201,169,110,.04)}
+.afeat-t{font-size:13px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px}
+.afeat-s{font-size:12px;color:var(--w2)}
+
+/* ── ACORDEÓN FAQ ── */
+.acc{display:flex;flex-direction:column;gap:8px}
+.aci{background:var(--surf);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;transition:border-color var(--tr)}
+.aci.open{border-color:rgba(201,169,110,.25)}
+.acb{width:100%;display:flex;align-items:center;gap:12px;padding:17px 19px;background:none;border:none;cursor:pointer;text-align:left;transition:var(--tr)}
+.acb:hover{background:var(--s2)}
+.acn{width:24px;height:24px;border-radius:6px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0}
+.act{flex:1;font-size:14px;font-weight:600;color:var(--w);letter-spacing:-.01em;text-align:left}
+.ach{width:17px;height:17px;flex-shrink:0;color:var(--w2);transition:transform var(--tr)}
+.aci.open .ach{transform:rotate(180deg)}
+.acbody{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+.aci.open .acbody{max-height:260px}
+.acd{padding:2px 19px 16px 55px;font-size:13.5px;color:var(--w2);line-height:1.72}
+.faq .acd{padding-left:19px}
+.faq .acb{gap:14px}
+
+/* ── MÓDULOS ── */
+.mod-grid{display:flex;flex-direction:column;gap:12px;margin-top:44px}
+.mod{border-radius:var(--rr);overflow:hidden;border:1px solid var(--brd);background:var(--bg3);transition:border-color var(--tr),box-shadow var(--tr)}
+.mod.active{border-color:rgba(201,169,110,.35);box-shadow:0 0 0 1px rgba(201,169,110,.08),0 8px 32px rgba(0,0,0,.3)}
+.mod-head{width:100%;display:flex;align-items:center;gap:20px;padding:22px 26px;background:none;border:none;cursor:pointer;text-align:left;transition:background var(--tr)}
+.mod-head:hover{background:rgba(255,255,255,.02)}
+.mod-num{font-size:28px;font-weight:800;line-height:1;color:rgba(201,169,110,.22);letter-spacing:-.04em;flex-shrink:0;width:38px;transition:color var(--tr)}
+.mod.active .mod-num{color:var(--gold)}
+.mod-info{flex:1;min-width:0}
+.mod-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;opacity:.7}
+.mod-title{font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--w);margin-bottom:4px;line-height:1.2}
+.mod-quote{font-size:13px;color:var(--w2);line-height:1.5;display:none}
+.mod.active .mod-quote{display:block}
+.mod-count{font-size:12px;color:var(--mu);flex-shrink:0;white-space:nowrap}
+.mod-arrow{width:20px;height:20px;flex-shrink:0;color:var(--w2);transition:transform var(--tr),color var(--tr)}
+.mod.active .mod-arrow{transform:rotate(180deg);color:var(--gold)}
+.mod-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.mod.active .mod-body{max-height:800px}
+.mod-inner{padding:0 26px 26px}
+.mod-divider{height:1px;background:var(--brd);margin-bottom:20px}
+.mod-topics{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.topic{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:9px;transition:var(--tr)}
+.topic:hover{background:rgba(201,169,110,.05);border-color:rgba(201,169,110,.15)}
+.topic-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0;opacity:.8}
+.topic span{font-size:13px;color:var(--w2);line-height:1.5}
+.mod-note{margin-top:32px;padding:22px 26px;border:1px solid rgba(201,169,110,.2);border-radius:var(--rr);background:rgba(201,169,110,.05);text-align:center}
+.mod-note p{font-size:14px;color:var(--w2);line-height:1.75;max-width:640px;margin:0 auto}
+.mod-note strong{color:var(--w);font-weight:600}
+
+@media(max-width:640px){
+  .mod-topics{grid-template-columns:1fr}
+  .mod-head{padding:18px 20px;gap:14px}
+  .mod-inner{padding:0 20px 20px}
+  .mod-num{font-size:22px;width:30px}
+  .mod-title{font-size:15px}
+}
+
+/* ── QUÉ TE LLEVAS ── */
+#llevas .lg{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:40px}
+.lcard{background:var(--surf);border:1px solid var(--brd);border-radius:var(--r);padding:19px 16px;display:flex;align-items:flex-start;gap:10px;transition:var(--tr)}
+.lcard:hover{border-color:rgba(201,169,110,.2);background:rgba(201,169,110,.04);transform:translateY(-3px)}
+.lck{width:18px;height:18px;border-radius:5px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;color:var(--gold);font-size:10px;font-weight:800}
+.lcard span{font-size:13.5px;color:var(--w2);line-height:1.5}
+.lquote{margin-top:32px;text-align:center;font-size:15px;color:var(--w2);font-style:italic;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.72}
+
+/* ── PRECIO ── */
+#precio .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:48px}
+.pcrd{background:var(--bg3);border:1px solid rgba(201,169,110,.22);border-radius:var(--rrr);overflow:hidden;position:relative}
+.pcrd::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--g2))}
+.pc-h{padding:36px 38px 28px;border-bottom:1px solid var(--brd)}
+.pc-ey{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.pc-n{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.pc-d{font-size:14px;color:var(--w2);line-height:1.65}
+.pc-b{padding:26px 38px}
+.pc-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.pc-row{display:flex;gap:10px;font-size:13px;color:var(--w2)}
+.pc-row strong{color:var(--w);font-weight:600;min-width:80px;flex-shrink:0}
+.pc-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+.pc-list li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--w2)}
+.pc-list li::before{content:'✓';width:18px;height:18px;border-radius:5px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.22);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--gold);flex-shrink:0}
+.pc-price{margin-bottom:20px}
+.pc-old{display:block;font-size:18px;color:var(--mu);text-decoration:line-through;text-decoration-color:var(--gold);margin-bottom:4px;font-weight:500}
+.pc-cur{font-size:20px;font-weight:600;color:var(--w2);vertical-align:top;margin-top:7px;display:inline-block}
+.pc-num{font-size:48px;font-weight:800;letter-spacing:-.04em}
+.pc-badge{display:inline-block;margin-left:10px;padding:4px 10px;background:var(--gold);color:#080808;font-size:12px;font-weight:700;letter-spacing:.05em;border-radius:6px;vertical-align:middle}
+.pc-mon{font-size:12.5px;color:var(--w2);margin-top:3px}
+.pc-btns{display:flex;flex-direction:column;gap:9px}
+.pc-btns .btn{width:100%}
+.pc-note{margin-top:14px;font-size:12px;color:var(--mu);text-align:center;line-height:1.6}
+
+/* Pasos (dentro de precio) */
+.pasos{background:var(--surf);border:1px solid var(--brd);border-radius:var(--rr);padding:28px 24px}
+.pasos-title{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.paso-list{display:flex;flex-direction:column;gap:0}
+.paso{display:flex;gap:14px;position:relative}
+.paso:not(:last-child)::before{content:'';position:absolute;left:15px;top:32px;bottom:0;width:1px;background:var(--brd2)}
+.paso-n{width:30px;height:30px;border-radius:50%;background:var(--bg);border:1px solid var(--brd2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--gold);flex-shrink:0;position:relative;z-index:1}
+.paso-body{padding-bottom:22px}
+.paso-t{font-size:13.5px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.paso-d{font-size:12.5px;color:var(--w2);line-height:1.6}
+
+/* ── FAQ ── */
+#faq .fwrap{max-width:680px;margin:0 auto}
+
+/* ── CTA FINAL ── */
+#cta .cbox{text-align:center;max-width:600px;margin:0 auto}
+.cbox .h2{margin-bottom:14px}
+.cbox .lead{margin-bottom:32px}
+.cbtns{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+
+/* Email box en CTA */
+.email-box{background:var(--bg3);border:1px solid var(--brd2);border-radius:var(--rr);padding:32px 36px;max-width:520px;margin:0 auto}
+.email-box h3{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.email-box p{font-size:14px;color:var(--w2);margin-bottom:22px}
+.form-f{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form-l{font-size:11px;font-weight:600;color:var(--w2);letter-spacing:.05em;text-transform:uppercase}
+.form-i,.form-ta{width:100%;background:var(--surf);border:1px solid var(--brd);border-radius:9px;padding:11px 14px;font-family:var(--f);font-size:14.5px;color:var(--w);outline:none;transition:var(--tr);resize:none}
+.form-i::placeholder,.form-ta::placeholder{color:var(--mu)}
+.form-i:focus,.form-ta:focus{border-color:rgba(201,169,110,.4);background:rgba(201,169,110,.04)}
+.form-ta{min-height:100px}
+
+/* ── FOOTER ── */
+#footer{padding:48px 0 32px;border-top:1px solid var(--brd)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+.fbrand p{font-size:13.5px;color:var(--w2);line-height:1.65;max-width:250px;margin-top:12px}
+.fcol h4{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w2);margin-bottom:13px}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:8px}
+.flinks a{font-size:13.5px;color:var(--w2);transition:var(--tr)}
+.flinks a:hover{color:var(--w)}
+.fbot{margin-top:40px;padding-top:18px;border-top:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fbot p{font-size:12px;color:var(--mu)}
+
+/* ── WA FLOAT ── */
+#wafl{position:fixed;bottom:24px;right:22px;z-index:800;width:54px;height:54px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:var(--tr)}
+#wafl:hover{transform:scale(1.08);box-shadow:0 10px 32px rgba(37,211,102,.45)}
+#wafl svg{width:25px;height:25px;fill:#fff}
+
+/* ── HELPERS ── */
+.sep{border:none;border-top:1px solid var(--brd);margin:0}
+.sh{margin-bottom:48px}
+.sh.c{text-align:center}
+.sh.c .ey{justify-content:center}
+.sh.c .h2{margin-bottom:12px}
+.sh.c .lead{max-width:520px;margin:0 auto}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  :root{--py:72px;--px:20px}
+  .hgrid{grid-template-columns:1fr;gap:40px}
+  .hvis{order:-1}
+  .himg-wrap{max-width:300px;margin:0 auto}
+  .hp1,.hp2{display:none}
+  #problema .pg{grid-template-columns:1fr;gap:28px}
+  #angelo .ag{grid-template-columns:1fr}
+  .aimg{max-width:300px}
+  .confianza-cards{grid-template-columns:1fr}
+  #llevas .lg{grid-template-columns:1fr 1fr}
+  #precio .pgrid{grid-template-columns:1fr}
+  .nav-l,.hcta{display:none}
+  .hbg{display:flex}
+}
+@media(max-width:560px){
+  :root{--py:56px;--px:18px}
+  .hbtns{flex-direction:column;align-items:stretch}
+  .hbtns .btn{justify-content:center}
+  #llevas .lg{grid-template-columns:1fr}
+  .afeats{grid-template-columns:1fr}
+  .email-box{padding:24px 20px}
+  .fgrid{grid-template-columns:1fr;gap:28px}
+  .fbot{flex-direction:column;text-align:center}
+  .cbtns{flex-direction:column;align-items:stretch}
+  .cbtns .btn{justify-content:center}
+  .pc-h,.pc-b{padding-left:24px;padding-right:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- WA FLOTANTE -->
+<a id="wafl" href="#" class="wa-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MOBILE NAV -->
+<nav class="mob" id="mobNav">
+  <a href="#inicio"   onclick="closeMob()">Inicio</a>
+  <a href="#problema" onclick="closeMob()">Mentoría</a>
+  <a href="#temas"    onclick="closeMob()">Temas</a>
+  <a href="#precio"   onclick="closeMob()">Precio</a>
+  <a href="#faq"      onclick="closeMob()">Preguntas</a>
+  <a href="#cta"      onclick="closeMob()">Contacto</a>
+  <div class="mob-b">
+    <a href="#" class="btn btn-gold btn-lg pay-link" target="_blank">Pagar mentoría</a>
+    <a href="#" class="btn btn-wa btn-lg wa-link" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="#inicio" class="logo"><div class="lm">A</div>Angelo León</a>
+  <nav><ul class="nav-l">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#problema">Mentoría</a></li>
+    <li><a href="#temas">Temas</a></li>
+    <li><a href="#precio">Precio</a></li>
+    <li><a href="#faq">Preguntas</a></li>
+    <li><a href="#cta">Contacto</a></li>
+  </ul></nav>
+  <div class="hcta">
+    <a href="#" class="btn btn-out wa-link" target="_blank">
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="#" class="btn btn-gold pay-link" target="_blank">Pagar mentoría</a>
+  </div>
+  <button class="hbg" id="hbg" aria-label="Menú" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ══════════════════════════════════════════
+  1. HERO
+══════════════════════════════════════════ -->
+<section id="inicio" style="padding-top:0">
+<div id="hero">
+  <div class="hglow"></div>
+  <div class="W" style="width:100%">
+    <div class="hgrid">
+
+      <div>
+        <div class="hbadge rv"><span class="bdot"></span>Mentoría 1 a 1 · Angelo León</div>
+        <h1 class="hh1 rv" style="transition-delay:.05s">
+          Esta mentoría no está diseñada para vender falsas promesas.
+        </h1>
+        <p class="hsub rv" style="transition-delay:.1s">
+          Está diseñada para ayudarte a convertirte en una persona capaz de construir riqueza, disciplina, libertad y una mentalidad fuerte.
+        </p>
+        <div class="hbtns rv" style="transition-delay:.15s">
+          <a href="#" class="btn btn-gold btn-lg pay-link" target="_blank">Reservar mentoría</a>
+          <a href="#" class="btn btn-wa btn-lg wa-link" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  2. MÓDULOS — LO QUE INCLUYE LA MENTORÍA
+══════════════════════════════════════════ -->
+<section id="problema" class="S" style="border-top:1px solid var(--brd)">
+<div class="W">
+  <div class="sh c rv">
+    <div class="ey" style="margin-bottom:16px">Temario</div>
+    <h2 class="h2" style="margin-bottom:12px">Lo que incluye la mentoría</h2>
+    <p class="lead">Una ruta dividida en 5 módulos para trabajar mentalidad, creación de agencia, ventas, dinero e inversión.</p>
+  </div>
+
+  <div class="mod-grid rv" style="transition-delay:.08s">
+
+    <!-- MÓDULO 1 -->
+    <div class="mod" id="mod1">
+      <button class="mod-head" onclick="toggleMod('mod1')">
+        <span class="mod-num">01</span>
+        <div class="mod-info">
+          <div class="mod-label">Módulo 1</div>
+          <div class="mod-title">Mentalidad de Abundancia</div>
+          <div class="mod-quote">"Tu mente determina el tamaño de tu vida."</div>
+        </div>
+        <span class="mod-count">9 temas</span>
+        <svg class="mod-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mod-body">
+        <div class="mod-inner">
+          <div class="mod-divider"></div>
+          <div class="mod-topics">
+            <div class="topic"><span class="topic-dot"></span><span>Cómo eliminar mentalidad de escasez</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Reprogramación mental y creencias limitantes</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>El poder del entorno</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Disciplina vs motivación</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo construir confianza real</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo soportar presión mental</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Soledad y ambición</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Identidad y autoimagen</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo dejar de pensar como empleado</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 2 -->
+    <div class="mod" id="mod2">
+      <button class="mod-head" onclick="toggleMod('mod2')">
+        <span class="mod-num">02</span>
+        <div class="mod-info">
+          <div class="mod-label">Módulo 2</div>
+          <div class="mod-title">Creación de tu Propia Agencia</div>
+          <div class="mod-quote">"Aprende habilidades que el mercado paga."</div>
+        </div>
+        <span class="mod-count">9 temas</span>
+        <svg class="mod-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mod-body">
+        <div class="mod-inner">
+          <div class="mod-divider"></div>
+          <div class="mod-topics">
+            <div class="topic"><span class="topic-dot"></span><span>Qué es una agencia de servicios</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo empezar sin dinero</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Servicios más rentables actualmente</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo conseguir clientes desde Instagram</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo cerrar clientes</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo cobrar correctamente</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Creación de contenido con IA</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo escalar una agencia</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo generar ingresos mensuales constantes</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 3 -->
+    <div class="mod" id="mod3">
+      <button class="mod-head" onclick="toggleMod('mod3')">
+        <span class="mod-num">03</span>
+        <div class="mod-info">
+          <div class="mod-label">Módulo 3</div>
+          <div class="mod-title">Véndete a Ti Mismo</div>
+          <div class="mod-quote">"Aprende a vender a la mente subconsciente y nunca recibirás un no por respuesta."</div>
+        </div>
+        <span class="mod-count">6 temas</span>
+        <svg class="mod-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mod-body">
+        <div class="mod-inner">
+          <div class="mod-divider"></div>
+          <div class="mod-topics">
+            <div class="topic"><span class="topic-dot"></span><span>Psicología de ventas</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo hablar con seguridad</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Persuasión y comunicación</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Venderle a la mente y no solo a la persona</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo convertir atención en dinero</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo vender sin parecer vendedor</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 4 -->
+    <div class="mod" id="mod4">
+      <button class="mod-head" onclick="toggleMod('mod4')">
+        <span class="mod-num">04</span>
+        <div class="mod-info">
+          <div class="mod-label">Módulo 4</div>
+          <div class="mod-title">Dinero y Finanzas</div>
+          <div class="mod-quote">"Si no entiendes el dinero, trabajarás toda tu vida por él."</div>
+        </div>
+        <span class="mod-count">10 temas</span>
+        <svg class="mod-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mod-body">
+        <div class="mod-inner">
+          <div class="mod-divider"></div>
+          <div class="mod-topics">
+            <div class="topic"><span class="topic-dot"></span><span>Cómo funciona realmente el dinero</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Educación financiera moderna</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo administrar tus ingresos</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Presupuesto inteligente y real</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Errores financieros comunes</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cuándo comenzar a invertir</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo aumentar ingresos</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo dejar de sobrevivir financieramente</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo dejar de gastar por emociones</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Qué es la libertad financiera</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULO 5 -->
+    <div class="mod" id="mod5">
+      <button class="mod-head" onclick="toggleMod('mod5')">
+        <span class="mod-num">05</span>
+        <div class="mod-info">
+          <div class="mod-label">Módulo 5</div>
+          <div class="mod-title">Inversión en Acciones y Crypto</div>
+          <div class="mod-quote">"Haz que el dinero trabaje por ti."</div>
+        </div>
+        <span class="mod-count">11 temas</span>
+        <svg class="mod-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="mod-body">
+        <div class="mod-inner">
+          <div class="mod-divider"></div>
+          <div class="mod-topics">
+            <div class="topic"><span class="topic-dot"></span><span>Qué son las acciones</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo funciona la bolsa</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Introducción al trading</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Inversión a largo plazo</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Gestión de riesgo</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Qué es Bitcoin</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Qué son los ciclos de Bitcoin</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Errores comunes en crypto</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Diferencia entre invertir y apostar</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Estrategias de acumulación</span></div>
+            <div class="topic"><span class="topic-dot"></span><span>Cómo pensar como inversionista</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /mod-grid -->
+
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  3. QUIÉN ES ANGELO
+══════════════════════════════════════════ -->
+<section id="angelo" class="S" style="background:var(--bg2);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)">
+<div class="W">
+  <div class="ag">
+    <div class="rv-l">
+      <div class="aimg" id="angeloImg">
+        <!-- Reemplazar con: <img src="foto-angelo.jpg" alt="Angelo León"> -->
+        <div class="aph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          <span>foto-angelo.jpg</span>
+        </div>
+      </div>
+    </div>
+    <div class="rv-r">
+      <div class="ey" style="margin-bottom:16px">Quién está detrás</div>
+      <h2 class="h2" style="margin-bottom:18px">Soy Angelo León.</h2>
+      <!-- EDITAR: reemplaza este párrafo con tu presentación real -->
+      <p class="atxt">Acompaño a personas que necesitan ordenar sus ideas, tomar mejores decisiones y avanzar con más claridad. Esta mentoría nace para entregar un espacio directo, práctico y personalizado, donde revisamos tu situación real y construimos una ruta concreta.</p>
+      <div class="afeats sg">
+        <div class="afeat"><div class="afeat-t">Escucha directa</div><div class="afeat-s">Sin filtros ni respuestas genéricas.</div></div>
+        <div class="afeat"><div class="afeat-t">Orden estratégico</div><div class="afeat-s">Qué importa ahora y qué puede esperar.</div></div>
+        <div class="afeat"><div class="afeat-t">Foco en acción</div><div class="afeat-s">No solo reflexión. Pasos concretos.</div></div>
+        <div class="afeat"><div class="afeat-t">Conversación honesta</div><div class="afeat-s">Lo que necesitas escuchar.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  5. QUÉ TE LLEVAS
+══════════════════════════════════════════ -->
+<section id="llevas" class="S" style="background:var(--bg2);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)">
+<div class="W">
+  <div class="sh c rv">
+    <div class="ey" style="margin-bottom:16px">Resultado</div>
+    <h2 class="h2" style="margin-bottom:10px">Qué te llevas</h2>
+  </div>
+  <div class="lg sg">
+    <div class="lcard"><div class="lck">✓</div><span>Mirada clara de tu situación</span></div>
+    <div class="lcard"><div class="lck">✓</div><span>Prioridades ordenadas</span></div>
+    <div class="lcard"><div class="lck">✓</div><span>Plan de acción concreto</span></div>
+    <div class="lcard"><div class="lck">✓</div><span>Decisiones más aterrizadas</span></div>
+    <div class="lcard"><div class="lck">✓</div><span>Menos ruido mental</span></div>
+    <div class="lcard"><div class="lck">✓</div><span>Próximos pasos definidos</span></div>
+    <div class="lcard"><div class="lck">✓</div><span>Recomendaciones prácticas</span></div>
+  </div>
+  <p class="lquote rv" style="transition-delay:.4s">"La idea no es salir con más información. Es salir con más claridad."</p>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  6. PRECIO + CÓMO FUNCIONA
+══════════════════════════════════════════ -->
+<section id="precio" class="S">
+<div class="W">
+  <div class="sh c rv">
+    <div class="ey" style="margin-bottom:16px">Inversión</div>
+    <h2 class="h2">Reserva tu mentoría</h2>
+  </div>
+  <div class="pgrid">
+
+    <!-- Card de precio -->
+    <div class="pcrd rv">
+      <div class="pc-h">
+        <div class="pc-ey">Mentoría 1 a 1</div>
+        <div class="pc-n">Sesión con Angelo León</div>
+        <p class="pc-d">Una sesión privada para revisar tu situación, ordenar prioridades y definir una ruta de acción clara.</p>
+      </div>
+      <div class="pc-b">
+        <div class="pc-meta">
+          <div class="pc-row"><strong>Modalidad</strong><span>Online o presencial según coordinación.</span></div>
+          <div class="pc-row"><strong>Duración</strong><span id="pcDur"></span></div>
+          <div class="pc-row"><strong>Entrega</strong><span>Próximos pasos definidos al finalizar.</span></div>
+        </div>
+        <ul class="pc-list">
+          <li>Diagnóstico inicial personalizado</li>
+          <li>Sesión guiada 1 a 1</li>
+          <li>Plan de acción concreto</li>
+          <li>Recomendaciones prácticas</li>
+          <li>Espacio para preguntas</li>
+        </ul>
+        <div class="pc-price">
+          <span class="pc-old">$<span id="pcOld"></span></span>
+          <span class="pc-cur">$</span><span class="pc-num" id="pcNum"></span>
+          <span class="pc-badge" id="pcBadge"></span>
+        </div>
+        <div class="pc-mon" id="pcMon"></div>
+        <div class="pc-btns" style="margin-top:20px">
+          <a href="#" class="btn btn-gold btn-lg pay-link" target="_blank">Pagar mentoría</a>
+          <a href="#" class="btn btn-out btn-lg wa-link" target="_blank">
+            <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar antes de pagar
+          </a>
+        </div>
+        <p class="pc-note">Después del pago recibirás las instrucciones para coordinar la sesión.</p>
+      </div>
+    </div>
+
+    <!-- Cómo funciona (dentro de precio) -->
+    <div class="pasos rv" style="transition-delay:.1s">
+      <div class="pasos-title">Cómo funciona</div>
+      <div class="paso-list">
+        <div class="paso">
+          <div class="paso-n">1</div>
+          <div class="paso-body">
+            <div class="paso-t">Reserva o consulta</div>
+            <div class="paso-d">Pagas directamente o escribes por WhatsApp si tienes dudas previas.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-n">2</div>
+          <div class="paso-body">
+            <div class="paso-t">Revisión inicial</div>
+            <div class="paso-d">Defines qué quieres trabajar para aprovechar bien el tiempo.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-n">3</div>
+          <div class="paso-body">
+            <div class="paso-t">Sesión de mentoría</div>
+            <div class="paso-d">Trabajamos tu caso con foco, orden y conversación directa.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-n">4</div>
+          <div class="paso-body" style="padding-bottom:0">
+            <div class="paso-t">Plan claro</div>
+            <div class="paso-d">Terminas con una dirección más ordenada para continuar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  7. FAQ
+══════════════════════════════════════════ -->
+<section id="faq" class="S" style="background:var(--bg2);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)">
+<div class="W">
+  <div class="sh c rv">
+    <div class="ey" style="margin-bottom:16px">Dudas</div>
+    <h2 class="h2">Preguntas frecuentes</h2>
+  </div>
+  <div class="fwrap">
+    <div class="acc faq rv" style="transition-delay:.08s">
+      <div class="aci">
+        <button class="acb" onclick="ta(this)">
+          <span class="act">¿Necesito tener todo claro antes de tomarla?</span>
+          <svg class="ach" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acbody"><div class="acd faq">No. La mentoría sirve para ordenar exactamente eso. Puedes llegar con dudas, varias ideas o simplemente sintiendo que algo no está funcionando bien.</div></div>
+      </div>
+      <div class="aci">
+        <button class="acb" onclick="ta(this)">
+          <span class="act">¿Cuánto dura la sesión y qué formato tiene?</span>
+          <svg class="ach" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acbody"><div class="acd faq">La duración está indicada en la sección de precio. El formato es 1 a 1, online o presencial según disponibilidad. La conversación es directa y enfocada en tu caso.</div></div>
+      </div>
+      <div class="aci">
+        <button class="acb" onclick="ta(this)">
+          <span class="act">¿Qué pasa después de pagar?</span>
+          <svg class="ach" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acbody"><div class="acd faq">Recibirás las instrucciones para coordinar la sesión en el horario que mejor funcione para ti. El proceso es simple y directo.</div></div>
+      </div>
+      <div class="aci">
+        <button class="acb" onclick="ta(this)">
+          <span class="act">¿Puedo escribir antes de pagar?</span>
+          <svg class="ach" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acbody"><div class="acd faq">Sí. Puedes escribir por WhatsApp o correo si necesitas resolver una duda antes de decidir. Prefiero que reserves cuando tengas claridad de que este espacio tiene sentido para ti.</div></div>
+      </div>
+      <div class="aci">
+        <button class="acb" onclick="ta(this)">
+          <span class="act">¿Para qué tipo de temas sirve?</span>
+          <svg class="ach" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acbody"><div class="acd faq">Proyectos personales, emprendimiento, decisiones importantes, dirección profesional, cualquier situación donde sientas que necesitas ordenar ideas y avanzar con más foco.</div></div>
+      </div>
+      <div class="aci">
+        <button class="acb" onclick="ta(this)">
+          <span class="act">¿Incluye seguimiento después de la sesión?</span>
+          <svg class="ach" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acbody"><div class="acd faq">La sesión incluye diagnóstico y plan de acción. Si necesitas sesiones adicionales, puedes coordinarlo directamente por WhatsApp.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  8. CTA FINAL + CONTACTO
+══════════════════════════════════════════ -->
+<section id="cta" class="S">
+<div class="W">
+  <div class="cbox rv">
+    <div class="ey" style="justify-content:center;margin-bottom:18px">Dar el primer paso</div>
+    <h2 class="h2" style="margin-bottom:14px">Si llevas tiempo dándole vueltas,<br>quizás es momento de ordenar.</h2>
+    <p class="lead" style="margin-bottom:32px">Reserva tu mentoría o escribe para ver si este espacio tiene sentido para lo que necesitas.</p>
+    <div class="cbtns">
+      <a href="#" class="btn btn-gold btn-lg pay-link" target="_blank">Reservar mentoría</a>
+      <a href="#" class="btn btn-wa btn-lg wa-link" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hablar por WhatsApp
+      </a>
+    </div>
+
+    <!-- Caja de correo simple -->
+    <div class="email-box rv" style="transition-delay:.15s">
+      <h3>¿Prefieres escribir por correo?</h3>
+      <p>Deja tu consulta y te respondo en menos de 24 horas.</p>
+      <form onsubmit="sendMail(event)">
+        <div class="form-f">
+          <label class="form-l" for="fn">Nombre</label>
+          <input class="form-i" type="text" id="fn" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-f">
+          <label class="form-l" for="fe">Correo</label>
+          <input class="form-i" type="email" id="fe" placeholder="tu@correo.com" required>
+        </div>
+        <div class="form-f">
+          <label class="form-l" for="fm">¿Qué necesitas ordenar?</label>
+          <textarea class="form-ta" id="fm" placeholder="Cuéntame brevemente qué te gustaría trabajar." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-lg" style="width:100%;justify-content:center">Enviar consulta</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+  FOOTER
+══════════════════════════════════════════ -->
+<footer id="footer">
+<div class="W">
+  <div class="fgrid">
+    <div class="fbrand">
+      <a href="#inicio" class="logo"><div class="lm">A</div>Angelo León</a>
+      <p>Mentoría personalizada para avanzar con claridad, estructura y dirección.</p>
+    </div>
+    <div class="fcol">
+      <h4>Navegación</h4>
+      <ul class="flinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#problema">Mentoría</a></li>
+        <li><a href="#temas">Temas</a></li>
+        <li><a href="#precio">Precio</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Contacto</h4>
+      <ul class="flinks">
+        <li><a href="#" class="wa-link" target="_blank">WhatsApp</a></li>
+        <li><a href="#" class="mail-link">Correo</a></li>
+        <li><a href="#" class="ig-link" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2025 Angelo León. Todos los derechos reservados.</p>
+    <p>Cupos limitados · Atención directa</p>
+  </div>
+</div>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+/* ── APLICAR CONFIG ── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.wa-link').forEach(el => el.href = C.waHref);
+  document.querySelectorAll('.pay-link').forEach(el => el.href = C.payLink);
+  document.querySelectorAll('.mail-link').forEach(el => el.href = 'mailto:' + C.email);
+  document.querySelectorAll('.ig-link').forEach(el => el.href = 'https://instagram.com/' + C.instagram);
+
+  const pcN = document.getElementById('pcNum');
+  const pcM = document.getElementById('pcMon');
+  const pcD = document.getElementById('pcDur');
+  if (pcN) pcN.textContent = C.precio;
+  if (pcM) pcM.textContent = C.moneda;
+  if (pcD) pcD.textContent = C.duracion;
+
+  // Precio anterior tachado + badge de descuento automático
+  const pcO = document.getElementById('pcOld');
+  const pcB = document.getElementById('pcBadge');
+  if (C.precioAntes && pcO && pcB) {
+    pcO.textContent = C.precioAntes;
+    const a = parseFloat(C.precioAntes.replace(/\./g,'').replace(',','.'));
+    const b = parseFloat(C.precio.replace(/\./g,'').replace(',','.'));
+    if (a > b) pcB.textContent = '-' + Math.round((1 - b/a) * 100) + '%';
+  } else {
+    if (pcO) pcO.parentElement.querySelector('.pc-old').style.display = 'none';
+    if (pcB) pcB.style.display = 'none';
+  }
+
+  // Cargar foto si existe
+  ['heroImg','angeloImg'].forEach(id => {
+    const box = document.getElementById(id);
+    if (!box) return;
+    const img = new Image();
+    img.onload = () => {
+      box.innerHTML = '';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center top';
+      box.appendChild(img);
+    };
+    img.src = C.foto;
+  });
+});
+
+/* ── HEADER SCROLL ── */
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => hdr.classList.toggle('sc', scrollY > 20), {passive:true});
+
+/* ── MOBILE NAV ── */
+const mNav = document.getElementById('mobNav');
+const hbg  = document.getElementById('hbg');
+function toggleMob() {
+  const open = mNav.classList.toggle('open');
+  document.body.style.overflow = open ? 'hidden' : '';
+  const s = hbg.querySelectorAll('span');
+  if (open) {
+    s[0].style.transform='rotate(45deg) translate(5px,5px)';
+    s[1].style.opacity='0';
+    s[2].style.transform='rotate(-45deg) translate(5px,-5px)';
+  } else {
+    s.forEach(x => { x.style.transform=''; x.style.opacity=''; });
+  }
+}
+function closeMob() {
+  mNav.classList.remove('open');
+  document.body.style.overflow='';
+  hbg.querySelectorAll('span').forEach(x => { x.style.transform=''; x.style.opacity=''; });
+}
+mNav.addEventListener('click', e => { if (e.target===mNav) closeMob(); });
+
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+document.querySelectorAll('.rv,.rv-l,.rv-r,.sg').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('#hero .rv,.rv-l,.rv-r').forEach(el => el.classList.add('on')), 80);
+
+/* ── ACCORDION FAQ ── */
+function ta(btn) {
+  const item = btn.closest('.aci');
+  const open = item.classList.contains('open');
+  item.parentElement.querySelectorAll('.aci').forEach(s => s.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+
+/* ── MÓDULOS ── */
+function toggleMod(id) {
+  const mod  = document.getElementById(id);
+  const open = mod.classList.contains('active');
+  document.querySelectorAll('.mod').forEach(m => m.classList.remove('active'));
+  if (!open) mod.classList.add('active');
+}
+
+/* ── FORMULARIO ── */
+function sendMail(e) {
+  e.preventDefault();
+  const n = document.getElementById('fn').value;
+  const em = document.getElementById('fe').value;
+  const m = document.getElementById('fm').value;
+  const s = encodeURIComponent('Consulta mentoría — ' + n);
+  const b = encodeURIComponent('Nombre: ' + n + '\nCorreo: ' + em + '\n\n¿Qué necesitas ordenar?\n' + m);
+  window.location.href = 'mailto:' + C.email + '?subject=' + s + '&body=' + b;
+}
+</script>
+</body>
+</html>
