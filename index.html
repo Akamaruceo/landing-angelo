@@ -1279,25 +1279,6 @@
       </div>
     </section>
 
-    <!-- QUÉ TE LLEVAS -->
-    <section class="sec" id="llevas">
-      <div class="wrap center">
-        <div class="rv">
-          <div class="pill pill-g">Resultado</div>
-          <h2 class="headline sm">Qué te llevas</h2>
-        </div>
-        <div class="llevas-g">
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Mirada clara de tu situación actual</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Prioridades ordenadas y definidas</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Plan de acción concreto</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Decisiones más aterrizadas</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Menos ruido mental</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Próximos pasos definidos</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Recomendaciones personalizadas</span></div>
-        </div>
-        <p class="llevas-q rv">"La idea no es salir con más información. Es salir con más claridad."</p>
-      </div>
-    </section>
 
     <!-- MID CTA + URGENCY -->
     <div class="urg-bar rv">
@@ -1496,6 +1477,10 @@
             <input class="fi" type="email" name="correo" id="pE" required placeholder="tu@correo.com" autocomplete="email">
           </div>
           <div class="fg">
+            <label class="fl">Teléfono</label>
+            <input class="fi" type="tel" name="telefono" id="pT" required placeholder="+56 9 1234 5678" autocomplete="tel">
+          </div>
+          <div class="fg">
             <label class="fl">Día y hora de preferencia</label>
             <input class="fi" type="text" name="horario" id="pH" required placeholder="Ej: Lunes 19:00 o Sábado mañana">
           </div>
@@ -1560,26 +1545,27 @@
     btn.textContent = 'Enviando...';
     btn.disabled = true;
 
-    const nombre  = document.getElementById('pN').value.trim();
-    const edad    = document.getElementById('pA').value.trim();
-    const correo  = document.getElementById('pE').value.trim();
-    const horario = document.getElementById('pH').value.trim();
+    const nombre   = document.getElementById('pN').value.trim();
+    const edad     = document.getElementById('pA').value.trim();
+    const correo   = document.getElementById('pE').value.trim();
+    const telefono = document.getElementById('pT').value.trim();
+    const horario  = document.getElementById('pH').value.trim();
 
-    // Enviar datos al correo vía formsubmit.co (AJAX, sin redirigir)
-    fetch('https://formsubmit.co/ajax/' + C.email, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: '✅ Nueva reserva de mentoría - ' + nombre,
-        Nombre: nombre,
-        Edad: edad,
-        Correo: correo,
-        'Día y hora': horario
-      })
-    }).finally(function() {
-      // Redirigir a Mercado Pago sin importar si el fetch tuvo éxito
+    const msg = encodeURIComponent(
+      '✅ Nueva reserva de mentoría\n\n' +
+      '• Nombre: ' + nombre + '\n' +
+      '• Edad: ' + edad + '\n' +
+      '• Correo: ' + correo + '\n' +
+      '• Teléfono: ' + telefono + '\n' +
+      '• Preferencia: ' + horario + '\n\n' +
+      'A continuación procedo al pago.'
+    );
+
+    window.open('https://wa.me/' + C.whatsapp + '?text=' + msg, '_blank');
+
+    setTimeout(function() {
       window.location.href = C.payLink;
-    });
+    }, 1500);
   });
   ['navWa','mobWa','heroWa','priceWa','ctaWa','midWa','fWa'].forEach(id => {
     const el = document.getElementById(id);
