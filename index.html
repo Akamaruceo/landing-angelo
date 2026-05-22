@@ -1581,10 +1581,10 @@
       window.location.href = C.payLink;
     });
   });
-  ['navWa','mobWa','heroWa','priceWa','ctaWa','midWa'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.href = C.waHref;
+  ['navWa','mobWa','heroWa','priceWa','ctaWa','midWa','fWa'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.href = C.waHref; el.target = '_blank'; el.rel = 'noopener'; }
   });
-  document.getElementById('fWa').href   = C.waHref;
   document.getElementById('fMail').href = 'mailto:' + C.email;
   document.getElementById('fIg').href   = 'https://instagram.com/' + C.instagram;
   const precioEl = document.getElementById('precioAmt'); if (precioEl) precioEl.textContent = C.precio;
