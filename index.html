@@ -279,11 +279,7 @@
       animation: floaty 9s ease-in-out infinite;
     }
     .coin::before { content: ""; position: absolute; inset: 15px; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; }
-    .coin::after {
-      content: "A"; position: absolute; inset: 34px;
-      display: grid; place-items: center; border-radius: 50%;
-      color: rgba(201,169,110,.4); font-size: 32px; font-weight: 700;
-    }
+    .coin::after { content: ""; }
     .cube {
       top: 120px; right: max(36px, calc(50% - 610px));
       width: 185px; height: 168px; border-radius: 34px;
@@ -337,78 +333,161 @@
     .mq-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
     /* ── MODULES ── */
-    .mod-list { margin-top: 46px; display: flex; flex-direction: column; gap: 3px; }
-    .mod {
-      border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+    .mod-header-line {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 36px; margin-top: 16px;
+    }
+    .mod-header-line::before, .mod-header-line::after {
+      content: ""; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,169,110,.35));
+    }
+    .mod-header-line::after {
+      background: linear-gradient(90deg, rgba(201,169,110,.35), transparent);
+    }
+    .mod-header-txt {
+      font-size: 10px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold); white-space: nowrap;
+    }
+    .mod-list { display: flex; flex-direction: column; gap: 10px; }
+    .mod-card {
+      border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
       background: #111; overflow: hidden;
-      transition: border-color .25s, background .25s, box-shadow .25s;
+      transition: border-color .25s;
     }
-    .mod:hover { border-color: rgba(201,169,110,.18); }
-    .mod.active {
-      border-color: rgba(201,169,110,.36);
-      background: rgba(201,169,110,.05);
-      box-shadow: 0 0 32px rgba(201,169,110,.1);
+    .mod-card:hover { border-color: rgba(201,169,110,.2); }
+    .mod-card.active { border-color: rgba(201,169,110,.32); }
+    .mod-card-btn {
+      display: flex; align-items: center; gap: 0;
+      width: 100%; background: transparent; text-align: left; cursor: pointer;
     }
-    .mod-btn {
-      display: flex; align-items: center; gap: 18px;
-      width: 100%; padding: 18px 20px; background: transparent; text-align: left;
+    .mod-icon-box {
+      width: 54px; height: 54px; flex-shrink: 0; margin: 12px 0 12px 12px;
+      border-radius: 11px; background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
     }
-    .mod-num {
-      font-family: var(--font-d);
-      font-size: 24px; font-weight: 700; color: rgba(255,255,255,.13);
-      width: 34px; flex-shrink: 0; transition: color .25s;
+    .mod-num-big {
+      font-family: var(--font-d); font-size: 26px; font-weight: 800;
+      color: rgba(255,255,255,.1); letter-spacing: -.03em;
+      padding: 0 14px; flex-shrink: 0;
     }
-    .mod.active .mod-num { color: var(--gold); }
-    .mod-tw { flex: 1; min-width: 0; }
-    .mod-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-bottom: 2px; }
-    .mod-title { font-size: 15px; font-weight: 600; color: rgba(245,244,240,.78); letter-spacing: -.01em; }
-    .mod-quote { font-size: 12px; font-style: italic; color: rgba(255,255,255,.35); margin-top: 3px; display: none; }
-    .mod.active .mod-quote { display: block; }
-    .mod-ct { font-size: 11px; color: rgba(255,255,255,.28); flex-shrink: 0; }
-    .mod-chev { width: 15px; height: 15px; flex-shrink: 0; color: rgba(255,255,255,.32); transition: transform .3s, color .25s; }
-    .mod.active .mod-chev { transform: rotate(180deg); color: var(--gold); }
-    .mod-body { max-height: 0; overflow: hidden; transition: max-height .36s ease; }
-    .mod.active .mod-body { max-height: 640px; }
+    .mod-card.active .mod-num-big { color: rgba(201,169,110,.3); }
+    .mod-info { flex: 1; min-width: 0; padding: 14px 0; }
+    .mod-lbl { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .mod-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .mod-sep { width: 1px; height: 38px; background: rgba(201,169,110,.18); flex-shrink: 0; margin: 0 14px; }
+    .mod-ct-box { flex-shrink: 0; text-align: center; color: var(--gold); padding-right: 6px; }
+    .mod-ct-box svg { margin: 0 auto 3px; display: block; }
+    .mod-ct-n { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.45); white-space: nowrap; }
+    .mod-chev {
+      width: 14px; height: 14px; flex-shrink: 0; margin: 0 14px;
+      color: rgba(255,255,255,.25); transition: transform .3s, color .25s;
+    }
+    .mod-card.active .mod-chev { transform: rotate(180deg); color: var(--gold); }
+    .mod-card-body { max-height: 0; overflow: hidden; transition: max-height .36s ease; }
+    .mod-card.active .mod-card-body { max-height: 700px; }
     .mod-topics {
-      padding: 0 20px 18px 72px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 7px;
+      padding: 4px 14px 14px 80px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5px;
     }
     .mod-topic {
-      display: flex; align-items: flex-start; gap: 7px;
-      padding: 8px 11px; border-radius: 10px;
-      border: 1px solid rgba(255,255,255,.04); background: rgba(255,255,255,.022);
-      transition: border-color .2s, background .2s;
+      display: flex; align-items: flex-start; gap: 6px;
+      padding: 6px 10px; border-radius: 8px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.04);
     }
-    .mod-topic:hover { border-color: rgba(201,169,110,.13); background: rgba(201,169,110,.03); }
-    .mod-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: .6; flex-shrink: 0; margin-top: 5px; }
-    .mod-topic span { font-size: 12.5px; color: rgba(255,255,255,.54); line-height: 1.44; }
+    .mod-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: .55; flex-shrink: 0; margin-top: 6px; }
+    .mod-topic span { font-size: 11.5px; color: rgba(255,255,255,.48); line-height: 1.45; }
+    @media (max-width: 500px) {
+      .mod-num-big { display: none; }
+      .mod-sep, .mod-ct-box { display: none; }
+      .mod-topics { grid-template-columns: 1fr; padding-left: 14px; }
+    }
 
     /* ── ANGELO BIO ── */
-    .bio-grid {
-      display: grid; grid-template-columns: 1fr 1.12fr;
-      gap: clamp(32px,6vw,84px); align-items: center;
+    .bio-real {
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: clamp(40px,7vw,100px); align-items: start;
     }
-    .bio-photo-box {
-      aspect-ratio: 4/5; border-radius: 26px;
+    .bio-real-name {
+      font-family: var(--font-d); font-size: clamp(30px,4vw,52px);
+      font-weight: 800; color: #fff; letter-spacing: -.03em; margin: 14px 0 18px; line-height: 1.05;
+    }
+    .bio-real-roles {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
+      font-size: 12.5px; color: rgba(255,255,255,.38); font-weight: 500;
+    }
+    .bio-dot { color: rgba(201,169,110,.5); }
+    .bio-real-right p {
+      font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.78;
+      margin-bottom: 18px;
+    }
+    .bio-real-right p:last-child { margin-bottom: 0; }
+    @media (max-width: 680px) { .bio-real { grid-template-columns: 1fr; gap: 28px; } }
+
+    .bio-simple {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(32px,6vw,80px); align-items: center;
+    }
+    .bio-name {
+      font-family: var(--font-d); font-size: clamp(32px,4vw,54px);
+      font-weight: 800; color: #fff; letter-spacing: -.03em; margin: 14px 0 8px;
+    }
+    .bio-one { font-size: 13px; color: rgba(255,255,255,.35); font-weight: 500; letter-spacing: .02em; }
+    .bio-quote {
+      font-size: clamp(15px,1.6vw,19px); color: rgba(255,255,255,.55);
+      line-height: 1.62; font-style: italic;
+      border-left: 2px solid rgba(201,169,110,.4); padding-left: 22px;
+      margin-bottom: 18px;
+    }
+    .bio-body { font-size: 14px; color: rgba(255,255,255,.38); line-height: 1.7; margin-bottom: 24px; }
+    .bio-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .bio-tags span {
+      padding: 5px 13px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.1);
+      font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,.4);
+    }
+    .bio-facts { display: flex; gap: 28px; }
+    .bio-fact { display: flex; flex-direction: column; gap: 2px; }
+    .bio-fact-n { font-family: var(--font-d); font-size: 28px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+    .bio-fact-l { font-size: 11px; color: rgba(255,255,255,.32); font-weight: 500; }
+    @media (max-width: 640px) { .bio-simple { grid-template-columns: 1fr; gap: 28px; } }
+
+    .bio-intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(32px,5vw,72px); align-items: center; margin-bottom: 48px;
+    }
+    .bio-intro-left h2 { font-size: clamp(26px,3.6vw,46px); font-weight: 800; color: #fff; line-height: 1.06; letter-spacing: -.03em; }
+    .bio-intro-left h2 span { color: rgba(255,255,255,.28); font-weight: 400; }
+    .bio-intro-right p { font-size: 15px; color: rgba(255,255,255,.48); line-height: 1.72; }
+    .story-g {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+    .story-card {
+      padding: 30px 26px; border-radius: 18px;
       border: 1px solid rgba(255,255,255,.08);
-      background: #111;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px;
-      overflow: hidden;
+      background: #111; position: relative; overflow: hidden;
+      transition: border-color .3s, transform .3s;
     }
-    .bio-photo-box svg { color: rgba(255,255,255,.13); }
-    .bio-photo-lbl { font-size: 12px; color: rgba(255,255,255,.24); }
-    .bio-txt h2 { font-size: clamp(26px,3.8vw,46px); font-weight: 700; color: #fff; margin: 16px 0 16px; line-height: 1.06; }
-    .bio-txt p { font-size: 14.5px; color: rgba(255,255,255,.53); line-height: 1.72; max-width: 450px; margin-bottom: 26px; }
-    .feats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-    .feat {
-      padding: 15px 16px; border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #111;
-      transition: border-color .2s, transform .2s;
+    .story-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,169,110,.5), transparent);
+      opacity: 0; transition: opacity .3s;
     }
-    .feat:hover { border-color: rgba(201,169,110,.22); transform: translateY(-1px); }
-    .feat-t { font-size: 12.5px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-    .feat-d { font-size: 11.5px; color: rgba(255,255,255,.4); }
+    .story-card:hover { border-color: rgba(201,169,110,.22); transform: translateY(-3px); }
+    .story-card:hover::before { opacity: 1; }
+    .story-num {
+      font-family: var(--font-d); font-size: 54px; font-weight: 800;
+      color: rgba(255,255,255,.05); line-height: 1; letter-spacing: -.03em; margin-bottom: 16px;
+    }
+    .story-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .story-text { font-size: 13.5px; color: rgba(255,255,255,.44); line-height: 1.68; }
+    @media (max-width: 760px) {
+      .bio-intro { grid-template-columns: 1fr; }
+      .story-g { grid-template-columns: 1fr; }
+    }
 
     /* ── QUÉ TE LLEVAS ── */
     .llevas-g {
@@ -461,6 +540,18 @@
     .pcrd-price .amt {
       font-family: var(--font-d); font-size: 50px; font-weight: 800;
       color: #fff; line-height: 1; letter-spacing: -.02em;
+    }
+    .pcrd-price-old {
+      display: flex; align-items: center; gap: 7px; margin-bottom: 4px;
+    }
+    .pcrd-old-amt {
+      font-size: 15px; font-weight: 600; color: rgba(255,255,255,.28);
+      text-decoration: line-through;
+    }
+    .pcrd-badge-off {
+      font-size: 10px; font-weight: 800; letter-spacing: .06em;
+      color: #0a0700; background: linear-gradient(135deg, var(--gold2), var(--gold));
+      padding: 2px 7px; border-radius: 999px;
     }
     .pcrd-btns { display: flex; flex-direction: column; gap: 7px; margin-bottom: 13px; }
     .pcrd-btns .btn { min-width: 0; width: 100%; justify-content: center; }
@@ -568,34 +659,68 @@
     .pain-t { font-size: 15px; font-weight: 700; color: rgba(255,255,255,.88); margin-bottom: 6px; letter-spacing: -.01em; }
     .pain-d { font-size: 13px; color: rgba(255,255,255,.42); line-height: 1.58; }
 
-    /* ── COMPARISON ── */
-    .cmp-g {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      gap: 18px; align-items: stretch; margin-top: 48px;
+    /* ── COMPARISON TRW ── */
+    .trw-g {
+      display: grid; grid-template-columns: 1fr 60px 1fr;
+      align-items: start; margin-top: 64px; position: relative;
     }
-    .cmp-col {
-      padding: clamp(22px,3.5vw,44px); border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #111;
+    .trw-col { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 clamp(12px,4vw,56px); }
+    .trw-line-wrap {
+      display: flex; flex-direction: column; align-items: center; margin-bottom: 28px;
     }
-    .cmp-col.good {
-      background: rgba(201,169,110,.08);
-      border-color: rgba(201,169,110,.32);
-      box-shadow: inset 0 1px 0 rgba(255,215,100,.1), 0 0 60px rgba(201,169,110,.1);
+    .trw-vline {
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.18));
     }
-    .cmp-h { font-size: clamp(20px,2.6vw,32px); font-weight: 600; color: rgba(255,255,255,.7); text-align: center; margin-bottom: 24px; }
-    .cmp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .cmp-list li { display: flex; gap: 10px; color: rgba(255,255,255,.68); font-size: 13.5px; line-height: 1.4; }
-    .cmp-list li::before { content: "✗"; color: rgba(255,70,70,.55); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .cmp-col.good .cmp-list li::before { content: "✓"; color: var(--gold); }
-    .cmp-cta { margin-top: 28px; }
-    .vs-bdg {
-      display: grid; place-items: center; align-self: center;
-      width: 58px; height: 58px; border-radius: 12px;
-      border: 1px solid rgba(201,169,110,.38);
-      background: rgba(201,169,110,.08);
-      box-shadow: 0 0 24px rgba(201,169,110,.16);
-      color: #fff; font-size: 13px; font-weight: 700;
+    .trw-col.good .trw-vline {
+      background: linear-gradient(to bottom, transparent, rgba(201,169,110,.5));
+    }
+    .trw-dot {
+      width: 10px; height: 10px; border-radius: 50%; margin-top: -1px;
+      border: 1px solid rgba(255,255,255,.3); background: #1a1a1a;
+    }
+    .trw-col.good .trw-dot {
+      border-color: var(--gold); background: var(--gold);
+      box-shadow: 0 0 12px rgba(201,169,110,.6);
+    }
+    .trw-lbl {
+      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.3); margin-bottom: 14px;
+    }
+    .trw-col.good .trw-lbl { color: var(--gold); }
+    .trw-title {
+      font-family: var(--font-d);
+      font-size: clamp(28px,3.8vw,52px); font-weight: 800;
+      color: rgba(255,255,255,.22); line-height: 1.05; letter-spacing: -.03em;
+      margin-bottom: 18px;
+    }
+    .trw-col.good .trw-title { color: #fff; }
+    .trw-desc {
+      font-size: 14px; color: rgba(255,255,255,.32); line-height: 1.65;
+      max-width: 320px; margin-bottom: 28px;
+    }
+    .trw-col.good .trw-desc { color: rgba(255,255,255,.58); }
+    .trw-btn-bad {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 36px; border-radius: 999px;
+      background: #1e1e1e; border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.38); font-size: 15px; font-weight: 600;
+      cursor: default;
+    }
+    .trw-vs {
+      display: flex; align-items: center; justify-content: center;
+      padding-top: 148px;
+    }
+    .trw-vs-inner {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.14);
+      background: #141414;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,.4);
+    }
+    @media (max-width: 640px) {
+      .trw-g { grid-template-columns: 1fr; gap: 40px; }
+      .trw-vs { display: none; }
     }
 
     /* ── URGENCY BANNER ── */
@@ -740,7 +865,6 @@
   <header class="nav" id="nav">
     <div class="nav-shell">
       <a href="#inicio" class="nav-logo">
-        <div class="logo-i">A</div>
         <span class="logo-n">Angelo León</span>
       </a>
       <nav class="nav-links" aria-label="Principal">
@@ -851,22 +975,22 @@
         </div>
         <div class="pain-grid">
           <div class="pain-card rv">
-            <div class="pain-em">💭</div>
+            
             <div class="pain-t">Tienes Ideas Pero No Avanzas</div>
             <div class="pain-d">Mil proyectos en mente, ninguno en ejecución. El ruido mental no para y el tiempo pasa.</div>
           </div>
           <div class="pain-card rv">
-            <div class="pain-em">🔄</div>
+            
             <div class="pain-t">Siempre Das Las Mismas Vueltas</div>
             <div class="pain-d">Sabes lo que quieres pero vuelves al punto de partida. Sin orden, todo se siente igual.</div>
           </div>
           <div class="pain-card rv">
-            <div class="pain-em">❓</div>
+            
             <div class="pain-t">No Sabes Si Vas Por El Camino Correcto</div>
             <div class="pain-d">Tomas decisiones sin referencia. Nadie que te diga si estás bien o si estás perdiendo tiempo.</div>
           </div>
           <div class="pain-card rv">
-            <div class="pain-em">⏳</div>
+            
             <div class="pain-t">Esperas El Momento Perfecto</div>
             <div class="pain-d">Siempre hay algo que falta. El momento perfecto no llega porque nunca se crea solo.</div>
           </div>
@@ -884,131 +1008,194 @@
     <!-- MÓDULOS -->
     <section class="sec" id="modulos">
       <div class="wrap">
-        <div class="center rv">
-          <div class="pill pill-g">Temario completo</div>
-          <h2 class="headline sm">Lo que incluye la mentoría</h2>
-          <p class="copy">5 módulos para trabajar mentalidad, creación de agencia, ventas, dinero e inversión.</p>
+        <div class="mod-header-line rv">
+          <span class="mod-header-txt">5 Módulos Para Transformar Tu Futuro</span>
         </div>
         <div class="mod-list">
 
-          <div class="mod rv">
-            <button class="mod-btn" type="button">
-              <span class="mod-num">01</span>
-              <div class="mod-tw">
+          <!-- MOD 01 -->
+          <div class="mod-card rv">
+            <button class="mod-card-btn" type="button">
+              <div class="mod-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+                  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+                  <path d="M17.6 6.5a3 3 0 0 0 .4-1.375M6 6.5a3 3 0 0 1-.4-1.375"/>
+                  <path d="M3.5 11a4 4 0 0 1 .5-.5M20.5 11a4 4 0 0 0-.5-.5"/>
+                  <path d="M6 18a4 4 0 0 1-2-.5M18 18a4 4 0 0 0 2-.5"/>
+                </svg>
+              </div>
+              <div class="mod-num-big">01</div>
+              <div class="mod-info">
                 <div class="mod-lbl">Módulo 01</div>
                 <div class="mod-title">Mentalidad de Abundancia</div>
-                <div class="mod-quote">"Tu mente determina el tamaño de tu vida."</div>
               </div>
-              <span class="mod-ct">9 temas</span>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <div class="mod-sep"></div>
+              <div class="mod-ct-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="mod-ct-n">9 temas</div>
+              </div>
+              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div class="mod-body"><div class="mod-topics">
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo eliminar mentalidad de escasez</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Reprogramación mental y creencias limitantes</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>El poder del entorno</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Disciplina vs motivación</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo construir confianza real</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo soportar presión mental</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Soledad y ambición</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Identidad y autoimagen</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de pensar como empleado</span></div>
-            </div></div>
+            <div class="mod-card-body">
+              <div class="mod-topics">
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo eliminar mentalidad de escasez</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Reprogramación mental y creencias limitantes</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>El poder del entorno</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Disciplina vs motivación</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo construir confianza real</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo soportar presión mental</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Soledad y ambición</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Identidad y autoimagen</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de pensar como empleado</span></div>
+              </div>
+            </div>
           </div>
 
-          <div class="mod rv">
-            <button class="mod-btn" type="button">
-              <span class="mod-num">02</span>
-              <div class="mod-tw">
+          <!-- MOD 02 -->
+          <div class="mod-card rv">
+            <button class="mod-card-btn" type="button">
+              <div class="mod-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                  <path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/>
+                </svg>
+              </div>
+              <div class="mod-num-big">02</div>
+              <div class="mod-info">
                 <div class="mod-lbl">Módulo 02</div>
                 <div class="mod-title">Creación de tu Propia Agencia</div>
-                <div class="mod-quote">"Aprende habilidades que el mercado paga."</div>
               </div>
-              <span class="mod-ct">9 temas</span>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <div class="mod-sep"></div>
+              <div class="mod-ct-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="mod-ct-n">9 temas</div>
+              </div>
+              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div class="mod-body"><div class="mod-topics">
-              <div class="mod-topic"><span class="mod-dot"></span><span>Qué es una agencia de servicios</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo empezar sin dinero</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Servicios más rentables actualmente</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo conseguir clientes desde Instagram</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo cerrar clientes</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo cobrar correctamente</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Creación de contenido con IA</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo escalar una agencia</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo generar ingresos mensuales constantes</span></div>
-            </div></div>
+            <div class="mod-card-body">
+              <div class="mod-topics">
+                <div class="mod-topic"><span class="mod-dot"></span><span>Qué es una agencia de servicios</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo empezar sin dinero</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Servicios más rentables actualmente</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo conseguir clientes desde Instagram</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo cerrar clientes</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo cobrar correctamente</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Creación de contenido con IA</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo escalar una agencia</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo generar ingresos mensuales constantes</span></div>
+              </div>
+            </div>
           </div>
 
-          <div class="mod rv">
-            <button class="mod-btn" type="button">
-              <span class="mod-num">03</span>
-              <div class="mod-tw">
+          <!-- MOD 03 -->
+          <div class="mod-card rv">
+            <button class="mod-card-btn" type="button">
+              <div class="mod-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div class="mod-num-big">03</div>
+              <div class="mod-info">
                 <div class="mod-lbl">Módulo 03</div>
                 <div class="mod-title">Véndete a Ti Mismo</div>
-                <div class="mod-quote">"Aprende a vender a la mente subconsciente."</div>
               </div>
-              <span class="mod-ct">6 temas</span>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <div class="mod-sep"></div>
+              <div class="mod-ct-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="mod-ct-n">6 temas</div>
+              </div>
+              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div class="mod-body"><div class="mod-topics">
-              <div class="mod-topic"><span class="mod-dot"></span><span>Psicología de ventas</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo hablar con seguridad</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Persuasión y comunicación</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Venderle a la mente, no solo a la persona</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo convertir atención en dinero</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo vender sin parecer vendedor</span></div>
-            </div></div>
+            <div class="mod-card-body">
+              <div class="mod-topics">
+                <div class="mod-topic"><span class="mod-dot"></span><span>Psicología de ventas</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo hablar con seguridad</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Persuasión y comunicación</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Venderle a la mente no solo a la persona</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo convertir atención en dinero</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo vender sin parecer vendedor</span></div>
+              </div>
+            </div>
           </div>
 
-          <div class="mod rv">
-            <button class="mod-btn" type="button">
-              <span class="mod-num">04</span>
-              <div class="mod-tw">
+          <!-- MOD 04 -->
+          <div class="mod-card rv">
+            <button class="mod-card-btn" type="button">
+              <div class="mod-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                  <polyline points="16 7 22 7 22 13"/>
+                </svg>
+              </div>
+              <div class="mod-num-big">04</div>
+              <div class="mod-info">
                 <div class="mod-lbl">Módulo 04</div>
                 <div class="mod-title">Dinero y Finanzas</div>
-                <div class="mod-quote">"Si no entiendes el dinero, trabajarás toda tu vida por él."</div>
               </div>
-              <span class="mod-ct">10 temas</span>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <div class="mod-sep"></div>
+              <div class="mod-ct-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="mod-ct-n">10 temas</div>
+              </div>
+              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div class="mod-body"><div class="mod-topics">
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo funciona realmente el dinero</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Educación financiera moderna</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo administrar tus ingresos</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Presupuesto inteligente y real</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Errores financieros comunes</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cuándo comenzar a invertir</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo aumentar ingresos</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de sobrevivir financieramente</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de gastar por emociones</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Qué es la libertad financiera</span></div>
-            </div></div>
+            <div class="mod-card-body">
+              <div class="mod-topics">
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo funciona realmente el dinero</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Educación financiera moderna</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo administrar tus ingresos</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Presupuesto inteligente y real</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Errores financieros comunes</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cuándo comenzar a invertir</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo aumentar ingresos</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de sobrevivir financieramente</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de gastar por emociones</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Qué es la libertad financiera</span></div>
+              </div>
+            </div>
           </div>
 
-          <div class="mod rv">
-            <button class="mod-btn" type="button">
-              <span class="mod-num">05</span>
-              <div class="mod-tw">
+          <!-- MOD 05 -->
+          <div class="mod-card rv">
+            <button class="mod-card-btn" type="button">
+              <div class="mod-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M9 8h4a2 2 0 0 1 0 4H9v4h4.5a2 2 0 0 0 0-4H9"/>
+                  <line x1="10" y1="7" x2="10" y2="17"/><line x1="13" y1="7" x2="13" y2="17"/>
+                </svg>
+              </div>
+              <div class="mod-num-big">05</div>
+              <div class="mod-info">
                 <div class="mod-lbl">Módulo 05</div>
                 <div class="mod-title">Inversión en Acciones y Crypto</div>
-                <div class="mod-quote">"Haz que el dinero trabaje por ti."</div>
               </div>
-              <span class="mod-ct">11 temas</span>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <div class="mod-sep"></div>
+              <div class="mod-ct-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <div class="mod-ct-n">11 temas</div>
+              </div>
+              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
-            <div class="mod-body"><div class="mod-topics">
-              <div class="mod-topic"><span class="mod-dot"></span><span>Qué son las acciones</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo funciona la bolsa</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Introducción al trading</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Inversión a largo plazo</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Gestión de riesgo</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Qué es Bitcoin</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Qué son los ciclos de Bitcoin</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Errores comunes en crypto</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Diferencia entre invertir y apostar</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Estrategias de acumulación</span></div>
-              <div class="mod-topic"><span class="mod-dot"></span><span>Cómo pensar como inversionista</span></div>
-            </div></div>
+            <div class="mod-card-body">
+              <div class="mod-topics">
+                <div class="mod-topic"><span class="mod-dot"></span><span>Qué son las acciones</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo funciona la bolsa</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Introducción al trading</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Inversión a largo plazo</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Gestión de riesgo</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Qué es Bitcoin</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Qué son los ciclos de Bitcoin</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Errores comunes en crypto</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Diferencia entre invertir y apostar</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Estrategias de acumulación</span></div>
+                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo pensar como inversionista</span></div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1017,37 +1204,35 @@
 
     <!-- COMPARISON -->
     <section class="sec compact">
-      <div class="wrap center">
-        <div class="rv">
-          <div class="pill">Sin Mentoría vs Con Mentoría</div>
-          <h2 class="headline sm">La Diferencia Es Clara</h2>
-        </div>
-        <div class="cmp-g">
-          <div class="cmp-col rv">
-            <h3 class="cmp-h">Sin Dirección</h3>
-            <ul class="cmp-list">
-              <li>Consumiendo contenido sin aplicar nada</li>
-              <li>Tomando decisiones a ciegas</li>
-              <li>Atascado en el mismo punto de siempre</li>
-              <li>Sin nadie que te dé una opinión real</li>
-              <li>Esperando sentirte "listo" para actuar</li>
-              <li>Más confusión a medida que pasa el tiempo</li>
-            </ul>
-          </div>
-          <div class="vs-bdg rv">VS</div>
-          <div class="cmp-col good rv">
-            <h3 class="cmp-h gold-text">Con Mentoría</h3>
-            <ul class="cmp-list">
-              <li>Claridad de dónde estás y hacia dónde ir</li>
-              <li>Decisiones con una perspectiva externa real</li>
-              <li>Prioridades ordenadas, sin ruido</li>
-              <li>Conversación directa, sin respuestas genéricas</li>
-              <li>Un paso siguiente concreto al terminar</li>
-              <li>Dirección real, no motivación vacía</li>
-            </ul>
-            <div class="cmp-cta">
-              <a href="#" class="btn" id="cmpCta" style="width:100%;justify-content:center">Reservar Mi Sesión →</a>
+      <div class="wrap">
+        <div class="trw-g">
+          <!-- LADO MALO -->
+          <div class="trw-col rv">
+            <div class="trw-line-wrap">
+              <div class="trw-vline"></div>
+              <div class="trw-dot"></div>
             </div>
+            <div class="trw-lbl">Sin mentoría</div>
+            <div class="trw-title">Seguir<br>Igual</div>
+            <p class="trw-desc">Dando vueltas en los mismos problemas, tomando decisiones a ciegas, sin nadie que te dé una perspectiva real.</p>
+            <div class="trw-btn-bad">Seguir Solo</div>
+          </div>
+
+          <!-- VS -->
+          <div class="trw-vs">
+            <div class="trw-vs-inner">VS</div>
+          </div>
+
+          <!-- LADO BUENO -->
+          <div class="trw-col good rv">
+            <div class="trw-line-wrap">
+              <div class="trw-vline"></div>
+              <div class="trw-dot"></div>
+            </div>
+            <div class="trw-lbl">Mentoría 1 a 1</div>
+            <div class="trw-title gold-text">Tomar<br>Dirección</div>
+            <p class="trw-desc">Claridad de dónde estás y hacia dónde ir. Un plan concreto, decisiones más ordenadas y pasos reales desde la primera sesión.</p>
+            <a href="#" class="btn" id="cmpCta">Reservar Mentoría →</a>
           </div>
         </div>
       </div>
@@ -1056,25 +1241,24 @@
     <!-- ANGELO BIO -->
     <section class="sec compact" id="angelo">
       <div class="wrap">
-        <div class="bio-grid">
-          <div class="rv">
-            <div class="bio-photo-box" id="angelo-photo">
-              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
-              </svg>
-              <span class="bio-photo-lbl">foto-angelo.jpg</span>
+        <div class="bio-real rv">
+          <div class="bio-real-left">
+            <div class="pill pill-g">Quién está detrás</div>
+            <h2 class="bio-real-name">Soy <span class="gold-text">Angelo León</span></h2>
+            <div class="bio-real-roles">
+              <span>Agencia de marketing</span>
+              <span class="bio-dot">•</span>
+              <span>Trader</span>
+              <span class="bio-dot">•</span>
+              <span>Inversionista</span>
+              <span class="bio-dot">•</span>
+              <span>Dueño de pizzería</span>
             </div>
           </div>
-          <div class="bio-txt rv">
-            <div class="pill pill-g">Quién está detrás</div>
-            <h2>Soy <span class="gold-text">Angelo León.</span></h2>
-            <p>Acompaño a personas que necesitan ordenar sus ideas, tomar mejores decisiones y avanzar con más claridad. Esta mentoría nace para entregar un espacio directo, práctico y personalizado, donde revisamos tu situación real y construimos una ruta concreta.</p>
-            <div class="feats">
-              <div class="feat"><div class="feat-t">Escucha directa</div><div class="feat-d">Sin filtros ni respuestas genéricas.</div></div>
-              <div class="feat"><div class="feat-t">Orden estratégico</div><div class="feat-d">Qué importa ahora y qué puede esperar.</div></div>
-              <div class="feat"><div class="feat-t">Foco en acción</div><div class="feat-d">No solo reflexión. Pasos concretos.</div></div>
-              <div class="feat"><div class="feat-t">Conversación honesta</div><div class="feat-d">Lo que necesitas escuchar.</div></div>
-            </div>
+          <div class="bio-real-right">
+            <p>Tengo 27 años y soy emprendedor. Actualmente lidero una agencia de marketing y otros proyectos comerciales, con una obsesión constante por crecer, aprender y construir libertad financiera.</p>
+            <p>Después de cometer errores, perder dinero y atravesar varios desafíos personales, entendí que el éxito no depende de la suerte, sino de la capacidad de levantarse, adaptarse y seguir avanzando mientras otros abandonan.</p>
+            <p>Mi objetivo es ayudar a otras personas a acelerar su crecimiento, evitar errores que yo ya cometí y demostrar que una vida extraordinaria se construye a través de pequeñas decisiones repetidas todos los días.</p>
           </div>
         </div>
       </div>
@@ -1155,7 +1339,13 @@
                     <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Recomendaciones prácticas</li>
                     <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Espacio para preguntas</li>
                   </ul>
-                  <div class="pcrd-price"><sup>$</sup><span class="amt" id="precioAmt">XX.XXX</span></div>
+                  <div class="pcrd-price">
+                    <div class="pcrd-price-old">
+                      <span class="pcrd-old-amt">$99.990</span>
+                      <span class="pcrd-badge-off">−50%</span>
+                    </div>
+                    <sup>$</sup><span class="amt">49.990</span>
+                  </div>
                   <div class="pcrd-btns">
                     <a href="#" class="btn" id="priceCta">Pagar mentoría</a>
                     <a href="#" class="btn sec" id="priceWa">
@@ -1244,16 +1434,6 @@
             </a>
           </div>
         </div>
-        <div class="form-wrap rv">
-          <h3>¿Prefieres escribir por correo?</h3>
-          <p class="form-sub">Respondo en menos de 24 horas.</p>
-          <form id="cForm">
-            <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" id="fN" required placeholder="Tu nombre"></div>
-            <div class="fg"><label class="fl">Correo</label><input class="fi" type="email" id="fE" required placeholder="tu@correo.com"></div>
-            <div class="fg"><label class="fl">¿Qué necesitas ordenar?</label><textarea class="fi" id="fM" required rows="4" placeholder="Cuéntame brevemente qué te gustaría trabajar."></textarea></div>
-            <button type="submit" class="btn f-sub">Enviar consulta</button>
-          </form>
-        </div>
       </div>
     </section>
 
@@ -1264,7 +1444,6 @@
       <div class="footer-g">
         <div class="f-brand">
           <div style="display:flex;align-items:center;gap:9px">
-            <div class="logo-i" style="width:34px;height:34px;font-size:11px">A</div>
             <span style="font-size:14px;font-weight:700;color:#fff">Angelo León</span>
           </div>
           <p>Mentoría personalizada para avanzar con claridad, estructura y dirección.</p>
@@ -1301,30 +1480,34 @@
       <div class="modal-top-bar"></div>
       <div class="modal-head">
         <button class="modal-close-btn" id="modalClose">×</button>
-        <div class="modal-logo">A</div>
         <h3>Reserva Tu Mentoría</h3>
         <p>Ingresa tus datos para coordinar tu sesión.<br>Luego te redirigimos al pago.</p>
       </div>
       <div class="modal-body">
         <form id="payForm">
           <div class="fg">
-            <label class="fl">Nombre completo</label>
+            <label class="fl">Nombre</label>
             <input class="fi" type="text" name="nombre" id="pN" required placeholder="Tu nombre completo" autocomplete="name">
           </div>
           <div class="fg">
-            <label class="fl">Correo electrónico</label>
+            <label class="fl">Edad</label>
+            <input class="fi" type="number" name="edad" id="pA" required placeholder="Tu edad" min="14" max="80">
+          </div>
+          <div class="fg">
+            <label class="fl">Correo</label>
             <input class="fi" type="email" name="correo" id="pE" required placeholder="tu@correo.com" autocomplete="email">
           </div>
-          <input type="hidden" name="_subject" value="Nueva reserva de mentoría">
-          <input type="hidden" name="_captcha" value="false">
-          <button type="submit" class="btn" id="paySubmitBtn" style="width:100%;margin-top:14px;justify-content:center">
+          <div class="fg">
+            <label class="fl">Día y hora de preferencia</label>
+            <input class="fi" type="text" name="horario" id="pH" required placeholder="Ej: Lunes 19:00 o Sábado mañana">
+          </div>
+          <button type="submit" class="btn" id="paySubmitBtn" style="width:100%;margin-top:16px;justify-content:center">
             Continuar Al Pago →
           </button>
         </form>
-        <p class="modal-note">Recibirás un correo de confirmación con los detalles de tu sesión.</p>
-        <div class="modal-secure">
+        <div class="modal-secure" style="margin-top:14px">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          Pago procesado por Mercado Pago
+          Pago procesado por Mercado Pago · Cupo confirmado al pagar
         </div>
       </div>
     </div>
@@ -1349,7 +1532,7 @@
     email:    'brunocampostapia17@gmail.com',
     instagram:'USUARIO_INSTAGRAM',
     payLink:  'https://mpago.li/2wiqXz2',
-    precio:   'XX.XXX',
+    precio:   '49.990',
     moneda:   'CLP',
   };
   C.waMsg  = encodeURIComponent('Hola Angelo, vengo desde tu página y quiero consultar por la mentoría.');
@@ -1376,20 +1559,30 @@
   payForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('paySubmitBtn');
-    btn.textContent = 'Redirigiendo...';
+    btn.textContent = 'Abriendo WhatsApp...';
     btn.disabled = true;
 
-    // Enviar datos en segundo plano (sin bloquear)
-    fetch('https://formsubmit.co/ajax/brunocampostapia17@gmail.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(payForm)
-    }).catch(() => {});
+    const nombre  = document.getElementById('pN').value.trim();
+    const edad    = document.getElementById('pA').value.trim();
+    const correo  = document.getElementById('pE').value.trim();
+    const horario = document.getElementById('pH').value.trim();
 
-    // Redirigir siempre después de 500ms
+    const msg = encodeURIComponent(
+      '✅ Nueva reserva de mentoría\n\n' +
+      '• Nombre: ' + nombre + '\n' +
+      '• Edad: ' + edad + '\n' +
+      '• Correo: ' + correo + '\n' +
+      '• Preferencia: ' + horario + '\n\n' +
+      'A continuación procedo al pago.'
+    );
+
+    // Abrir WhatsApp con los datos
+    window.open('https://wa.me/' + C.whatsapp + '?text=' + msg, '_blank');
+
+    // Redirigir a Mercado Pago después de 1.5s
     setTimeout(function() {
       window.location.href = C.payLink;
-    }, 500);
+    }, 1500);
   });
   ['navWa','mobWa','heroWa','priceWa','ctaWa','midWa'].forEach(id => {
     const el = document.getElementById(id); if (el) el.href = C.waHref;
@@ -1397,7 +1590,7 @@
   document.getElementById('fWa').href   = C.waHref;
   document.getElementById('fMail').href = 'mailto:' + C.email;
   document.getElementById('fIg').href   = 'https://instagram.com/' + C.instagram;
-  document.getElementById('precioAmt').textContent = C.precio;
+  const precioEl = document.getElementById('precioAmt'); if (precioEl) precioEl.textContent = C.precio;
 
   /* Nav scroll */
   const nav = document.getElementById('nav');
@@ -1415,10 +1608,10 @@
   }));
 
   /* Module accordion */
-  document.querySelectorAll('.mod').forEach(mod => {
-    mod.querySelector('.mod-btn').addEventListener('click', () => {
+  document.querySelectorAll('.mod-card').forEach(mod => {
+    mod.querySelector('.mod-card-btn').addEventListener('click', () => {
       const isOpen = mod.classList.contains('active');
-      document.querySelectorAll('.mod.active').forEach(m => m.classList.remove('active'));
+      document.querySelectorAll('.mod-card.active').forEach(m => m.classList.remove('active'));
       if (!isOpen) mod.classList.add('active');
     });
   });
@@ -1445,14 +1638,16 @@
   const toastMsg  = document.getElementById('toastMsg');
   const toastX    = document.getElementById('toastX');
   const people = [
-    { name: 'Carlos M.', loc: 'Colombia 🇨🇴' },
-    { name: 'Sofía R.',  loc: 'México 🇲🇽'   },
-    { name: 'Diego P.',  loc: 'Argentina 🇦🇷' },
-    { name: 'Valentina L.', loc: 'Chile 🇨🇱'  },
-    { name: 'Andrés T.', loc: 'España 🇪🇸'   },
-    { name: 'María J.',  loc: 'Venezuela 🇻🇪' },
-    { name: 'Pablo C.',  loc: 'Perú 🇵🇪'     },
-    { name: 'Laura G.',  loc: 'Ecuador 🇪🇨'  },
+    { name: 'Matías R.',    loc: 'Santiago 🇨🇱'      },
+    { name: 'Valentina C.', loc: 'Viña del Mar 🇨🇱'  },
+    { name: 'Sebastián M.', loc: 'Concepción 🇨🇱'    },
+    { name: 'Catalina F.',  loc: 'Antofagasta 🇨🇱'   },
+    { name: 'Nicolás P.',   loc: 'Valparaíso 🇨🇱'    },
+    { name: 'Camila H.',    loc: 'Temuco 🇨🇱'        },
+    { name: 'Felipe O.',    loc: 'La Serena 🇨🇱'     },
+    { name: 'Isidora V.',   loc: 'Rancagua 🇨🇱'      },
+    { name: 'Diego A.',     loc: 'Puerto Montt 🇨🇱'  },
+    { name: 'Javiera T.',   loc: 'Iquique 🇨🇱'       },
   ];
   let toastIdx = 0, toastTimer;
   function showToast() {
