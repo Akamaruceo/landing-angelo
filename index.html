@@ -1461,10 +1461,39 @@
     </div>
   </footer>
 
-  <!-- STRIPE LOADING OVERLAY -->
-  <div id="stripeOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
-    <div style="width:36px;height:36px;border-radius:50%;border:2px solid rgba(201,169,110,.2);border-top-color:#C9A96E;animation:spin .7s linear infinite;"></div>
-    <p style="color:rgba(255,255,255,.6);font-size:14px;">Redirigiendo al pago seguro…</p>
+  <!-- MODAL RESERVA -->
+  <div class="modal-ov" id="payModal">
+    <div class="modal-box">
+      <div class="modal-top-bar"></div>
+      <div class="modal-head">
+        <button class="modal-close-btn" id="modalClose">×</button>
+        <h3>Reservar Mentoría</h3>
+        <p>Completa tus datos y te escribimos por WhatsApp para coordinar.</p>
+      </div>
+      <div class="modal-body">
+        <form id="payForm">
+          <div class="fg">
+            <label class="fl">Nombre completo</label>
+            <input class="fi" type="text" id="pN" required placeholder="Tu nombre y apellido" autocomplete="name">
+          </div>
+          <div class="fg">
+            <label class="fl">Número de teléfono</label>
+            <input class="fi" type="tel" id="pT" required placeholder="+56 9 1234 5678" autocomplete="tel">
+          </div>
+          <div class="fg">
+            <label class="fl">Edad</label>
+            <input class="fi" type="number" id="pA" required placeholder="Tu edad" min="14" max="80">
+          </div>
+          <button type="submit" class="btn" id="paySubmitBtn" style="width:100%;margin-top:16px;justify-content:center">
+            Enviar reserva por WhatsApp →
+          </button>
+        </form>
+        <div class="modal-secure" style="margin-top:14px">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Te responderemos por WhatsApp para confirmar tu cupo
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- FLOATING TOAST -->
@@ -1492,31 +1521,48 @@
   C.waMsg  = encodeURIComponent('Hola Angelo, vengo desde tu página y quiero consultar por la mentoría.');
   C.waHref = 'https://wa.me/' + C.whatsapp + '?text=' + C.waMsg;
 
-  /* Inject links */
-  /* ── Stripe Checkout ── */
-  const stripeOverlay = document.getElementById('stripeOverlay');
+  /* ── Modal reserva ── */
+  const payModal   = document.getElementById('payModal');
+  const modalClose = document.getElementById('modalClose');
+  const payForm    = document.getElementById('payForm');
 
-  async function goToCheckout(e) {
-    if (e) e.preventDefault();
-    stripeOverlay.style.display = 'flex';
-    try {
-      const res  = await fetch('/api/create-checkout-session', { method: 'POST' });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        stripeOverlay.style.display = 'none';
-        alert('Error al iniciar el pago. Intenta de nuevo o contáctanos por WhatsApp.');
-      }
-    } catch {
-      stripeOverlay.style.display = 'none';
-      alert('Error de conexión. Intenta de nuevo.');
-    }
-  }
+  function openPayModal(e) { if (e) e.preventDefault(); payModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closePayModal()  { payModal.classList.remove('open'); document.body.style.overflow = ''; }
 
   ['navCta','mobCta','heroCta','priceCta','ctaCta','painCta','cmpCta','urgCta','midCta'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) { el.href = '#'; el.addEventListener('click', goToCheckout); }
+    if (el) { el.href = '#'; el.addEventListener('click', openPayModal); }
+  });
+
+  modalClose.addEventListener('click', closePayModal);
+  payModal.addEventListener('click', e => { if (e.target === payModal) closePayModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePayModal(); });
+
+  payForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn    = document.getElementById('paySubmitBtn');
+    const nombre = document.getElementById('pN').value.trim();
+    const tel    = document.getElementById('pT').value.trim();
+    const edad   = document.getElementById('pA').value.trim();
+
+    btn.textContent = 'Abriendo WhatsApp...';
+    btn.disabled = true;
+
+    const msg = encodeURIComponent(
+      '✅ Nueva reserva de mentoría\n\n' +
+      '• Nombre: ' + nombre + '\n' +
+      '• Teléfono: ' + tel + '\n' +
+      '• Edad: ' + edad
+    );
+
+    window.open('https://wa.me/' + C.whatsapp + '?text=' + msg, '_blank');
+
+    setTimeout(function() {
+      btn.textContent = 'Enviar reserva por WhatsApp →';
+      btn.disabled = false;
+      closePayModal();
+      payForm.reset();
+    }, 1500);
   });
   ['navWa','mobWa','heroWa','priceWa','ctaWa','midWa','fWa'].forEach(id => {
     const el = document.getElementById(id);
