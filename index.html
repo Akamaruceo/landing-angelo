@@ -1,1652 +1,684 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angelo León · Mentoría 1 a 1</title>
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="icon" type="image/png" href="./favicon.png">
-  <link rel="apple-touch-icon" href="./favicon.png">
-  <link rel="shortcut icon" href="./favicon.png">
-  <meta name="description" content="Mentoría personalizada 1 a 1. Una sesión privada para ordenar tus ideas, tomar mejores decisiones y avanzar con más claridad.">
-  <style>
-    @font-face {
-      font-family: "SF Local";
-      src: local(".SF NS Text"), local(".SFNSText"), local("SF Pro Text"),
-           url("file:///System/Library/Fonts/SFNS.ttf") format("truetype");
-      font-weight: 100 900; font-style: normal; font-display: swap;
-    }
-    @font-face {
-      font-family: "SF Display Local";
-      src: local(".SF NS Display"), local(".SFNSDisplay"), local("SF Pro Display"),
-           url("file:///System/Library/Fonts/SFNS.ttf") format("truetype");
-      font-weight: 100 900; font-style: normal; font-display: swap;
-    }
 
-    :root {
-      --bg: #000;
-      --bg2: #080808;
-      --panel: #111;
-      --line: rgba(255,255,255,.1);
-      --lsoft: rgba(255,255,255,.07);
-      --text: #f5f4f0;
-      --muted: rgba(255,255,255,.62);
-      --muted2: rgba(255,255,255,.42);
-      --gold: #C9A96E;
-      --gold2: #DFC08A;
-      --orange: #FF8C00;
-      --max: 1180px;
-      --px: clamp(18px,4vw,60px);
-      --font: -apple-system, BlinkMacSystemFont, "SF Local", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-      --font-d: -apple-system, BlinkMacSystemFont, "SF Display Local", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-    }
+  <title>99 Restaurante — Menú Degustación · Vitacura, Santiago</title>
+  <meta name="description" content="99 Restaurante. Cocina chilena contemporánea, 12 asientos, menú degustación por temporada desde los valles de Chile. Reserva previa. Vitacura, Santiago.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://99restaurante.com">
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: #000; }
-    body {
-      min-height: 100vh; overflow-x: hidden;
-      color: var(--text); font-family: var(--font); font-size: 16px;
-      font-weight: 400; -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      background-color: #000;
-      background-image:
-        radial-gradient(ellipse 180% 50% at 50% 0%, rgba(201,169,110,.26) 0%, rgba(255,140,0,.12) 18%, transparent 48%),
-        radial-gradient(ellipse 80% 35% at 90% 0%, rgba(255,140,0,.12) 0%, transparent 42%);
-      background-attachment: fixed, fixed;
-      background-size: 100% 100%, 100% 100%;
-      background-position: center top, right top;
-      background-repeat: no-repeat, no-repeat;
-    }
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: 1000; pointer-events: none; opacity: .2;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,.6), transparent 48%);
-    }
-    body::after {
-      content: ""; position: fixed; inset: 0; z-index: 1001; pointer-events: none; opacity: .15;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-    }
-    a { color: inherit; text-decoration: none; }
-    img, svg { display: block; }
-    button { font: inherit; border: 0; cursor: pointer; }
+  <meta property="og:title" content="99 Restaurante — Menú Degustación · Vitacura">
+  <meta property="og:description" content="12 asientos, cocina abierta, menú degustación por temporada. Temporada actual: Valle del Maule. Vitacura, Santiago.">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:url" content="https://99restaurante.com">
+  <meta property="og:image" content="/assets/og-99.webp">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="99 Restaurante">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="99 Restaurante — Menú Degustación · Vitacura">
+  <meta name="twitter:description" content="12 asientos, cocina abierta, menú degustación por temporada. Reserva previa.">
+  <meta name="twitter:image" content="/assets/og-99.webp">
 
-    .page { position: relative; z-index: 1; overflow: hidden; }
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "99 Restaurante",
+    "description": "Cocina chilena contemporánea, menú degustación por temporada desde los valles de Chile. 12 asientos, cocina abierta.",
+    "url": "https://99restaurante.com",
+    "image": "/assets/og-99.webp",
+    "servesCuisine": "Cocina chilena contemporánea",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Alonso de Córdova 4355, CV Galería",
+      "addressLocality": "Vitacura",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "sameAs": [
+      "https://www.instagram.com/99_restaurante/",
+      "https://99restaurante.com"
+    ]
+  }
+  </script>
 
-    .wrap {
-      width: min(var(--max), calc(100% - var(--px) * 2));
-      margin-inline: auto;
-    }
+  <!-- Icons + theme -->
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#1A1A17">
 
-    .sec { position: relative; padding: clamp(80px,10vw,140px) 0; }
-    .sec.compact { padding-block: clamp(56px,7vw,96px); }
+  <!-- Preload hero image for LCP -->
+  <link rel="preload" as="image" href="hero-sala.webp" fetchpriority="high">
 
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      min-height: 30px; padding: 6px 14px;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 999px;
-      color: rgba(255,255,255,.7);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
-      font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
-      text-transform: uppercase; backdrop-filter: blur(20px);
-    }
-    .pill-g { color: var(--gold); border-color: rgba(201,169,110,.22); background: rgba(201,169,110,.06); }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-    .gold-text {
-      background: linear-gradient(94deg, var(--gold2) 0%, var(--gold) 42%, var(--orange) 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .soft-title {
-      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,.8) 50%, rgba(255,255,255,.42) 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-
-    .center { text-align: center; }
-
-    .headline {
-      margin-top: 14px; color: #fff;
-      font-family: var(--font-d);
-      font-size: clamp(30px,4.6vw,68px); font-weight: 500; line-height: .96;
-    }
-    .headline.sm { font-size: clamp(26px,3.4vw,50px); line-height: 1.02; }
-
-    .copy {
-      max-width: 600px; margin: 14px auto 0;
-      color: var(--muted); font-size: clamp(14px,1.4vw,17px); line-height: 1.58;
-    }
-
-    /* ── PRIMARY BUTTON ── */
-    .btn {
-      position: relative;
-      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-      min-width: 210px; min-height: 54px; padding: 14px 30px;
-      border-radius: 999px; border: 0;
-      color: #130d04; font-size: 15px; font-weight: 700;
-      background:
-        radial-gradient(circle at 25% 20%, rgba(255,255,255,.88), transparent 10%),
-        linear-gradient(90deg, #DFC08A 0%, #C9A96E 30%, #FFB347 65%, #FF8C00 100%);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.2) inset,
-        0 0 26px rgba(201,169,110,.42),
-        0 0 60px rgba(255,140,0,.25);
-      overflow: hidden; isolation: isolate;
-      transition: transform .25s ease, filter .25s ease;
-    }
-    .btn::before {
-      content: ""; position: absolute; inset: 0; z-index: -1; opacity: .42;
-      background-image:
-        linear-gradient(115deg, transparent 0 28%, rgba(255,255,255,.65) 34%, transparent 43%),
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 220 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='70' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-      background-size: 220% 100%, cover;
-      animation: bsweep 4.6s linear infinite;
-      mix-blend-mode: soft-light;
-    }
-    .btn:hover { transform: translateY(-2px) scale(1.015); filter: brightness(1.06) saturate(1.08); }
-
-    .btn.sec {
-      color: rgba(255,255,255,.78); min-width: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.045));
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.13), 0 12px 28px rgba(0,0,0,.2);
-    }
-    .btn.sec::before { display: none; }
-
-    .proof {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      margin-top: 11px; color: rgba(255,255,255,.5); font-size: 12px; font-weight: 500;
-    }
-    .avs { display: flex; }
-    .av {
-      width: 21px; height: 21px; border-radius: 50%;
-      border: 2px solid #040404; margin-left: -6px;
-      background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.9), transparent 18%),
-                  linear-gradient(135deg, var(--gold), var(--orange));
-    }
-    .av:first-child { margin-left: 0; }
-    .av:nth-child(2) { background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.8), transparent 18%), linear-gradient(135deg,#7cdcff,#5667ff); }
-    .av:nth-child(3) { background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.8), transparent 18%), linear-gradient(135deg,#ef6d83,#f5bd54); }
-    .av:nth-child(4) { background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.8), transparent 18%), linear-gradient(135deg,#6fe3a2,#1b7651); }
-
-    /* ── NAV ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-      padding: 13px 14px; pointer-events: none;
-      transition: padding .3s;
-    }
-    .nav.scrolled { padding-top: 9px; }
-    .nav-shell {
-      position: relative;
-      display: grid; grid-template-columns: auto 1fr auto;
-      align-items: center; gap: 6px;
-      width: min(1380px, 100%); margin: 0 auto;
-      padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 999px;
-      background: rgba(4,4,4,.88);
-      box-shadow: 0 12px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);
-      backdrop-filter: blur(28px); pointer-events: auto;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 9px; padding: 0 4px;
-    }
-    .logo-i {
-      display: inline-grid; place-items: center;
-      width: 40px; height: 40px; border-radius: 50%;
-      color: #0a0700; font-size: 13px; font-weight: 800;
-      background:
-        radial-gradient(circle at 50% 38%, rgba(255,255,255,.75) 0 7%, transparent 8%),
-        conic-gradient(from 230deg, #5a3a14, #C9A96E, #FF8C00, #4b2412, #DFC08A, #5a3a14);
-      box-shadow: 0 0 0 2px rgba(255,255,255,.08) inset, 0 0 20px rgba(201,169,110,.32);
-    }
-    .logo-n { font-size: 14px; font-weight: 700; color: #fff; }
-    .nav-links {
-      display: flex; align-items: center; justify-content: center;
-    }
-    .nav-link {
-      display: inline-flex; align-items: center; min-height: 34px;
-      padding: 6px 13px; color: rgba(255,255,255,.58); font-size: 13px; font-weight: 500;
-      border-radius: 999px; transition: color .2s;
-    }
-    .nav-link:hover { color: #fff; }
-    .nav-acts { display: flex; align-items: center; gap: 7px; padding: 0 3px; }
-    .nav-wa {
-      display: inline-flex; align-items: center; gap: 6px;
-      min-height: 34px; padding: 7px 15px;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 999px;
-      color: rgba(255,255,255,.68); font-size: 13px; font-weight: 500;
-      transition: border-color .2s, color .2s;
-    }
-    .nav-wa:hover { border-color: rgba(255,255,255,.24); color: #fff; }
-    .nav-cta {
-      display: inline-flex; align-items: center; min-height: 34px;
-      padding: 7px 17px; border-radius: 999px;
-      color: #0a0700; font-size: 13px; font-weight: 700;
-      background: linear-gradient(135deg, var(--gold2), var(--gold), var(--orange));
-      transition: transform .2s, filter .2s;
-    }
-    .nav-cta:hover { transform: scale(1.04); filter: brightness(1.06); }
-    .nav-hamb {
-      display: none; flex-direction: column; gap: 4px;
-      padding: 8px; background: transparent;
-    }
-    .nav-hamb span {
-      display: block; width: 17px; height: 2px; border-radius: 2px;
-      background: rgba(255,255,255,.78); transition: all .25s;
-    }
-    .nav-mob {
-      position: fixed; inset: 0; z-index: 890;
-      background: rgba(3,3,3,.98); backdrop-filter: blur(28px);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-      opacity: 0; pointer-events: none; transition: opacity .25s;
-    }
-    .nav-mob.open { opacity: 1; pointer-events: auto; }
-    .nav-mob a { font-size: 22px; font-weight: 600; color: rgba(255,255,255,.65); padding: 9px; transition: color .2s; }
-    .nav-mob a:hover { color: #fff; }
-    .nav-mob-btns { display: flex; flex-direction: column; gap: 9px; width: 250px; margin-top: 20px; }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative; min-height: 100svh;
-      display: flex; align-items: center;
-      padding: 96px 0 96px; overflow: hidden;
-    }
-    .hero::before {
-      content: ""; position: absolute;
-      top: 55px; left: 50%;
-      width: min(1480px, 130vw); height: 460px;
-      transform: translateX(-50%);
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(201,169,110,.86) 0 4%, rgba(255,140,0,.52) 18%, rgba(201,169,110,.14) 44%, transparent 70%),
-        linear-gradient(90deg, transparent 0 18%, rgba(201,169,110,.42) 30%, transparent 46% 54%, rgba(201,169,110,.42) 70%, transparent 82%);
-      filter: blur(2px); opacity: .84;
-      mask-image: linear-gradient(to bottom, #000 0 50%, transparent 100%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: ""; position: absolute; inset: 0;
-      background:
-        linear-gradient(90deg, rgba(4,4,4,.96) 0%, rgba(4,4,4,.28) 14%, transparent 30% 70%, rgba(4,4,4,.28) 86%, rgba(4,4,4,.96) 100%),
-        linear-gradient(180deg, transparent 0 38%, var(--bg) 74%);
-      pointer-events: none;
-    }
-    .hero-inner { position: relative; z-index: 2; width: 100%; text-align: center; }
-
-    .floating { position: absolute; z-index: 1; pointer-events: none; opacity: .36; filter: drop-shadow(0 26px 44px rgba(0,0,0,.5)); }
-    .coin {
-      top: 120px; left: max(28px, calc(50% - 620px));
-      width: 126px; height: 126px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.13);
-      background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,.07) 0 18%, transparent 19%),
-        conic-gradient(from 180deg, rgba(255,255,255,.03), rgba(201,169,110,.36), rgba(255,255,255,.04), rgba(255,140,0,.26), rgba(255,255,255,.03));
-      animation: floaty 9s ease-in-out infinite;
-    }
-    .coin::before { content: ""; position: absolute; inset: 15px; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; }
-    .coin::after { content: ""; }
-    .cube {
-      top: 120px; right: max(36px, calc(50% - 610px));
-      width: 185px; height: 168px; border-radius: 34px;
-      border: 1px solid rgba(255,255,255,.09);
-      background: linear-gradient(140deg, rgba(255,255,255,.11), transparent 38%), linear-gradient(130deg, #181818, #080808);
-      transform: rotate(16deg); animation: floaty 10s ease-in-out -2s infinite;
-    }
-    .cube::before {
-      content: ""; position: absolute; inset: 13px;
-      border: 13px solid rgba(255,255,255,.06); border-radius: 50%; transform: rotate(-16deg);
-    }
-
-    .hero h1 {
-      max-width: 800px; margin: 20px auto 0;
-      font-family: var(--font-d);
-      font-size: clamp(38px,5.8vw,80px); font-weight: 600; line-height: .96; letter-spacing: -.055em;
-    }
-    .hero-sub {
-      max-width: 560px; margin: 18px auto 0;
-      color: rgba(255,255,255,.6); font-size: 16px; line-height: 1.52;
-    }
-    .hero-cta { position: relative; z-index: 2; margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-
-    /* ── STATS STRIP ── */
-    .stats {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      background: rgba(255,255,255,.07);
-      border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07);
-      gap: 1px;
-    }
-    .stat { padding: 28px 20px; text-align: center; background: rgba(0,0,0,.3); }
-    .stat-n {
-      font-family: var(--font-d);
-      font-size: clamp(28px,3.5vw,44px); font-weight: 800; line-height: 1; letter-spacing: -.02em;
-    }
-    .stat-l { margin-top: 5px; color: rgba(255,255,255,.42); font-size: 11.5px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; }
-
-    /* ── MARQUEE ── */
-    .mq {
-      overflow: hidden; padding: 13px 0;
-      border-top: 1px solid var(--lsoft); border-bottom: 1px solid var(--lsoft);
-      background: rgba(255,255,255,.012);
-    }
-    .mq-row { display: flex; width: max-content; animation: marq 44s linear infinite; }
-    .mq-item {
-      display: inline-flex; align-items: center; gap: 13px;
-      padding: 0 26px; color: rgba(255,255,255,.4); font-size: 12px;
-      font-weight: 500; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap;
-    }
-    .mq-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-
-    /* ── MODULES ── */
-    .mod-header-line {
-      display: flex; align-items: center; gap: 16px;
-      margin-bottom: 36px; margin-top: 16px;
-    }
-    .mod-header-line::before, .mod-header-line::after {
-      content: ""; flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,169,110,.35));
-    }
-    .mod-header-line::after {
-      background: linear-gradient(90deg, rgba(201,169,110,.35), transparent);
-    }
-    .mod-header-txt {
-      font-size: 10px; font-weight: 700; letter-spacing: .18em;
-      text-transform: uppercase; color: var(--gold); white-space: nowrap;
-    }
-    .mod-list { display: flex; flex-direction: column; gap: 10px; }
-    .mod-card {
-      border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
-      background: #111; overflow: hidden;
-      transition: border-color .25s;
-    }
-    .mod-card:hover { border-color: rgba(201,169,110,.2); }
-    .mod-card.active { border-color: rgba(201,169,110,.32); }
-    .mod-card-btn {
-      display: flex; align-items: center; gap: 0;
-      width: 100%; background: transparent; text-align: left; cursor: pointer;
-    }
-    .mod-icon-box {
-      width: 54px; height: 54px; flex-shrink: 0; margin: 12px 0 12px 12px;
-      border-radius: 11px; background: #0a0a0a;
-      border: 1px solid rgba(255,255,255,.07);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold);
-    }
-    .mod-num-big {
-      font-family: var(--font-d); font-size: 26px; font-weight: 800;
-      color: rgba(255,255,255,.1); letter-spacing: -.03em;
-      padding: 0 14px; flex-shrink: 0;
-    }
-    .mod-card.active .mod-num-big { color: rgba(201,169,110,.3); }
-    .mod-info { flex: 1; min-width: 0; padding: 14px 0; }
-    .mod-lbl { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
-    .mod-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.2; }
-    .mod-sep { width: 1px; height: 38px; background: rgba(201,169,110,.18); flex-shrink: 0; margin: 0 14px; }
-    .mod-ct-box { flex-shrink: 0; text-align: center; color: var(--gold); padding-right: 6px; }
-    .mod-ct-box svg { margin: 0 auto 3px; display: block; }
-    .mod-ct-n { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.45); white-space: nowrap; }
-    .mod-chev {
-      width: 14px; height: 14px; flex-shrink: 0; margin: 0 14px;
-      color: rgba(255,255,255,.25); transition: transform .3s, color .25s;
-    }
-    .mod-card.active .mod-chev { transform: rotate(180deg); color: var(--gold); }
-    .mod-card-body { max-height: 0; overflow: hidden; transition: max-height .36s ease; }
-    .mod-card.active .mod-card-body { max-height: 700px; }
-    .mod-topics {
-      padding: 4px 14px 14px 80px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5px;
-    }
-    .mod-topic {
-      display: flex; align-items: flex-start; gap: 6px;
-      padding: 6px 10px; border-radius: 8px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.04);
-    }
-    .mod-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: .55; flex-shrink: 0; margin-top: 6px; }
-    .mod-topic span { font-size: 11.5px; color: rgba(255,255,255,.48); line-height: 1.45; }
-    @media (max-width: 500px) {
-      .mod-num-big { display: none; }
-      .mod-sep, .mod-ct-box { display: none; }
-      .mod-topics { grid-template-columns: 1fr; padding-left: 14px; }
-    }
-
-    /* ── ANGELO BIO ── */
-    .bio-real {
-      display: grid; grid-template-columns: 1fr 1.3fr;
-      gap: clamp(40px,7vw,100px); align-items: start;
-    }
-    .bio-real-name {
-      font-family: var(--font-d); font-size: clamp(30px,4vw,52px);
-      font-weight: 800; color: #fff; letter-spacing: -.03em; margin: 14px 0 18px; line-height: 1.05;
-    }
-    .bio-real-roles {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
-      font-size: 12.5px; color: rgba(255,255,255,.38); font-weight: 500;
-    }
-    .bio-dot { color: rgba(201,169,110,.5); }
-    .bio-real-right p {
-      font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.78;
-      margin-bottom: 18px;
-    }
-    .bio-real-right p:last-child { margin-bottom: 0; }
-    @media (max-width: 680px) { .bio-real { grid-template-columns: 1fr; gap: 28px; } }
-
-    .bio-simple {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(32px,6vw,80px); align-items: center;
-    }
-    .bio-name {
-      font-family: var(--font-d); font-size: clamp(32px,4vw,54px);
-      font-weight: 800; color: #fff; letter-spacing: -.03em; margin: 14px 0 8px;
-    }
-    .bio-one { font-size: 13px; color: rgba(255,255,255,.35); font-weight: 500; letter-spacing: .02em; }
-    .bio-quote {
-      font-size: clamp(15px,1.6vw,19px); color: rgba(255,255,255,.55);
-      line-height: 1.62; font-style: italic;
-      border-left: 2px solid rgba(201,169,110,.4); padding-left: 22px;
-      margin-bottom: 18px;
-    }
-    .bio-body { font-size: 14px; color: rgba(255,255,255,.38); line-height: 1.7; margin-bottom: 24px; }
-    .bio-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
-    .bio-tags span {
-      padding: 5px 13px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.1);
-      font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,.4);
-    }
-    .bio-facts { display: flex; gap: 28px; }
-    .bio-fact { display: flex; flex-direction: column; gap: 2px; }
-    .bio-fact-n { font-family: var(--font-d); font-size: 28px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
-    .bio-fact-l { font-size: 11px; color: rgba(255,255,255,.32); font-weight: 500; }
-    @media (max-width: 640px) { .bio-simple { grid-template-columns: 1fr; gap: 28px; } }
-
-    .bio-intro {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(32px,5vw,72px); align-items: center; margin-bottom: 48px;
-    }
-    .bio-intro-left h2 { font-size: clamp(26px,3.6vw,46px); font-weight: 800; color: #fff; line-height: 1.06; letter-spacing: -.03em; }
-    .bio-intro-left h2 span { color: rgba(255,255,255,.28); font-weight: 400; }
-    .bio-intro-right p { font-size: 15px; color: rgba(255,255,255,.48); line-height: 1.72; }
-    .story-g {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 12px;
-    }
-    .story-card {
-      padding: 30px 26px; border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #111; position: relative; overflow: hidden;
-      transition: border-color .3s, transform .3s;
-    }
-    .story-card::before {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,169,110,.5), transparent);
-      opacity: 0; transition: opacity .3s;
-    }
-    .story-card:hover { border-color: rgba(201,169,110,.22); transform: translateY(-3px); }
-    .story-card:hover::before { opacity: 1; }
-    .story-num {
-      font-family: var(--font-d); font-size: 54px; font-weight: 800;
-      color: rgba(255,255,255,.05); line-height: 1; letter-spacing: -.03em; margin-bottom: 16px;
-    }
-    .story-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-    .story-text { font-size: 13.5px; color: rgba(255,255,255,.44); line-height: 1.68; }
-    @media (max-width: 760px) {
-      .bio-intro { grid-template-columns: 1fr; }
-      .story-g { grid-template-columns: 1fr; }
-    }
-
-    /* ── QUÉ TE LLEVAS ── */
-    .llevas-g {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 9px; margin-top: 42px;
-    }
-    .llevas-i {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 14px 16px; border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #111;
-      transition: border-color .2s, transform .2s;
-    }
-    .llevas-i:hover { border-color: rgba(201,169,110,.22); transform: translateY(-1px); }
-    .chk {
-      width: 19px; height: 19px; border-radius: 5px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 8.5px; font-weight: 900; color: #0a0700;
-      background: linear-gradient(135deg, var(--gold2), var(--gold), var(--orange));
-    }
-    .llevas-i span { font-size: 12.5px; color: rgba(255,255,255,.58); line-height: 1.45; }
-    .llevas-q { margin-top: 42px; text-align: center; font-size: 14.5px; font-style: italic; color: rgba(255,255,255,.34); }
-
-    /* ── PRICING ── */
-    .pricing-lay {
-      display: grid; grid-template-columns: 1.08fr 0.92fr;
-      gap: 22px; align-items: start; margin-top: 50px;
-    }
-    .pcrd-wrap {
-      border-radius: 22px; padding: 1.5px;
-      background: linear-gradient(135deg, rgba(223,192,138,.65), rgba(201,169,110,.45), rgba(255,140,0,.38), rgba(255,255,255,.1));
-      box-shadow: 0 0 72px rgba(201,169,110,.18), 0 32px 72px rgba(0,0,0,.55);
-    }
-    .pcrd { border-radius: 20px; background: #111; overflow: hidden; }
-    .pcrd-head {
-      padding: 26px 30px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .pcrd-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
-    .pcrd-title { font-size: 19px; font-weight: 700; color: #fff; margin-bottom: 9px; }
-    .pcrd-desc { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.55; }
-    .pcrd-body { padding: 26px 30px; }
-    .pcrd-meta { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; font-size: 12px; color: rgba(255,255,255,.4); }
-    .pcrd-row { display: flex; gap: 10px; }
-    .pcrd-key { font-weight: 700; color: rgba(255,255,255,.62); width: 72px; flex-shrink: 0; }
-    .pcrd-feats { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 20px; }
-    .pcrd-feats li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,.54); }
-    .pcrd-price { margin-bottom: 20px; }
-    .pcrd-price sup { font-size: 17px; font-weight: 700; color: rgba(255,255,255,.48); vertical-align: top; margin-top: 7px; }
-    .pcrd-price .amt {
-      font-family: var(--font-d); font-size: 50px; font-weight: 800;
-      color: #fff; line-height: 1; letter-spacing: -.02em;
-    }
-    .pcrd-price-old {
-      display: flex; align-items: center; gap: 7px; margin-bottom: 4px;
-    }
-    .pcrd-old-amt {
-      font-size: 15px; font-weight: 600; color: rgba(255,255,255,.28);
-      text-decoration: line-through;
-    }
-    .pcrd-badge-off {
-      font-size: 10px; font-weight: 800; letter-spacing: .06em;
-      color: #0a0700; background: linear-gradient(135deg, var(--gold2), var(--gold));
-      padding: 2px 7px; border-radius: 999px;
-    }
-    .pcrd-btns { display: flex; flex-direction: column; gap: 7px; margin-bottom: 13px; }
-    .pcrd-btns .btn { min-width: 0; width: 100%; justify-content: center; }
-    .pcrd-note { text-align: center; font-size: 11px; color: rgba(255,255,255,.2); }
-
-    .steps-box {
-      padding: 28px 26px; border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #111;
-    }
-    .steps-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(201,169,110,.55); margin-bottom: 20px; }
-    .step-item { display: flex; gap: 13px; position: relative; }
-    .step-line { position: absolute; left: 12px; top: 28px; bottom: 0; width: 1px; background: rgba(255,255,255,.07); }
-    .step-n {
-      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
-      border: 1px solid rgba(255,255,255,.11); background: rgba(255,255,255,.04);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 800; color: var(--gold); position: relative; z-index: 1;
-    }
-    .step-c { padding-bottom: 22px; }
-    .step-t { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-    .step-d { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.5; }
-
-    /* ── FAQ ── */
-    .faq-list { max-width: 720px; margin: 46px auto 0; border-top: 1px solid var(--lsoft); }
-    .faq-item { border-bottom: 1px solid var(--lsoft); }
-    .faq-q {
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      width: 100%; padding: 19px 0; background: transparent;
-      color: rgba(255,255,255,.86); font-size: 15.5px; font-weight: 600; text-align: left;
-    }
-    .faq-icon {
-      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-      border: 1px solid rgba(255,255,255,.14);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 14px; font-weight: 700; line-height: 1;
-      transition: background .2s, transform .3s;
-    }
-    .faq-item.open .faq-icon { background: rgba(201,169,110,.12); transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.62; transition: max-height .28s ease; }
-    .faq-item.open .faq-a { max-height: 200px; padding-bottom: 18px; }
-
-    /* ── CTA ── */
-    .cta-h { text-align: center; margin-bottom: 48px; }
-    .cta-h h2 { font-size: clamp(24px,3.6vw,46px); font-weight: 700; color: #fff; line-height: 1.08; margin-bottom: 13px; }
-    .cta-h p { font-size: 14.5px; color: rgba(255,255,255,.46); max-width: 400px; margin: 0 auto 24px; }
-    .cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .form-wrap {
-      max-width: 460px; margin: 0 auto; padding: 28px 30px;
-      border: 1px solid rgba(255,255,255,.09); border-radius: 22px;
-      background: #111;
-      box-shadow: 0 24px 60px rgba(0,0,0,.4);
-    }
-    .form-wrap h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .form-sub { font-size: 12.5px; color: rgba(255,255,255,.38); margin-bottom: 18px; }
-    .fg { display: flex; flex-direction: column; gap: 4px; margin-bottom: 11px; }
-    .fl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.36); }
-    .fi {
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-      border-radius: 11px; padding: 10px 13px;
-      color: #fff; font: inherit; font-size: 14px; outline: none;
-      transition: border-color .2s;
-    }
-    .fi:focus { border-color: rgba(201,169,110,.42); }
-    .fi::placeholder { color: rgba(255,255,255,.2); }
-    textarea.fi { resize: none; }
-    .f-sub { width: 100%; margin-top: 5px; }
-
-    /* ── FOOTER ── */
-    .footer { border-top: 1px solid var(--lsoft); padding: 48px 0 34px; }
-    .footer-g { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 44px; margin-bottom: 32px; }
-    .f-brand p { font-size: 12px; color: rgba(255,255,255,.3); line-height: 1.65; margin-top: 11px; max-width: 190px; }
-    .f-lbl { font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 13px; }
-    .f-links { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .f-links a { font-size: 13px; color: rgba(255,255,255,.4); transition: color .2s; }
-    .f-links a:hover { color: #fff; }
-    .f-bot {
-      border-top: 1px solid rgba(255,255,255,.05); padding-top: 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
-    }
-    .f-bot p { font-size: 11px; color: rgba(255,255,255,.17); }
-
-    /* ── REVEAL ── */
-    .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
-    .rv.on { opacity: 1; transform: translateY(0); }
-
-    /* ── KEYFRAMES ── */
-    @keyframes bsweep { 0%{background-position:140% 0,0 0} 100%{background-position:-140% 0,0 0} }
-    @keyframes floaty { 0%,100%{translate:0 0} 50%{translate:0 -14px} }
-    @keyframes marq { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── RESPONSIVE ── */
-    /* ── PAIN POINTS ── */
-    .pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 38px; text-align: left; }
-    .pain-card {
-      padding: 26px 24px; border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      
-      transition: border-color .3s, transform .3s, box-shadow .3s;
-    }
-    .pain-card:hover { border-color: rgba(201,169,110,.22); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,.5); }
-    .pain-em { font-size: 22px; margin-bottom: 12px; }
-    .pain-t { font-size: 15px; font-weight: 700; color: rgba(255,255,255,.88); margin-bottom: 6px; letter-spacing: -.01em; }
-    .pain-d { font-size: 13px; color: rgba(255,255,255,.42); line-height: 1.58; }
-
-    /* ── COMPARISON TRW ── */
-    .trw-g {
-      display: grid; grid-template-columns: 1fr 60px 1fr;
-      align-items: start; margin-top: 64px; position: relative;
-    }
-    .trw-col { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 clamp(12px,4vw,56px); }
-    .trw-line-wrap {
-      display: flex; flex-direction: column; align-items: center; margin-bottom: 28px;
-    }
-    .trw-vline {
-      width: 1px; height: 80px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.18));
-    }
-    .trw-col.good .trw-vline {
-      background: linear-gradient(to bottom, transparent, rgba(201,169,110,.5));
-    }
-    .trw-dot {
-      width: 10px; height: 10px; border-radius: 50%; margin-top: -1px;
-      border: 1px solid rgba(255,255,255,.3); background: #1a1a1a;
-    }
-    .trw-col.good .trw-dot {
-      border-color: var(--gold); background: var(--gold);
-      box-shadow: 0 0 12px rgba(201,169,110,.6);
-    }
-    .trw-lbl {
-      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.3); margin-bottom: 14px;
-    }
-    .trw-col.good .trw-lbl { color: var(--gold); }
-    .trw-title {
-      font-family: var(--font-d);
-      font-size: clamp(28px,3.8vw,52px); font-weight: 800;
-      color: rgba(255,255,255,.22); line-height: 1.05; letter-spacing: -.03em;
-      margin-bottom: 18px;
-    }
-    .trw-col.good .trw-title { color: #fff; }
-    .trw-desc {
-      font-size: 14px; color: rgba(255,255,255,.32); line-height: 1.65;
-      max-width: 320px; margin-bottom: 28px;
-    }
-    .trw-col.good .trw-desc { color: rgba(255,255,255,.58); }
-    .trw-btn-bad {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 14px 36px; border-radius: 999px;
-      background: #1e1e1e; border: 1px solid rgba(255,255,255,.1);
-      color: rgba(255,255,255,.38); font-size: 15px; font-weight: 600;
-      cursor: default;
-    }
-    .trw-vs {
-      display: flex; align-items: center; justify-content: center;
-      padding-top: 148px;
-    }
-    .trw-vs-inner {
-      width: 46px; height: 46px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.14);
-      background: #141414;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; color: rgba(255,255,255,.4);
-    }
-    @media (max-width: 640px) {
-      .trw-g { grid-template-columns: 1fr; gap: 40px; }
-      .trw-vs { display: none; }
-    }
-
-    /* ── URGENCY BANNER ── */
-    .urg-bar {
-      padding: 16px 0;
-      border-top: 1px solid rgba(201,169,110,.18);
-      border-bottom: 1px solid rgba(201,169,110,.18);
-      background: rgba(201,169,110,.04);
-    }
-    .urg-inner { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; text-align: center; }
-    .urg-dot {
-      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-      background: #ff4444; box-shadow: 0 0 9px rgba(255,68,68,.55);
-      animation: pulse 1.5s infinite;
-    }
-    .urg-txt { color: rgba(255,255,255,.72); font-size: 14px; }
-    .urg-txt strong { color: #fff; }
-
-    /* ── MID CTA ── */
-    .mid-cta { text-align: center; padding: clamp(56px,7vw,96px) 0; }
-    .mid-cta h2 { font-size: clamp(22px,3.3vw,42px); font-weight: 500; color: #fff; line-height: 1.1; margin-bottom: 10px; }
-    .mid-cta p { color: rgba(255,255,255,.44); font-size: 14.5px; max-width: 380px; margin: 0 auto 24px; }
-    .mid-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-
-    /* ── PAYMENT MODAL ── */
-    .modal-ov {
-      position: fixed; inset: 0; z-index: 9500;
-      background: rgba(0,0,0,.82); 
-      display: flex; align-items: center; justify-content: center; padding: 20px;
-      opacity: 0; pointer-events: none; transition: opacity .28s;
-    }
-    .modal-ov.open { opacity: 1; pointer-events: auto; }
-    .modal-box {
-      width: 100%; max-width: 420px;
-      border-radius: 24px; overflow: hidden;
-      border: 1px solid rgba(201,169,110,.3);
-      background: rgba(10,10,10,.96); backdrop-filter: blur(32px);
-      box-shadow: 0 40px 90px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.08) inset;
-      transform: translateY(22px) scale(.96);
-      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
-    }
-    .modal-ov.open .modal-box { transform: translateY(0) scale(1); }
-    .modal-top-bar { height: 3px; background: linear-gradient(90deg, var(--gold2), var(--gold), var(--orange)); }
-    .modal-head {
-      position: relative; padding: 22px 24px 18px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .modal-logo {
-      display: inline-grid; place-items: center;
-      width: 36px; height: 36px; border-radius: 50%;
-      color: #0a0700; font-size: 13px; font-weight: 800; margin-bottom: 12px;
-      background:
-        radial-gradient(circle at 50% 38%, rgba(255,255,255,.75) 0 7%, transparent 8%),
-        conic-gradient(from 230deg, #5a3a14, #C9A96E, #FF8C00, #4b2412, #DFC08A, #5a3a14);
-    }
-    .modal-head h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px; letter-spacing: -.02em; }
-    .modal-head p { font-size: 12.5px; color: rgba(255,255,255,.4); line-height: 1.55; }
-    .modal-close-btn {
-      position: absolute; top: 16px; right: 16px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 50%; width: 26px; height: 26px;
-      color: rgba(255,255,255,.45); font-size: 15px; line-height: 1;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background .2s, color .2s;
-    }
-    .modal-close-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
-    .modal-body { padding: 20px 24px 24px; }
-    .modal-note { text-align: center; font-size: 11px; color: rgba(255,255,255,.2); margin-top: 10px; line-height: 1.5; }
-    .modal-secure {
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-      margin-top: 10px; padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,.05);
-      color: rgba(255,255,255,.25); font-size: 10.5px;
-    }
-    .modal-success { display: none; text-align: center; padding: 32px 24px; }
-    .modal-success-icon { font-size: 40px; margin-bottom: 12px; }
-    .modal-success h4 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-    .modal-success p { font-size: 13px; color: rgba(255,255,255,.45); }
-
-    /* ── FLOATING TOAST ── */
-    .toast {
-      position: fixed; bottom: 24px; left: 20px; z-index: 9900;
-      display: flex; align-items: center; gap: 11px;
-      padding: 12px 14px 12px 12px;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 16px;
-      background: rgba(6,6,6,.96); backdrop-filter: blur(24px);
-      box-shadow: 0 14px 44px rgba(0,0,0,.5);
-      max-width: 276px;
-      transform: translateY(130%); opacity: 0;
-      transition: transform .48s cubic-bezier(.34,1.56,.64,1), opacity .38s ease;
-      pointer-events: none;
-    }
-    .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
-    .toast-av {
-      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
-      background: radial-gradient(circle at 35% 25%, rgba(255,255,255,.8), transparent 18%),
-                  linear-gradient(135deg, var(--gold), var(--orange));
-    }
-    .toast-body { flex: 1; min-width: 0; }
-    .toast-name { font-size: 12.5px; font-weight: 600; color: #fff; }
-    .toast-msg { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 1px; }
-    .toast-gold { font-size: 10.5px; color: var(--gold); margin-top: 2px; }
-    .toast-x { background: transparent; color: rgba(255,255,255,.28); font-size: 15px; padding: 2px 4px; flex-shrink: 0; }
-
-    @media (max-width: 960px) {
-      .nav-links, .nav-acts { display: none; }
-      .nav-hamb { display: flex; }
-      .coin, .cube { opacity: .2; }
-      .bio-grid { grid-template-columns: 1fr; }
-      .bio-photo-box { max-width: 320px; margin: 0 auto; }
-      .llevas-g { grid-template-columns: repeat(2,1fr); }
-      .pricing-lay { grid-template-columns: 1fr; }
-      .pcrd-wrap { max-width: 520px; margin: 0 auto; }
-      .footer-g { grid-template-columns: 1fr 1fr; }
-      .footer-g > :first-child { grid-column: 1/-1; }
-    }
-    @media (max-width: 640px) {
-      :root { --px: 16px; }
-      html, body { overflow-x: hidden; }
-      .nav { padding: 10px; }
-      .hero { padding: 86px 0 76px; }
-      .wrap { text-align: center; }
-      .stats { grid-template-columns: repeat(2,1fr); }
-      .llevas-g { grid-template-columns: 1fr; }
-      .llevas-i { text-align: left; }
-      .mod-topics { grid-template-columns: 1fr; padding-left: 20px; }
-      .mod-topic { text-align: left; }
-      .feats { grid-template-columns: 1fr; }
-      .footer-g { grid-template-columns: 1fr; text-align: center; }
-      .footer-g > :first-child { grid-column: auto; }
-      .f-bot { flex-direction: column; text-align: center; }
-      .hero-btns, .cta-btns, .mid-cta-btns { flex-direction: column; width: min(100%,290px); margin-inline: auto; }
-      .hero-btns .btn, .cta-btns .btn, .mid-cta-btns .btn { min-width: 0; width: 100%; justify-content: center; }
-      .pain-grid { grid-template-columns: 1fr; }
-      .pain-card { text-align: left; }
-      .cmp-g { grid-template-columns: 1fr; }
-      .vs-bdg { margin: 0 auto; }
-      .urg-inner { flex-direction: column; gap: 10px; text-align: center; }
-      .toast { left: 12px; right: 12px; max-width: none; }
-      .bio-real { grid-template-columns: 1fr !important; }
-      .bio-real-left, .bio-real-right { text-align: center; }
-      .bio-real-roles { justify-content: center; }
-      .trw-g { grid-template-columns: 1fr !important; }
-      .trw-col { text-align: center; align-items: center; }
-      .pcrd-wrap { padding: 0; }
-      .steps-box { text-align: left; }
-      .price-g { grid-template-columns: 1fr !important; }
-      .faq-list { margin-top: 28px; }
-      .pill { margin-inline: auto; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="page">
 
-  <!-- NAV -->
-  <header class="nav" id="nav">
-    <div class="nav-shell">
-      <a href="#inicio" class="nav-logo">
-        <span class="logo-n">Angelo León</span>
-      </a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="#modulos" class="nav-link">Módulos</a>
-        <a href="#angelo" class="nav-link">Quién soy</a>
-        <a href="#precio" class="nav-link">Precio</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-      </nav>
-      <div class="nav-acts">
-        <a href="#" class="nav-wa" id="navWa">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-        <a href="#" class="nav-cta" id="navCta">Reservar</a>
-      </div>
-      <button class="nav-hamb" id="hambBtn" aria-label="Menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  <a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════ -->
+  <header class="header" id="header" role="banner">
+    <a href="#inicio" class="header__logo" aria-label="99 Restaurante — ir al inicio">
+      <img src="logo99.png" alt="99 Restaurante" class="header__logo-img">
+    </a>
+    <nav class="header__nav" aria-label="Navegación principal">
+      <a href="#historia" class="header__link">Historia</a>
+      <a href="#menu"     class="header__link">Menú</a>
+      <a href="#experiencia" class="header__link">Experiencia</a>
+      <a href="#info"     class="header__link">Información</a>
+      <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--white header__cta" id="headerReserve">Reservar mesa</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <!-- MOBILE MENU -->
-  <div class="nav-mob" id="navMob">
-    <a href="#modulos">Módulos</a>
-    <a href="#angelo">Quién soy</a>
-    <a href="#precio">Precio</a>
-    <a href="#faq">FAQ</a>
-    <div class="nav-mob-btns">
-      <a href="#" class="btn" id="mobCta">Reservar mentoría</a>
-      <a href="#" class="btn sec" id="mobWa">WhatsApp</a>
-    </div>
+  <!-- ══ MENÚ MÓVIL ══════════════════════════════════════════ -->
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true" aria-label="Menú de navegación móvil">
+    <a href="#historia"    class="mobile-nav__link" data-close-nav>Historia</a>
+    <a href="#menu"        class="mobile-nav__link" data-close-nav>Menú</a>
+    <a href="#experiencia" class="mobile-nav__link" data-close-nav>Experiencia</a>
+    <a href="#info"        class="mobile-nav__link" data-close-nav>Información</a>
+    <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--white mobile-nav__cta" id="mobileReserve" data-close-nav>Reservar mesa</a>
+  </nav>
+
+  <!-- ══ STICKY CTA (mobile) ═════════════════════════════════ -->
+  <div class="sticky-cta" id="stickyCta" aria-hidden="true">
+    <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" id="stickyLink">Reservar mesa</a>
   </div>
 
-  <main id="inicio">
+  <main id="main-content">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="floating coin" aria-hidden="true"></div>
-      <div class="floating cube" aria-hidden="true"></div>
-      <div class="hero-inner wrap">
-        <div class="pill pill-g rv">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;animation:pulse 2s infinite"></span>
-          Mentoría 1 a 1 · Cupos Limitados
+    <!-- ══════════════════════════════════════
+         1. HERO
+    ══════════════════════════════════════ -->
+    <section class="hero" id="inicio" aria-label="99 Restaurante — portada">
+      <div class="hero__bg" role="img" aria-label="Sala de 99 Restaurante, Vitacura"></div>
+      <div class="hero__overlay"></div>
+
+      <!-- Logo: solo visible en desktop, sutil -->
+      <img
+        src="logo99.png"
+        class="hero__logo99"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+        loading="eager"
+      >
+
+      <div class="hero__content">
+        <p class="hero__eyebrow r">Vitacura · Santiago de Chile</p>
+        <h1 class="hero__h1 r d1">99 Restaurante</h1>
+        <p class="hero__headline r d2">Un menú por temporada desde los valles de Chile.</p>
+        <p class="hero__sub r d3">Cocina chilena contemporánea, 12 asientos, cocina abierta y maridaje desde el territorio.</p>
+        <p class="hero__meta r d3">Temporada actual: Valle del Maule &nbsp;·&nbsp; Reserva previa</p>
+        <div class="hero__actions r d4">
+          <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--white" id="heroReserve">Reservar mesa</a>
+          <a href="#menu" class="btn btn--ghost-white">Ver menú actual</a>
         </div>
-        <h1 class="soft-title rv">
-          Esta Mentoría No Está<br>
-          Diseñada Para Vender<br>
-          <span class="gold-text">Falsas Promesas.</span>
-        </h1>
-        <p class="hero-sub rv">
-          Está diseñada para ayudarte a construir
-          <strong style="color:rgba(255,255,255,.88);font-weight:600">riqueza, disciplina y libertad</strong>
-          con una mentalidad fuerte. No es solo información.
-          <span style="color:var(--gold);font-weight:500">Es una transformación.</span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         2. MENÚ + PRECIOS
+    ══════════════════════════════════════ -->
+    <section class="menu-sec" id="menu" aria-labelledby="menu-title">
+      <div class="menu-sec__inner">
+        <div>
+          <span class="section-label menu-sec__label r">Temporada actual</span>
+          <h2 class="menu-sec__title r d1" id="menu-title">Valle del Maule.</h2>
+          <p class="menu-sec__body r d2">
+            Cada temporada, 99 toma un valle chileno como punto de partida.
+            Producto, vino, memoria y oficio se traducen en una secuencia de mesa.
+          </p>
+          <p class="menu-sec__micro r d3">12 asientos · Cupos limitados · Reserva previa</p>
+        </div>
+
+        <div class="r d2">
+          <div class="pricing">
+            <div class="pricing__item">
+              <span class="pricing__name">Menú degustación</span>
+              <span class="pricing__price">desde $99.000</span>
+            </div>
+            <div class="pricing__item">
+              <span class="pricing__name">Experiencia + maridaje sin alcohol</span>
+              <span class="pricing__price">desde $125.000</span>
+            </div>
+            <div class="pricing__item">
+              <span class="pricing__name">Experiencia + maridaje con alcohol</span>
+              <span class="pricing__price">desde $150.000</span>
+            </div>
+            <div class="pricing__cta">
+              <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--white" id="menuReserve">Reservar mesa</a>
+            </div>
+          </div>
+          <p class="menu-sec__note r d3">Valores referenciales sujetos a temporada y disponibilidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini CTA -->
+    <div class="mini-cta r">
+      <span class="mini-cta__text">Temporada Valle del Maule disponible por tiempo limitado.</span>
+      <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--dark" id="menuMiniReserve">Reservar mesa</a>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         3. QUÉ VAS A VIVIR
+    ══════════════════════════════════════ -->
+    <section class="exp" id="experiencia" aria-labelledby="exp-title">
+      <div class="exp__inner">
+        <div class="exp__header r">
+          <span class="section-label exp__label">La experiencia</span>
+          <h2 class="exp__title" id="exp-title">Qué vas a vivir.</h2>
+          <p class="exp__lead">
+            Una experiencia íntima, diseñada para ver de cerca el oficio, el fuego y el relato detrás de cada tiempo.
+          </p>
+        </div>
+
+        <div class="exp__grid r d1">
+          <div class="exp__item">
+            <p class="exp__num">01</p>
+            <h3 class="exp__item-title">12 asientos</h3>
+            <p class="exp__item-body">Formato pequeño. Cada servicio tiene cupo limitado. Reserva con anticipación.</p>
+          </div>
+          <div class="exp__item">
+            <p class="exp__num">02</p>
+            <h3 class="exp__item-title">Cocina abierta</h3>
+            <p class="exp__item-body">La cocina es parte de la sala. El fuego, el ritmo y el equipo son visibles desde la mesa.</p>
+          </div>
+          <div class="exp__item">
+            <p class="exp__num">03</p>
+            <h3 class="exp__item-title">Menú por temporada</h3>
+            <p class="exp__item-body">Un solo menú degustación por temporada. Cada período explora un valle chileno distinto.</p>
+          </div>
+          <div class="exp__item">
+            <p class="exp__num">04</p>
+            <h3 class="exp__item-title">Maridaje con o sin alcohol</h3>
+            <p class="exp__item-body">Vinos y preparaciones del territorio. Versión sin alcohol disponible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini CTA -->
+    <div class="mini-cta r">
+      <span class="mini-cta__text">12 asientos por servicio. Reserva con anticipación.</span>
+      <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--dark" id="expReserve">Reservar mesa</a>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         4. 12 ASIENTOS / COCINA ABIERTA
+    ══════════════════════════════════════ -->
+    <section class="seats" id="asientos" aria-labelledby="seats-title">
+      <div class="seats__inner">
+        <div class="seats__img r">
+          <img
+            src="assets/images/cocina-abierta-12-asientos.webp"
+            alt="Equipo de 99 Restaurante preparando un plato en la cocina abierta"
+            loading="lazy" width="1000" height="666"
+          >
+        </div>
+        <div>
+          <span class="section-label seats__label r">El formato</span>
+          <h2 class="seats__title r d1" id="seats-title">12 asientos.<br>Cocina abierta.</h2>
+          <p class="seats__body r d2">
+            99 es un restaurante de 12 asientos en Vitacura donde cada temporada se transforma un valle chileno en un menú degustación.
+            La cocina es parte de la sala. No hay distancia entre quien cocina y quien come.
+          </p>
+          <p class="seats__body r d3" style="margin-top:.875rem">
+            Producto chileno, técnica contemporánea y relato de origen. Solo por reserva previa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         5. MANIFIESTO
+    ══════════════════════════════════════ -->
+    <div class="manifesto">
+      <p class="manifesto__quote r">La cocina empieza antes del plato.</p>
+      <div class="divider" style="margin:0 auto 1rem"></div>
+      <p class="manifesto__body r d1">
+        99 es un restaurante pequeño que trabaja con lo que tiene el territorio.
+        Cada menú cambia porque los valles cambian, los productores cambian, la estación cambia.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         6. HISTORIA — 10 AÑOS
+    ══════════════════════════════════════ -->
+    <section class="historia" id="historia" aria-labelledby="historia-title">
+      <div class="historia__inner">
+        <div>
+          <span class="section-label historia__label r">Historia</span>
+          <h2 class="historia__title r d1" id="historia-title">Diez años afinando una idea.</h2>
+          <p class="historia__body r d2">
+            En 2025, 99 celebró una década de historia. Desde sus inicios,
+            el restaurante ayudó a empujar una cocina chilena contemporánea más conectada con territorio, colaboración y producto.
+          </p>
+          <p class="historia__body r d3">
+            No empezó siendo lo que es hoy. Fue creciendo, reduciéndose, afinándose.
+            Hoy es un restaurante de 12 asientos que hace un solo menú por temporada.
+          </p>
+        </div>
+        <div class="timeline r d2" aria-label="Cronología de 99 Restaurante">
+          <div class="timeline__item">
+            <p class="timeline__year">2015</p>
+            <p class="timeline__text">Apertura en Vitacura. Cocina chilena contemporánea desde el inicio.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__year">99 + 1</p>
+            <p class="timeline__text">Cenas colaborativas con cocineros chilenos y extranjeros. Apertura a otras voces.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__year">2025</p>
+            <p class="timeline__text">Diez años. Formato actual: 12 asientos, menú por temporada, cocina abierta.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__year">Hoy</p>
+            <p class="timeline__text">Temporada Valle del Maule. Un menú, un territorio, cupos limitados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mini CTA -->
+    <div class="mini-cta r">
+      <span class="mini-cta__text">El menú cambia. La mesa también.</span>
+      <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--dark" id="historiaReserve">Reservar mesa</a>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         7. KURT SCHMIDT
+    ══════════════════════════════════════ -->
+    <section class="kurt" aria-labelledby="kurt-title">
+      <div class="kurt__inner">
+        <div class="kurt__img r">
+          <!--
+            Asset local: /assets/kurt-schmidt.webp
+            Imagen referencial desde Chef & Hotel / Nicholas Charlesworth R.
+          -->
+          <img
+            src="https://chefandhotel.cl/wp-content/uploads/2025/05/Kurt-Schmidt-99-Restaurante-chefandhotel-PRINCIPAL-INTERIOR.webp"
+            alt="Kurt Schmidt, chef y fundador de 99 Restaurante"
+            loading="lazy" width="900" height="1125"
+          >
+        </div>
+        <div>
+          <span class="section-label kurt__label r">El cocinero</span>
+          <h2 class="kurt__title r d1" id="kurt-title">Kurt Schmidt.</h2>
+          <p class="kurt__body r d2">
+            Kurt Schmidt ha construido 99 como una cocina de búsqueda: pequeña, colaborativa y conectada con el territorio.
+            Su trabajo cruza producto chileno, técnica contemporánea y un servicio cercano, directo y preciso.
+          </p>
+          <p class="kurt__body r d3" style="margin-top:.875rem">
+            Cada temporada elige un valle, trabaja con productores locales y traduce esa geografía en una secuencia de mesa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         8. 99 + 1 COLABORACIONES
+    ══════════════════════════════════════ -->
+    <section class="colab" aria-labelledby="colab-title">
+      <div class="colab__inner">
+        <div>
+          <span class="section-label colab__label r">Colaboraciones</span>
+          <h2 class="colab__title r d1" id="colab-title">99 + 1: cocinar con otros.</h2>
+          <p class="colab__body r d2">
+            Las cenas 99 + 1 abrieron la cocina a cocineros chilenos y extranjeros.
+            Esa lógica de sumar voces marcó parte de la identidad del restaurante.
+          </p>
+        </div>
+        <div class="colab__img r d2">
+          <!--
+            Asset local: /assets/snacks.webp
+            Imagen referencial desde Chef & Hotel / Nicholas Charlesworth R.
+          -->
+          <img
+            src="https://chefandhotel.cl/wp-content/uploads/2025/05/Kurt-Schmidt-99-Restaurante-14-chefandhotel.webp"
+            alt="Preparaciones colaborativas de 99 Restaurante"
+            loading="lazy" width="800" height="600"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         9. MAULE / TERRITORIO
+    ══════════════════════════════════════ -->
+    <section class="maule-map" id="territorio" aria-labelledby="despensa-title">
+
+      <div class="maule-map__header">
+        <span class="section-label maule-map__label r">Valle del Maule</span>
+        <h2 class="maule-map__title r d1" id="despensa-title">Región del Maule.</h2>
+      </div>
+
+      <!-- Mapa full-bleed — la imagen incluye productores + mapa ilustrado -->
+      <div class="maule-map__img-wrap r d2">
+        <img
+          src="assets/images/mapa-maule.jpg"
+          alt="Mapa ilustrado de la Región del Maule — productores de la temporada actual: Papayas de Lipimávida, Viña Laberinto, Viña Erasmo, Jibia de Constitución, Cordero Secano, Gredas de Vichuquén, Loceras de Pilén"
+          loading="lazy" width="2000" height="970"
+        >
+      </div>
+
+      <div class="maule-map__footer r d3">
+        <p class="maule-map__text">
+          En cada valle, la tierra habla su propio idioma. Un territorio que no se impone, sino que invita:
+          a tocar la textura de la arcilla, a oler la sal que llega desde el viento, a probar lo que la tierra entrega solo a quien la entiende.
         </p>
-        <div class="hero-cta rv">
-          <div class="hero-btns">
-            <a href="#" class="btn" id="heroCta">Reservar mentoría →</a>
-            <a href="#" class="btn sec" id="heroWa">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Consultar por WhatsApp
-            </a>
+        <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--dark" id="despensaReserve">Reservar temporada</a>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════
+         10. GALERÍA EDITORIAL
+    ══════════════════════════════════════ -->
+    <section class="gallery" id="imagenes" aria-labelledby="gallery-title">
+      <div class="gallery__inner">
+        <div class="gallery__header r">
+          <span class="section-label gallery__label">Imágenes</span>
+          <h2 class="gallery__title" id="gallery-title">La sala, el fuego, el plato.</h2>
+        </div>
+        <div class="gallery__grid r d1">
+          <figure class="g-item">
+            <img src="assets/images/mesa-familiar-99.jpg"
+              alt="Comensales en una mesa de 99 Restaurante" loading="lazy" width="1068" height="900">
+            <figcaption class="g-caption">Mesa</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/images/productor-ajies.jpg"
+              alt="Productor sosteniendo ajíes secos para el menú de 99 Restaurante" loading="lazy" width="898" height="1202">
+            <figcaption class="g-caption">Producto</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/images/cocina-abierta-12-asientos.webp"
+              alt="Equipo de 99 Restaurante preparando un plato en la cocina abierta" loading="lazy" width="1000" height="666">
+            <figcaption class="g-caption">Cocina abierta</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/images/temporada-mesa.webp"
+              alt="Bocados y vasos servidos sobre una mesa de madera" loading="lazy" width="1000" height="667">
+            <figcaption class="g-caption">Temporada</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/images/maridaje-mesa.webp"
+              alt="Vino y plato del menú degustación de 99 Restaurante" loading="lazy" width="400" height="600">
+            <figcaption class="g-caption">Maridaje</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/images/despensa-99.webp"
+              alt="Despensa de 99 Restaurante con frascos e ingredientes chilenos" loading="lazy" width="1000" height="666">
+            <figcaption class="g-caption">Despensa</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         11. PRENSA
+    ══════════════════════════════════════ -->
+    <section class="press" aria-labelledby="press-title">
+      <div class="press__inner">
+        <div class="press__header r">
+          <span class="section-label press__label">Prensa y reconocimientos</span>
+          <h2 class="press__title r d1" id="press-title">Una historia documentada.</h2>
+        </div>
+        <div class="press__list r d2">
+          <div class="press__item">
+            <p class="press__media">Chef & Hotel</p>
+            <p class="press__desc">Gastronomía y hospitalidad chilena.</p>
           </div>
-          <p class="proof">
-            <span class="avs" aria-hidden="true"><span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span></span>
-            Sesión 1 a 1 · Diagnóstico personalizado · Plan de acción
+          <div class="press__item">
+            <p class="press__media">Condé Nast Traveler</p>
+            <p class="press__desc">Viajes y gastronomía internacional.</p>
+          </div>
+          <div class="press__item">
+            <p class="press__media">Atlas Obscura</p>
+            <p class="press__desc">Lugares y experiencias singulares.</p>
+          </div>
+          <div class="press__item">
+            <p class="press__media">7 Caníbales</p>
+            <p class="press__desc">Gastronomía hispana contemporánea.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         12. INSTAGRAM
+    ══════════════════════════════════════ -->
+    <section class="insta-simple" aria-labelledby="insta-title">
+      <div class="insta-simple__inner">
+        <span class="section-label insta-simple__label r">Instagram</span>
+        <h2 class="insta-simple__title r d1" id="insta-title">Síguenos en Instagram.</h2>
+        <span class="insta-simple__handle r d1">@99_restaurante</span>
+        <p class="insta-simple__body r d2">
+          Registros de cocina, menú actual y novedades de temporada.
+        </p>
+        <a href="https://www.instagram.com/99_restaurante/" target="_blank" rel="noopener noreferrer" class="btn btn--white r d3" id="instaBtn">Ver Instagram</a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         13. INFORMACIÓN PRÁCTICA
+    ══════════════════════════════════════ -->
+    <section class="info" id="info" aria-labelledby="info-title">
+      <div class="info__inner">
+        <div>
+          <span class="section-label info__label r">Cómo llegar y reservar</span>
+          <h2 class="info__title r d1" id="info-title">Información práctica.</h2>
+
+          <div class="info__rows r d2">
+            <div class="info__row">
+              <span class="info__row-label">Dirección</span>
+              <span class="info__row-val">Alonso de Córdova 4355, CV Galería<br>Vitacura, Santiago de Chile</span>
+            </div>
+            <div class="info__row">
+              <span class="info__row-label">Formato</span>
+              <span class="info__row-val">Menú degustación · 12 asientos · Reserva previa</span>
+            </div>
+            <div class="info__row">
+              <span class="info__row-label">Reservas</span>
+              <span class="info__row-val">Meitre — vía enlace directo</span>
+            </div>
+            <div class="info__row">
+              <span class="info__row-label">Instagram</span>
+              <span class="info__row-val">@99_restaurante</span>
+            </div>
+          </div>
+
+          <div class="info__actions r d3">
+            <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--dark" id="infoReserve">Reservar mesa</a>
+            <a href="https://maps.google.com/?q=Alonso+de+C%C3%B3rdova+4355,+CV+Galer%C3%ADa,+Vitacura,+Santiago" target="_blank" rel="noopener noreferrer" class="btn btn--outline" id="infoMaps">Cómo llegar</a>
+            <a href="https://www.instagram.com/99_restaurante/" target="_blank" rel="noopener noreferrer" class="btn btn--outline" id="infoInstagram">Instagram</a>
+          </div>
+        </div>
+
+        <div class="info__aside r d2">
+          <p class="info__aside-title">99 Restaurante</p>
+          <p class="info__aside-addr">
+            Alonso de Córdova 4355, CV Galería<br>
+            Vitacura, Santiago de Chile
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS -->
-    <div class="stats rv">
-      <div class="stat"><div class="stat-n gold-text">100%</div><div class="stat-l">Personalizado</div></div>
-      <div class="stat"><div class="stat-n gold-text">1 a 1</div><div class="stat-l">Sesión directa</div></div>
-      <div class="stat"><div class="stat-n gold-text">5</div><div class="stat-l">Módulos</div></div>
-      <div class="stat"><div class="stat-n gold-text">45+</div><div class="stat-l">Temas</div></div>
-    </div>
-
-    <!-- MARQUEE -->
-    <div class="mq" aria-hidden="true">
-      <div class="mq-row">
-        <span class="mq-item"><span class="mq-dot"></span>Mentalidad de Abundancia</span>
-        <span class="mq-item"><span class="mq-dot"></span>Creación de Agencia</span>
-        <span class="mq-item"><span class="mq-dot"></span>Ventas y Persuasión</span>
-        <span class="mq-item"><span class="mq-dot"></span>Dinero y Finanzas</span>
-        <span class="mq-item"><span class="mq-dot"></span>Inversión en Acciones</span>
-        <span class="mq-item"><span class="mq-dot"></span>Crypto y Bitcoin</span>
-        <span class="mq-item"><span class="mq-dot"></span>Libertad Financiera</span>
-        <span class="mq-item"><span class="mq-dot"></span>Mindset de Emprendedor</span>
-        <span class="mq-item"><span class="mq-dot"></span>Mentalidad de Abundancia</span>
-        <span class="mq-item"><span class="mq-dot"></span>Creación de Agencia</span>
-        <span class="mq-item"><span class="mq-dot"></span>Ventas y Persuasión</span>
-        <span class="mq-item"><span class="mq-dot"></span>Dinero y Finanzas</span>
-        <span class="mq-item"><span class="mq-dot"></span>Inversión en Acciones</span>
-        <span class="mq-item"><span class="mq-dot"></span>Crypto y Bitcoin</span>
-        <span class="mq-item"><span class="mq-dot"></span>Libertad Financiera</span>
-        <span class="mq-item"><span class="mq-dot"></span>Mindset de Emprendedor</span>
-      </div>
-    </div>
-
-    <!-- PAIN POINTS -->
-    <section class="sec compact">
-      <div class="wrap center">
-        <div class="rv">
-          <div class="pill pill-g">¿Te Suena Familiar?</div>
-          <h2 class="headline sm">Esto Es Lo Que Sientes<br>Cuando No Hay Dirección</h2>
-        </div>
-        <div class="pain-grid">
-          <div class="pain-card rv">
-            
-            <div class="pain-t">Tienes Ideas Pero No Avanzas</div>
-            <div class="pain-d">Mil proyectos en mente, ninguno en ejecución. El ruido mental no para y el tiempo pasa.</div>
-          </div>
-          <div class="pain-card rv">
-            
-            <div class="pain-t">Siempre Das Las Mismas Vueltas</div>
-            <div class="pain-d">Sabes lo que quieres pero vuelves al punto de partida. Sin orden, todo se siente igual.</div>
-          </div>
-          <div class="pain-card rv">
-            
-            <div class="pain-t">No Sabes Si Vas Por El Camino Correcto</div>
-            <div class="pain-d">Tomas decisiones sin referencia. Nadie que te diga si estás bien o si estás perdiendo tiempo.</div>
-          </div>
-          <div class="pain-card rv">
-            
-            <div class="pain-t">Esperas El Momento Perfecto</div>
-            <div class="pain-d">Siempre hay algo que falta. El momento perfecto no llega porque nunca se crea solo.</div>
-          </div>
-        </div>
-        <div style="margin-top:36px" class="rv">
-          <a href="#" class="btn" id="painCta">Quiero Ordenar Todo Esto →</a>
-          <p class="proof" style="margin-top:10px">
-            <span class="avs" aria-hidden="true"><span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span></span>
-            Cupos limitados por mes
+          <p class="info__aside-note">
+            Menú degustación · 12 asientos · Solo por reserva previa
           </p>
+          <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--outline" id="asideReserve">Reservar en Meitre</a>
         </div>
       </div>
     </section>
 
-    <!-- MÓDULOS -->
-    <section class="sec" id="modulos">
-      <div class="wrap">
-        <div class="mod-header-line rv">
-          <span class="mod-header-txt">5 Módulos Para Transformar Tu Futuro</span>
-        </div>
-        <div class="mod-list">
-
-          <!-- MOD 01 -->
-          <div class="mod-card rv">
-            <button class="mod-card-btn" type="button">
-              <div class="mod-icon-box">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
-                  <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
-                  <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
-                  <path d="M17.6 6.5a3 3 0 0 0 .4-1.375M6 6.5a3 3 0 0 1-.4-1.375"/>
-                  <path d="M3.5 11a4 4 0 0 1 .5-.5M20.5 11a4 4 0 0 0-.5-.5"/>
-                  <path d="M6 18a4 4 0 0 1-2-.5M18 18a4 4 0 0 0 2-.5"/>
-                </svg>
-              </div>
-              <div class="mod-num-big">01</div>
-              <div class="mod-info">
-                <div class="mod-lbl">Módulo 01</div>
-                <div class="mod-title">Mentalidad de Abundancia</div>
-              </div>
-              <div class="mod-sep"></div>
-              <div class="mod-ct-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <div class="mod-ct-n">9 temas</div>
-              </div>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="mod-card-body">
-              <div class="mod-topics">
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo eliminar mentalidad de escasez</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Reprogramación mental y creencias limitantes</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>El poder del entorno</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Disciplina vs motivación</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo construir confianza real</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo soportar presión mental</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Soledad y ambición</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Identidad y autoimagen</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de pensar como empleado</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MOD 02 -->
-          <div class="mod-card rv">
-            <button class="mod-card-btn" type="button">
-              <div class="mod-icon-box">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-                  <path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/>
-                </svg>
-              </div>
-              <div class="mod-num-big">02</div>
-              <div class="mod-info">
-                <div class="mod-lbl">Módulo 02</div>
-                <div class="mod-title">Creación de tu Propia Agencia</div>
-              </div>
-              <div class="mod-sep"></div>
-              <div class="mod-ct-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <div class="mod-ct-n">9 temas</div>
-              </div>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="mod-card-body">
-              <div class="mod-topics">
-                <div class="mod-topic"><span class="mod-dot"></span><span>Qué es una agencia de servicios</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo empezar sin dinero</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Servicios más rentables actualmente</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo conseguir clientes desde Instagram</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo cerrar clientes</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo cobrar correctamente</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Creación de contenido con IA</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo escalar una agencia</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo generar ingresos mensuales constantes</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MOD 03 -->
-          <div class="mod-card rv">
-            <button class="mod-card-btn" type="button">
-              <div class="mod-icon-box">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-              <div class="mod-num-big">03</div>
-              <div class="mod-info">
-                <div class="mod-lbl">Módulo 03</div>
-                <div class="mod-title">Véndete a Ti Mismo</div>
-              </div>
-              <div class="mod-sep"></div>
-              <div class="mod-ct-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <div class="mod-ct-n">6 temas</div>
-              </div>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="mod-card-body">
-              <div class="mod-topics">
-                <div class="mod-topic"><span class="mod-dot"></span><span>Psicología de ventas</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo hablar con seguridad</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Persuasión y comunicación</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Venderle a la mente no solo a la persona</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo convertir atención en dinero</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo vender sin parecer vendedor</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MOD 04 -->
-          <div class="mod-card rv">
-            <button class="mod-card-btn" type="button">
-              <div class="mod-icon-box">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-                  <polyline points="16 7 22 7 22 13"/>
-                </svg>
-              </div>
-              <div class="mod-num-big">04</div>
-              <div class="mod-info">
-                <div class="mod-lbl">Módulo 04</div>
-                <div class="mod-title">Dinero y Finanzas</div>
-              </div>
-              <div class="mod-sep"></div>
-              <div class="mod-ct-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <div class="mod-ct-n">10 temas</div>
-              </div>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="mod-card-body">
-              <div class="mod-topics">
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo funciona realmente el dinero</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Educación financiera moderna</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo administrar tus ingresos</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Presupuesto inteligente y real</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Errores financieros comunes</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cuándo comenzar a invertir</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo aumentar ingresos</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de sobrevivir financieramente</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo dejar de gastar por emociones</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Qué es la libertad financiera</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MOD 05 -->
-          <div class="mod-card rv">
-            <button class="mod-card-btn" type="button">
-              <div class="mod-icon-box">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M9 8h4a2 2 0 0 1 0 4H9v4h4.5a2 2 0 0 0 0-4H9"/>
-                  <line x1="10" y1="7" x2="10" y2="17"/><line x1="13" y1="7" x2="13" y2="17"/>
-                </svg>
-              </div>
-              <div class="mod-num-big">05</div>
-              <div class="mod-info">
-                <div class="mod-lbl">Módulo 05</div>
-                <div class="mod-title">Inversión en Acciones y Crypto</div>
-              </div>
-              <div class="mod-sep"></div>
-              <div class="mod-ct-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                <div class="mod-ct-n">11 temas</div>
-              </div>
-              <svg class="mod-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="mod-card-body">
-              <div class="mod-topics">
-                <div class="mod-topic"><span class="mod-dot"></span><span>Qué son las acciones</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo funciona la bolsa</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Introducción al trading</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Inversión a largo plazo</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Gestión de riesgo</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Qué es Bitcoin</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Qué son los ciclos de Bitcoin</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Errores comunes en crypto</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Diferencia entre invertir y apostar</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Estrategias de acumulación</span></div>
-                <div class="mod-topic"><span class="mod-dot"></span><span>Cómo pensar como inversionista</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPARISON -->
-    <section class="sec compact">
-      <div class="wrap">
-        <div class="trw-g">
-          <!-- LADO MALO -->
-          <div class="trw-col rv">
-            <div class="trw-line-wrap">
-              <div class="trw-vline"></div>
-              <div class="trw-dot"></div>
-            </div>
-            <div class="trw-lbl">Sin mentoría</div>
-            <div class="trw-title">Seguir<br>Igual</div>
-            <p class="trw-desc">Dando vueltas en los mismos problemas, tomando decisiones a ciegas, sin nadie que te dé una perspectiva real.</p>
-            <div class="trw-btn-bad">Seguir Solo</div>
-          </div>
-
-          <!-- VS -->
-          <div class="trw-vs">
-            <div class="trw-vs-inner">VS</div>
-          </div>
-
-          <!-- LADO BUENO -->
-          <div class="trw-col good rv">
-            <div class="trw-line-wrap">
-              <div class="trw-vline"></div>
-              <div class="trw-dot"></div>
-            </div>
-            <div class="trw-lbl">Mentoría 1 a 1</div>
-            <div class="trw-title gold-text">Tomar<br>Dirección</div>
-            <p class="trw-desc">Claridad de dónde estás y hacia dónde ir. Un plan concreto, decisiones más ordenadas y pasos reales desde la primera sesión.</p>
-            <a href="#" class="btn" id="cmpCta">Reservar Mentoría →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ANGELO BIO -->
-    <section class="sec compact" id="angelo">
-      <div class="wrap">
-        <div class="bio-real rv">
-          <div class="bio-real-left">
-            <div class="pill pill-g">Quién está detrás</div>
-            <h2 class="bio-real-name">Soy <span class="gold-text">Angelo León</span></h2>
-            <div class="bio-real-roles">
-              <span>Agencia de marketing</span>
-              <span class="bio-dot">•</span>
-              <span>Trader</span>
-              <span class="bio-dot">•</span>
-              <span>Inversionista</span>
-              <span class="bio-dot">•</span>
-              <span>Dueño de pizzería</span>
-            </div>
-          </div>
-          <div class="bio-real-right">
-            <p>Tengo 27 años y soy emprendedor. Actualmente lidero una agencia de marketing y otros proyectos comerciales, con una obsesión constante por crecer, aprender y construir libertad financiera.</p>
-            <p>Después de cometer errores, perder dinero y atravesar varios desafíos personales, entendí que el éxito no depende de la suerte, sino de la capacidad de levantarse, adaptarse y seguir avanzando mientras otros abandonan.</p>
-            <p>Mi objetivo es ayudar a otras personas a acelerar su crecimiento, evitar errores que yo ya cometí y demostrar que una vida extraordinaria se construye a través de pequeñas decisiones repetidas todos los días.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- MID CTA + URGENCY -->
-    <div class="urg-bar rv">
-      <div class="wrap">
-        <div class="urg-inner">
-          <span class="urg-dot"></span>
-          <span class="urg-txt">Solo <strong>cupos limitados disponibles</strong> este mes — Una vez llenos, cierra el acceso.</span>
-          <a href="#" class="btn" id="urgCta" style="min-width:0;padding:10px 22px;font-size:13.5px">Asegurar Mi Lugar</a>
-        </div>
-      </div>
+    <!-- Mini CTA -->
+    <div class="mini-cta r">
+      <span class="mini-cta__text">Cupos limitados por servicio.</span>
+      <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--dark" id="infoMiniReserve">Reservar mesa</a>
     </div>
 
+    <!-- ══════════════════════════════════════
+         14. FAQ
+    ══════════════════════════════════════ -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="faq__inner">
+        <div class="faq__header r">
+          <span class="section-label faq__label">Preguntas frecuentes</span>
+          <h2 class="faq__title r d1" id="faq-title">Preguntas frecuentes.</h2>
+        </div>
 
-    <!-- QUÉ TE LLEVAS -->
-    <section class="sec" id="llevas">
-      <div class="wrap center">
-        <div class="rv">
-          <div class="pill pill-g">Resultado</div>
-          <h2 class="headline sm">Qué te llevas</h2>
-        </div>
-        <div class="llevas-g">
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Mirada clara de tu situación actual</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Prioridades ordenadas y definidas</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Plan de acción concreto</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Decisiones más aterrizadas</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Menos ruido mental</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Próximos pasos definidos</span></div>
-          <div class="llevas-i rv"><div class="chk">✓</div><span>Recomendaciones personalizadas</span></div>
-        </div>
-        <p class="llevas-q rv">"La idea no es salir con más información. Es salir con más claridad."</p>
-      </div>
-    </section>
-
-    <!-- PRECIO -->
-    <section class="sec" id="precio">
-      <div class="wrap">
-        <div class="center rv">
-          <div class="pill pill-g">Inversión</div>
-          <h2 class="headline sm">Reserva tu mentoría</h2>
-        </div>
-        <div class="pricing-lay rv">
-          <!-- Price card -->
-          <div>
-            <div class="pcrd-wrap">
-              <div class="pcrd">
-                <div class="pcrd-head">
-                  <div class="pcrd-lbl">Mentoría 1 a 1</div>
-                  <div class="pcrd-title">Sesión con Angelo León</div>
-                  <div class="pcrd-desc">Una sesión privada para revisar tu situación, ordenar prioridades y definir una ruta de acción clara.</div>
-                </div>
-                <div class="pcrd-body">
-                  <div class="pcrd-meta">
-                    <div class="pcrd-row"><span class="pcrd-key">Modalidad</span><span>Online o presencial según coordinación.</span></div>
-                    <div class="pcrd-row"><span class="pcrd-key">Incluye</span><span>Diagnóstico, conversación guiada y plan.</span></div>
-                    <div class="pcrd-row"><span class="pcrd-key">Entrega</span><span>Próximos pasos definidos al finalizar.</span></div>
-                  </div>
-                  <ul class="pcrd-feats">
-                    <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Diagnóstico inicial personalizado</li>
-                    <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Sesión guiada 1 a 1</li>
-                    <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Plan de acción concreto</li>
-                    <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Recomendaciones prácticas</li>
-                    <li><div class="chk" style="width:17px;height:17px;font-size:8px;flex-shrink:0">✓</div>Espacio para preguntas</li>
-                  </ul>
-                  <div class="pcrd-price">
-                    <div class="pcrd-price-old">
-                      <span class="pcrd-old-amt">$99.990</span>
-                      <span class="pcrd-badge-off">−50%</span>
-                    </div>
-                    <sup>$</sup><span class="amt">49.990</span>
-                  </div>
-                  <div class="pcrd-btns">
-                    <a href="#" class="btn" id="priceCta">Pagar mentoría</a>
-                    <a href="#" class="btn sec" id="priceWa">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                      Consultar antes de pagar
-                    </a>
-                  </div>
-                  <p class="pcrd-note">Después del pago recibirás las instrucciones para coordinar la sesión.</p>
-                </div>
+        <ul class="faq__list r d2" role="list">
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿Cómo se reserva?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                Las reservas se gestionan a través de Meitre. Usa el botón "Reservar mesa" en esta página o accede directamente al enlace de reservas.
               </div>
             </div>
-          </div>
-          <!-- Steps -->
-          <div class="steps-box">
-            <div class="steps-lbl">Cómo funciona</div>
-            <div>
-              <div class="step-item">
-                <div class="step-line"></div>
-                <div class="step-n">1</div>
-                <div class="step-c"><div class="step-t">Reserva o consulta</div><div class="step-d">Pagas directamente o escribes por WhatsApp si tienes dudas.</div></div>
-              </div>
-              <div class="step-item">
-                <div class="step-line"></div>
-                <div class="step-n">2</div>
-                <div class="step-c"><div class="step-t">Revisión inicial</div><div class="step-d">Defines qué quieres trabajar para aprovechar bien el tiempo.</div></div>
-              </div>
-              <div class="step-item">
-                <div class="step-line"></div>
-                <div class="step-n">3</div>
-                <div class="step-c"><div class="step-t">Sesión de mentoría</div><div class="step-d">Trabajamos tu caso con foco, orden y conversación directa.</div></div>
-              </div>
-              <div class="step-item">
-                <div class="step-n">4</div>
-                <div class="step-c"><div class="step-t">Plan claro</div><div class="step-d">Terminas con una dirección más ordenada para continuar.</div></div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿Dónde está ubicado?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                Alonso de Córdova 4355, CV Galería, Vitacura, Santiago de Chile.
               </div>
             </div>
-          </div>
-        </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿Cuántos asientos tiene?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                12 asientos. El formato es íntimo y los cupos son limitados por servicio.
+              </div>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿El menú cambia?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                Sí. Hay un solo menú por temporada. La temporada actual es Valle del Maule.
+              </div>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿Hay opciones sin alcohol?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                Sí. El maridaje está disponible con y sin alcohol. Puedes consultar opciones y precios al momento de reservar.
+              </div>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿Puedo informar restricciones alimentarias?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                Sí. Al reservar puedes indicar restricciones o alergias. El equipo tomará nota para preparar tu visita.
+              </div>
+            </div>
+          </li>
+          <li class="faq__item">
+            <button class="faq__question" aria-expanded="false">
+              ¿Cuánto dura la experiencia?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer" aria-hidden="true">
+              <div class="faq__answer-inner">
+                La duración varía según el menú y el ritmo del servicio. Consulta al reservar.
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="sec compact" id="faq">
-      <div class="wrap center">
-        <div class="rv">
-          <div class="pill pill-g">Dudas frecuentes</div>
-          <h2 class="headline sm">Preguntas frecuentes</h2>
-        </div>
-        <div class="faq-list rv">
-          <div class="faq-item open">
-            <button class="faq-q" type="button"><span>¿Necesito tener todo claro antes de empezar?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">No. La mentoría sirve para ordenar exactamente eso. Puedes llegar con dudas o varias ideas sin saber por dónde empezar.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>¿Cuánto dura la sesión y qué formato tiene?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">La sesión es 1 a 1, online o presencial. La duración y modalidad se confirman al coordinar.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>¿Qué pasa después de pagar?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">Recibirás las instrucciones para coordinar la sesión en el horario que mejor funcione para ti.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>¿Puedo escribir antes de pagar?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">Sí. Puedes escribir por WhatsApp o correo si necesitas resolver una duda antes de decidir.</div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>¿Para qué tipo de temas sirve?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">Proyectos, emprendimiento, decisiones importantes, dirección profesional, libertad financiera — cualquier área donde necesites ordenar ideas.</div>
-          </div>
+    <!-- ══════════════════════════════════════
+         15. CTA FINAL
+    ══════════════════════════════════════ -->
+    <section class="cta-final" id="reservar" aria-labelledby="cta-title">
+      <div class="cta-final__inner">
+        <span class="section-label cta-final__label r">Reservas</span>
+        <h2 class="cta-final__title r d1" id="cta-title">12 asientos por servicio.<br>Reserva con anticipación.</h2>
+        <p class="cta-final__body r d2">
+          Temporada actual: Valle del Maule. Cupos limitados.
+        </p>
+        <div class="cta-final__actions r d3">
+          <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="btn btn--white" id="ctaReserve">Reservar mesa</a>
+          <a href="https://www.instagram.com/99_restaurante/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost-white" id="ctaInstagram">Ver Instagram</a>
         </div>
       </div>
     </section>
-
 
   </main>
 
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footer-g">
-        <div class="f-brand">
-          <div style="display:flex;align-items:center;gap:9px">
-            <span style="font-size:14px;font-weight:700;color:#fff">Angelo León</span>
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div>
+          <p class="footer__brand">99 Restaurante</p>
+          <p class="footer__tagline">
+            Cocina chilena contemporánea<br>
+            Menú degustación · Vitacura, Santiago
+          </p>
+        </div>
+        <div>
+          <p class="footer__col-label">Reservas y contacto</p>
+          <div class="footer__links">
+            <a href="https://99restaurante.meitre.com/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnikRyxID6iIWrfI2Stj_Odis54hePLwV5lp3eROo4oy2DjB891ymGBTCTBJg_aem_CSoRYkmb6bBxJfwmv2aBVQ" target="_blank" rel="noopener noreferrer" class="footer__link" id="footerReserve">Reservar mesa — Meitre</a>
+            <a href="https://www.instagram.com/99_restaurante/" target="_blank" rel="noopener noreferrer" class="footer__link" id="footerInstagram">Instagram — @99_restaurante</a>
+            <a href="https://99restaurante.com" target="_blank" rel="noopener noreferrer" class="footer__link" id="footerWeb">99restaurante.com</a>
           </div>
-          <p>Mentoría personalizada para avanzar con claridad, estructura y dirección.</p>
         </div>
         <div>
-          <div class="f-lbl">Navegación</div>
-          <ul class="f-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#modulos">Módulos</a></li>
-            <li><a href="#angelo">Quién soy</a></li>
-            <li><a href="#precio">Precio</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="f-lbl">Contacto</div>
-          <ul class="f-links">
-            <li><a href="#" id="fWa" target="_blank" rel="noopener">WhatsApp</a></li>
-            <li><a href="#" id="fMail">Correo</a></li>
-            <li><a href="#" id="fIg" target="_blank" rel="noopener">Instagram</a></li>
-          </ul>
+          <p class="footer__col-label">Navegar</p>
+          <div class="footer__links">
+            <a href="#historia"    class="footer__link">Historia</a>
+            <a href="#menu"        class="footer__link">Menú actual</a>
+            <a href="#experiencia" class="footer__link">Experiencia</a>
+            <a href="#territorio"  class="footer__link">Territorio</a>
+            <a href="#info"        class="footer__link">Cómo llegar</a>
+            <a href="#faq"         class="footer__link">FAQ</a>
+          </div>
         </div>
       </div>
-      <div class="f-bot">
-        <p>© 2025 Angelo León. Todos los derechos reservados.</p>
-        <p>Cupos limitados · Atención directa</p>
+      <div class="footer__bottom">
+        <p class="footer__copy">© <span id="year"></span> 99 Restaurante. Vitacura, Santiago de Chile.</p>
+        <p class="footer__credits">
+          Fotografías: Chef & Hotel / Nicholas Charlesworth R.<br>
+          Reemplazar por assets autorizados en producción.
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL RESERVA -->
-  <div class="modal-ov" id="payModal">
-    <div class="modal-box">
-      <div class="modal-top-bar"></div>
-      <div class="modal-head">
-        <button class="modal-close-btn" id="modalClose">×</button>
-        <h3>Reservar Mentoría</h3>
-        <p>Completa tus datos y te escribimos por WhatsApp para coordinar.</p>
-      </div>
-      <div class="modal-body">
-        <form id="payForm">
-          <div class="fg">
-            <label class="fl">Nombre completo</label>
-            <input class="fi" type="text" id="pN" required placeholder="Tu nombre y apellido" autocomplete="name">
-          </div>
-          <div class="fg">
-            <label class="fl">Número de teléfono</label>
-            <input class="fi" type="tel" id="pT" required placeholder="+56 9 1234 5678" autocomplete="tel">
-          </div>
-          <div class="fg">
-            <label class="fl">Edad</label>
-            <input class="fi" type="number" id="pA" required placeholder="Tu edad" min="14" max="80">
-          </div>
-          <button type="submit" class="btn" id="paySubmitBtn" style="width:100%;margin-top:16px;justify-content:center">
-            Enviar reserva por WhatsApp →
-          </button>
-        </form>
-        <div class="modal-secure" style="margin-top:14px">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          Te responderemos por WhatsApp para confirmar tu cupo
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FLOATING TOAST -->
-  <div class="toast" id="toast">
-    <div class="toast-av"></div>
-    <div class="toast-body">
-      <div class="toast-name" id="toastName">Carlos M.</div>
-      <div class="toast-msg" id="toastMsg">acaba de reservar su mentoría</div>
-      <div class="toast-gold">✓ Cupo confirmado</div>
-    </div>
-    <button class="toast-x" id="toastX">×</button>
-  </div>
-
-</div>
-<script>
-  /* ─── CONFIG ─── Edita estos valores ─── */
-  const C = {
-    whatsapp: '56974874890',
-    email:    'angeloleonuniversity@gmail.com',
-    instagram:'angeloleon.cl',
-    payLink:  'https://mpago.li/2wiqXz2',
-    precio:   '49.990',
-    moneda:   'CLP',
-  };
-  C.waMsg  = encodeURIComponent('Hola Angelo, vengo desde tu página y quiero consultar por la mentoría.');
-  C.waHref = 'https://wa.me/' + C.whatsapp + '?text=' + C.waMsg;
-
-  /* ── Modal reserva ── */
-  const payModal   = document.getElementById('payModal');
-  const modalClose = document.getElementById('modalClose');
-  const payForm    = document.getElementById('payForm');
-
-  function openPayModal(e) { if (e) e.preventDefault(); payModal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closePayModal()  { payModal.classList.remove('open'); document.body.style.overflow = ''; }
-
-  ['navCta','mobCta','heroCta','priceCta','ctaCta','painCta','cmpCta','urgCta','midCta'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.href = '#'; el.addEventListener('click', openPayModal); }
-  });
-
-  modalClose.addEventListener('click', closePayModal);
-  payModal.addEventListener('click', e => { if (e.target === payModal) closePayModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePayModal(); });
-
-  payForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn    = document.getElementById('paySubmitBtn');
-    const nombre = document.getElementById('pN').value.trim();
-    const tel    = document.getElementById('pT').value.trim();
-    const edad   = document.getElementById('pA').value.trim();
-
-    btn.textContent = 'Abriendo WhatsApp...';
-    btn.disabled = true;
-
-    const msg = encodeURIComponent(
-      '✅ Nueva reserva de mentoría\n\n' +
-      '• Nombre: ' + nombre + '\n' +
-      '• Teléfono: ' + tel + '\n' +
-      '• Edad: ' + edad
-    );
-
-    window.open('https://wa.me/' + C.whatsapp + '?text=' + msg, '_blank');
-
-    setTimeout(function() {
-      btn.textContent = 'Enviar reserva por WhatsApp →';
-      btn.disabled = false;
-      closePayModal();
-      payForm.reset();
-    }, 1500);
-  });
-  ['navWa','mobWa','heroWa','priceWa','ctaWa','midWa','fWa'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.href = C.waHref; el.target = '_blank'; el.rel = 'noopener'; }
-  });
-  document.getElementById('fMail').href = 'mailto:' + C.email;
-  document.getElementById('fIg').href   = 'https://instagram.com/' + C.instagram;
-  const precioEl = document.getElementById('precioAmt'); if (precioEl) precioEl.textContent = C.precio;
-
-  /* Nav scroll */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 8), { passive: true });
-
-  /* Mobile menu */
-  const hambBtn = document.getElementById('hambBtn');
-  const navMob  = document.getElementById('navMob');
-  hambBtn.addEventListener('click', () => {
-    const open = navMob.classList.toggle('open');
-    hambBtn.setAttribute('aria-expanded', String(open));
-  });
-  navMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navMob.classList.remove('open'); hambBtn.setAttribute('aria-expanded','false');
-  }));
-
-  /* Module accordion */
-  document.querySelectorAll('.mod-card').forEach(mod => {
-    mod.querySelector('.mod-card-btn').addEventListener('click', () => {
-      const isOpen = mod.classList.contains('active');
-      document.querySelectorAll('.mod-card.active').forEach(m => m.classList.remove('active'));
-      if (!isOpen) mod.classList.add('active');
-    });
-  });
-
-  /* FAQ accordion */
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
-  });
-
-  /* Scroll reveal */
-  const rvEls = document.querySelectorAll('.rv');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-  }, { threshold: .1, rootMargin: '0px 0px -28px 0px' });
-  rvEls.forEach((el, i) => {
-    el.style.transitionDelay = Math.min(i % 5, 4) * 55 + 'ms';
-    io.observe(el);
-  });
-  setTimeout(() => rvEls.forEach(el => el.classList.add('on')), 800);
-
-  /* Floating toast */
-  const toastEl = document.getElementById('toast');
-  const toastName = document.getElementById('toastName');
-  const toastMsg  = document.getElementById('toastMsg');
-  const toastX    = document.getElementById('toastX');
-  const people = [
-    { name: 'Matías R.',    loc: 'Santiago 🇨🇱'      },
-    { name: 'Valentina C.', loc: 'Viña del Mar 🇨🇱'  },
-    { name: 'Sebastián M.', loc: 'Concepción 🇨🇱'    },
-    { name: 'Catalina F.',  loc: 'Antofagasta 🇨🇱'   },
-    { name: 'Nicolás P.',   loc: 'Valparaíso 🇨🇱'    },
-    { name: 'Camila H.',    loc: 'Temuco 🇨🇱'        },
-    { name: 'Felipe O.',    loc: 'La Serena 🇨🇱'     },
-    { name: 'Isidora V.',   loc: 'Rancagua 🇨🇱'      },
-    { name: 'Diego A.',     loc: 'Puerto Montt 🇨🇱'  },
-    { name: 'Javiera T.',   loc: 'Iquique 🇨🇱'       },
-  ];
-  let toastIdx = 0, toastTimer;
-  function showToast() {
-    const p = people[toastIdx % people.length];
-    toastIdx++;
-    toastName.textContent = p.name + ' · ' + p.loc;
-    toastMsg.textContent  = 'acaba de reservar su mentoría';
-    toastEl.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 4200);
-  }
-  toastX.addEventListener('click', () => { toastEl.classList.remove('show'); clearTimeout(toastTimer); });
-  setTimeout(showToast, 5000);
-  setInterval(showToast, 14000);
-
-</script>
+  <script src="script.js" defer></script>
 </body>
 </html>
