@@ -757,56 +757,199 @@
     .mid-cta p { color: rgba(255,255,255,.44); font-size: 14.5px; max-width: 380px; margin: 0 auto 24px; }
     .mid-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 
-    /* ── PAYMENT MODAL ── */
+    /* ── PAYMENT MODAL (REDISEÑADO PREMIUM) ── */
     .modal-ov {
       position: fixed; inset: 0; z-index: 9500;
-      background: rgba(0,0,0,.82); 
+      background: rgba(0,0,0,.86); backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: center; padding: 20px;
-      opacity: 0; pointer-events: none; transition: opacity .28s;
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
     }
     .modal-ov.open { opacity: 1; pointer-events: auto; }
+    
     .modal-box {
-      width: 100%; max-width: 420px;
-      border-radius: 24px; overflow: hidden;
-      border: 1px solid rgba(201,169,110,.3);
-      background: rgba(10,10,10,.96); backdrop-filter: blur(32px);
-      box-shadow: 0 40px 90px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.08) inset;
-      transform: translateY(22px) scale(.96);
-      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+      width: 100%; max-width: 440px;
+      border-radius: 28px; overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(13,13,13,0.95) 0%, rgba(5,5,5,0.98) 100%);
+      box-shadow: 
+        0 30px 70px rgba(0,0,0,0.8), 
+        0 0 100px rgba(201,169,110,0.06),
+        0 0 0 1px rgba(255,255,255,0.03) inset;
+      transform: translateY(30px) scale(.95);
+      transition: transform .45s cubic-bezier(.16, 1, .3, 1), opacity .3s;
     }
     .modal-ov.open .modal-box { transform: translateY(0) scale(1); }
-    .modal-top-bar { height: 3px; background: linear-gradient(90deg, var(--gold2), var(--gold), var(--orange)); }
+    
+    .modal-top-bar { 
+      height: 4px; 
+      background: linear-gradient(90deg, #E2B96B 0%, #FFA834 50%, #C9A96E 100%); 
+      box-shadow: 0 2px 20px rgba(201,169,110,0.4);
+    }
+    
     .modal-head {
-      position: relative; padding: 22px 24px 18px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; padding: 28px 28px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      background: radial-gradient(circle at top right, rgba(201,169,110,0.04), transparent 60%);
     }
-    .modal-logo {
-      display: inline-grid; place-items: center;
-      width: 36px; height: 36px; border-radius: 50%;
-      color: #0a0700; font-size: 13px; font-weight: 800; margin-bottom: 12px;
-      background:
-        radial-gradient(circle at 50% 38%, rgba(255,255,255,.75) 0 7%, transparent 8%),
-        conic-gradient(from 230deg, #5a3a14, #C9A96E, #FF8C00, #4b2412, #DFC08A, #5a3a14);
+    
+    .modal-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.15);
+      color: var(--gold); font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
-    .modal-head h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px; letter-spacing: -.02em; }
-    .modal-head p { font-size: 12.5px; color: rgba(255,255,255,.4); line-height: 1.55; }
+    .modal-badge .badge-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #FF8C00;
+      animation: pulse 2s infinite;
+    }
+    
+    .modal-head h3 { 
+      font-size: 21px; font-weight: 700; color: #fff; 
+      margin-bottom: 6px; letter-spacing: -.03em;
+      font-family: var(--font-d);
+    }
+    .modal-head p { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; }
+    
     .modal-close-btn {
-      position: absolute; top: 16px; right: 16px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 50%; width: 26px; height: 26px;
-      color: rgba(255,255,255,.45); font-size: 15px; line-height: 1;
+      position: absolute; top: 22px; right: 22px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%; width: 28px; height: 28px;
+      color: rgba(255,255,255,.4); font-size: 16px; line-height: 1;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background .2s, color .2s;
+      cursor: pointer; transition: all .25s ease;
     }
-    .modal-close-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
-    .modal-body { padding: 20px 24px 24px; }
-    .modal-note { text-align: center; font-size: 11px; color: rgba(255,255,255,.2); margin-top: 10px; line-height: 1.5; }
+    .modal-close-btn:hover { 
+      background: rgba(255,255,255,.08); 
+      border-color: rgba(255,255,255,.2); 
+      color: #fff; 
+      transform: rotate(90deg);
+    }
+    
+    .modal-body { padding: 24px 28px 28px; }
+    
+    /* Form fields super premium */
+    .fg-row {
+      display: flex; gap: 14px; margin-bottom: 14px;
+    }
+    .fg-row .fg { margin-bottom: 0; }
+    .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; flex: 1; }
+    
+    .fl { 
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; 
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .fl-dot {
+      width: 3px; height: 3px; border-radius: 50%; background: var(--gold); display: inline-block;
+    }
+    
+    .fi-wrap {
+      position: relative; display: flex; align-items: center;
+    }
+    
+    .fi-icon {
+      position: absolute; left: 14px;
+      color: rgba(255,255,255,0.22);
+      pointer-events: none; transition: color .25s;
+    }
+    
+    .fi {
+      width: 100%;
+      background: rgba(255,255,255,.02); 
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; padding: 12px 14px 12px 40px;
+      color: #fff; font: inherit; font-size: 13.5px; outline: none;
+      transition: all .25s cubic-bezier(.25, .8, .25, 1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15) inset;
+    }
+    select.fi {
+      appearance: none;
+      cursor: pointer;
+    }
+    .fi-wrap::after {
+      content: "";
+      position: absolute; right: 14px;
+      border: 5px solid transparent;
+      border-top-color: rgba(255,255,255,0.3);
+      pointer-events: none;
+      display: none;
+    }
+    .fi-wrap:has(select)::after {
+      display: block;
+    }
+    
+    .fi:hover {
+      border-color: rgba(255,255,255,.15);
+      background: rgba(255,255,255,.03);
+    }
+    
+    .fi:focus { 
+      border-color: var(--gold); 
+      background: rgba(255,255,255,.04);
+      box-shadow: 
+        0 0 0 1px var(--gold),
+        0 0 16px rgba(201,169,110,0.15);
+    }
+    .fi:focus + .fi-icon,
+    .fi-wrap:focus-within .fi-icon {
+      color: var(--gold);
+    }
+    
+    .fi::placeholder { color: rgba(255,255,255,.2); }
+    
+    /* Submit button custom style */
+    .btn-wa-submit {
+      width: 100%; margin-top: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 20px; border-radius: 12px;
+      font-size: 14px; font-weight: 600; color: #fff;
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 
+        0 4px 15px rgba(37, 211, 102, 0.25),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: all .25s ease;
+      position: relative; overflow: hidden;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .btn-wa-submit::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%); transition: transform .5s ease;
+    }
+    .btn-wa-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 6px 20px rgba(37, 211, 102, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+      filter: brightness(1.08);
+    }
+    .btn-wa-submit:hover::before {
+      transform: translateX(100%);
+    }
+    .btn-wa-submit:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba(37, 211, 102, 0.2);
+    }
+    
+    .btn-wa-icon {
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+    }
+    
     .modal-secure {
       display: flex; align-items: center; justify-content: center; gap: 6px;
-      margin-top: 10px; padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,.05);
-      color: rgba(255,255,255,.25); font-size: 10.5px;
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.04);
+      color: rgba(255,255,255,.3); font-size: 11px;
     }
+    
     .modal-success { display: none; text-align: center; padding: 32px 24px; }
     .modal-success-icon { font-size: 40px; margin-bottom: 12px; }
     .modal-success h4 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 6px; }
@@ -1365,13 +1508,13 @@
                     <sup>$</sup><span class="amt">49.990</span>
                   </div>
                   <div class="pcrd-btns">
-                    <a href="#" class="btn" id="priceCta">Pagar mentoría</a>
+                    <a href="#" class="btn" id="priceCta">Reservar mentoría</a>
                     <a href="#" class="btn sec" id="priceWa">
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                      Consultar antes de pagar
+                      Consultar antes de reservar
                     </a>
                   </div>
-                  <p class="pcrd-note">Después del pago recibirás las instrucciones para coordinar la sesión.</p>
+                  <p class="pcrd-note">Al reservar coordinaremos la fecha y hora de tu sesión directamente por WhatsApp.</p>
                 </div>
               </div>
             </div>
@@ -1383,7 +1526,7 @@
               <div class="step-item">
                 <div class="step-line"></div>
                 <div class="step-n">1</div>
-                <div class="step-c"><div class="step-t">Reserva o consulta</div><div class="step-d">Pagas directamente o escribes por WhatsApp si tienes dudas.</div></div>
+                <div class="step-c"><div class="step-t">Reserva o consulta</div><div class="step-d">Completa tus datos de reserva o escríbenos por WhatsApp si tienes dudas.</div></div>
               </div>
               <div class="step-item">
                 <div class="step-line"></div>
@@ -1481,50 +1624,76 @@
       <div class="modal-top-bar"></div>
       <div class="modal-head">
         <button class="modal-close-btn" id="modalClose">×</button>
-        <h3>Reservar Mentoría</h3>
-        <p>Completa tus datos y te escribimos por WhatsApp para coordinar.</p>
+        <div class="modal-badge">
+          <span class="badge-dot"></span>
+          Mentoría 1 a 1
+        </div>
+        <h3>Solicitar Mentoría</h3>
+        <p>Completa tus datos y coordinamos tu sesión directamente por WhatsApp.</p>
       </div>
       <div class="modal-body">
         <form id="payForm">
-          <div class="fg">
-            <label class="fl">Nombre completo</label>
-            <input class="fi" type="text" id="pN" required placeholder="Tu nombre y apellido" autocomplete="name">
+          <div class="fg-row">
+            <div class="fg">
+              <label class="fl"><span class="fl-dot"></span>Nombre completo</label>
+              <div class="fi-wrap">
+                <svg class="fi-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input class="fi" type="text" id="pN" required placeholder="Tu nombre y apellido" autocomplete="name">
+              </div>
+            </div>
+            <div class="fg" style="max-width: 100px;">
+              <label class="fl"><span class="fl-dot"></span>Edad</label>
+              <div class="fi-wrap">
+                <svg class="fi-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <input class="fi" type="number" id="pA" required placeholder="Edad" min="14" max="80">
+              </div>
+            </div>
           </div>
+          
           <div class="fg">
-            <label class="fl">Edad</label>
-            <input class="fi" type="number" id="pA" required placeholder="Tu edad" min="14" max="80">
+            <label class="fl"><span class="fl-dot"></span>País de residencia</label>
+            <div class="fi-wrap">
+              <svg class="fi-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <select class="fi" id="pP" required>
+                <option value="" disabled selected>Selecciona tu país</option>
+                <option>Chile 🇨🇱</option>
+                <option>Argentina 🇦🇷</option>
+                <option>Colombia 🇨🇴</option>
+                <option>México 🇲🇽</option>
+                <option>Perú 🇵🇪</option>
+                <option>España 🇪🇸</option>
+                <option>Uruguay 🇺🇾</option>
+                <option>Venezuela 🇻🇪</option>
+                <option>Ecuador 🇪🇨</option>
+                <option>Otro</option>
+              </select>
+            </div>
           </div>
+          
           <div class="fg">
-            <label class="fl">País</label>
-            <select class="fi" id="pP" required>
-              <option value="" disabled selected>Selecciona tu país</option>
-              <option>Chile 🇨🇱</option>
-              <option>Argentina 🇦🇷</option>
-              <option>Colombia 🇨🇴</option>
-              <option>México 🇲🇽</option>
-              <option>Perú 🇵🇪</option>
-              <option>España 🇪🇸</option>
-              <option>Uruguay 🇺🇾</option>
-              <option>Venezuela 🇻🇪</option>
-              <option>Ecuador 🇪🇨</option>
-              <option>Otro</option>
-            </select>
+            <label class="fl"><span class="fl-dot"></span>¿Cuál es tu objetivo principal?</label>
+            <div class="fi-wrap">
+              <svg class="fi-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+              <input class="fi" type="text" id="pO" required placeholder="Ej: Crear mi agencia, aprender trading, etc.">
+            </div>
           </div>
+          
           <div class="fg">
-            <label class="fl">¿Cuál es tu objetivo principal?</label>
-            <input class="fi" type="text" id="pO" required placeholder="Ej: Crear mi agencia, invertir, ordenar mis finanzas">
+            <label class="fl"><span class="fl-dot"></span>Horario de preferencia</label>
+            <div class="fi-wrap">
+              <svg class="fi-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <input class="fi" type="text" id="pH" required placeholder="Ej: Lunes a viernes tarde, o fines de semana">
+            </div>
           </div>
-          <div class="fg">
-            <label class="fl">Horario de preferencia</label>
-            <input class="fi" type="text" id="pH" required placeholder="Ej: Lunes 19:00 o fines de semana">
-          </div>
-          <button type="submit" class="btn" id="paySubmitBtn" style="width:100%;margin-top:16px;justify-content:center">
-            Enviar reserva por WhatsApp →
+          
+          <button type="submit" class="btn-wa-submit" id="paySubmitBtn">
+            <svg class="btn-wa-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Enviar reserva por WhatsApp</span>
           </button>
         </form>
-        <div class="modal-secure" style="margin-top:14px">
+        <div class="modal-secure">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          Te responderemos por WhatsApp para confirmar tu cupo
+          Te responderemos por WhatsApp para coordinar tu cupo
         </div>
       </div>
     </div>
