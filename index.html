@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angelo León · Mentoría 1 a 1</title>
+  <title>Angelo León · Educación 1:1</title>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -15,7 +15,11 @@
   <link rel="icon" type="image/png" href="./favicon.png">
   <link rel="apple-touch-icon" href="./favicon.png">
   <link rel="shortcut icon" href="./favicon.png">
-  <meta name="description" content="Mentoría personalizada 1 a 1. Una sesión privada para ordenar tus ideas, tomar mejores decisiones y avanzar con más claridad.">
+  <meta name="description" content="Educación personalizada 1:1 con Angelo León. Una clase privada, cercana y directa para ordenar tus ideas, tomar mejores decisiones y avanzar con claridad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: "SF Local";
@@ -44,8 +48,8 @@
       --orange: #FF8C00;
       --max: 1180px;
       --px: clamp(18px,4vw,60px);
-      --font: -apple-system, BlinkMacSystemFont, "SF Local", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-      --font-d: -apple-system, BlinkMacSystemFont, "SF Display Local", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      --font: "Archivo", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --font-d: "Clash Display", "Archivo", -apple-system, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -107,8 +111,9 @@
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .soft-title {
-      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,.8) 50%, rgba(255,255,255,.42) 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
+      color: #fff;
+      text-wrap: balance;
+      text-shadow: 0 1px 40px rgba(201,169,110,.18);
     }
 
     .center { text-align: center; }
@@ -116,9 +121,9 @@
     .headline {
       margin-top: 14px; color: #fff;
       font-family: var(--font-d);
-      font-size: clamp(30px,4.6vw,68px); font-weight: 500; line-height: .96;
+      font-size: clamp(30px,4.6vw,64px); font-weight: 600; line-height: 1.04; letter-spacing: -.025em; text-wrap: balance;
     }
-    .headline.sm { font-size: clamp(26px,3.4vw,50px); line-height: 1.02; }
+    .headline.sm { font-size: clamp(26px,3.4vw,48px); line-height: 1.04; }
 
     .copy {
       max-width: 600px; margin: 14px auto 0;
@@ -306,7 +311,7 @@
     .hero h1 {
       max-width: 800px; margin: 20px auto 0;
       font-family: var(--font-d);
-      font-size: clamp(38px,5.8vw,80px); font-weight: 600; line-height: .96; letter-spacing: -.055em;
+      font-size: clamp(40px,6vw,84px); font-weight: 600; line-height: 1.02; letter-spacing: -.03em;
     }
     .hero-sub {
       max-width: 560px; margin: 18px auto 0;
@@ -423,7 +428,7 @@
     }
     .bio-real-name {
       font-family: var(--font-d); font-size: clamp(30px,4vw,52px);
-      font-weight: 800; color: #fff; letter-spacing: -.03em; margin: 14px 0 18px; line-height: 1.05;
+      font-weight: 700; color: #fff; letter-spacing: -.015em; margin: 0 0 16px; line-height: 1.05;
     }
     .bio-real-roles {
       display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
@@ -658,18 +663,19 @@
 
     /* ── RESPONSIVE ── */
     /* ── PAIN POINTS ── */
-    .pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 38px; text-align: left; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0 clamp(40px,6vw,88px); margin-top: 46px; text-align: left; }
     .pain-card {
-      padding: 26px 24px; border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      
-      transition: border-color .3s, transform .3s, box-shadow .3s;
+      padding: 30px 0 28px; border-top: 1px solid rgba(255,255,255,.1);
+      transition: border-color .35s;
     }
-    .pain-card:hover { border-color: rgba(201,169,110,.22); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,.5); }
+    .pain-card:hover { border-color: rgba(201,169,110,.45); }
     .pain-em { font-size: 22px; margin-bottom: 12px; }
-    .pain-t { font-size: 15px; font-weight: 700; color: rgba(255,255,255,.88); margin-bottom: 6px; letter-spacing: -.01em; }
-    .pain-d { font-size: 13px; color: rgba(255,255,255,.42); line-height: 1.58; }
+    .pain-t {
+      font-family: var(--font-d); font-size: 22px; font-weight: 700;
+      color: #fff; margin-bottom: 9px; letter-spacing: -.01em; line-height: 1.15;
+    }
+    .pain-d { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.62; max-width: 44ch; }
+    @media (max-width: 640px) { .pain-grid { grid-template-columns: 1fr; } }
 
     /* ── COMPARISON TRW ── */
     .trw-g {
@@ -1066,7 +1072,7 @@
     <a href="#precio">Precio</a>
     <a href="#faq">FAQ</a>
     <div class="nav-mob-btns">
-      <a href="#" class="btn" id="mobCta">Reservar mentoría</a>
+      <a href="#" class="btn" id="mobCta">Reservar clase 1:1</a>
       <a href="#" class="btn sec" id="mobWa">WhatsApp</a>
     </div>
   </div>
@@ -1080,29 +1086,28 @@
       <div class="hero-inner wrap">
         <div class="pill pill-g rv">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;animation:pulse 2s infinite"></span>
-          Mentoría 1 a 1 · Cupos Limitados
+          Educación 1:1 · Cupos Limitados
         </div>
         <h1 class="soft-title rv">
-          Esta Mentoría No Está<br>
-          Diseñada Para Vender<br>
-          <span class="gold-text">Falsas Promesas.</span>
+          Esto No Es Un Curso.<br>
+          Es Educación 1:1<br>
+          <span class="gold-text">Hecha Para Ti.</span>
         </h1>
         <p class="hero-sub rv">
-          Está diseñada para ayudarte a construir
+          Trabajamos juntos, uno a uno, para que construyas
           <strong style="color:rgba(255,255,255,.88);font-weight:600">riqueza, disciplina y libertad</strong>
           con una mentalidad fuerte. No es solo información.
-          <span style="color:var(--gold);font-weight:500">Es una transformación.</span>
+          <span style="color:var(--gold);font-weight:500">Es acompañamiento real.</span>
         </p>
         <div class="hero-cta rv">
           <div class="hero-btns">
-            <a href="#" class="btn" id="heroCta">Reservar mentoría →</a>
+            <a href="#" class="btn" id="heroCta">Reservar clase 1:1 →</a>
             <a href="#" class="btn sec" id="heroWa">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Consultar por WhatsApp
             </a>
           </div>
           <p class="proof">
-            <span class="avs" aria-hidden="true"><span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span></span>
             Sesión 1 a 1 · Diagnóstico personalizado · Plan de acción
           </p>
         </div>
@@ -1139,50 +1144,11 @@
       </div>
     </div>
 
-    <!-- PAIN POINTS -->
-    <section class="sec compact">
-      <div class="wrap center">
-        <div class="rv">
-          <div class="pill pill-g">¿Te Suena Familiar?</div>
-          <h2 class="headline sm">Esto Es Lo Que Sientes<br>Cuando No Hay Dirección</h2>
-        </div>
-        <div class="pain-grid">
-          <div class="pain-card rv">
-            
-            <div class="pain-t">Tienes Ideas Pero No Avanzas</div>
-            <div class="pain-d">Mil proyectos en mente, ninguno en ejecución. El ruido mental no para y el tiempo pasa.</div>
-          </div>
-          <div class="pain-card rv">
-            
-            <div class="pain-t">Siempre Das Las Mismas Vueltas</div>
-            <div class="pain-d">Sabes lo que quieres pero vuelves al punto de partida. Sin orden, todo se siente igual.</div>
-          </div>
-          <div class="pain-card rv">
-            
-            <div class="pain-t">No Sabes Si Vas Por El Camino Correcto</div>
-            <div class="pain-d">Tomas decisiones sin referencia. Nadie que te diga si estás bien o si estás perdiendo tiempo.</div>
-          </div>
-          <div class="pain-card rv">
-            
-            <div class="pain-t">Esperas El Momento Perfecto</div>
-            <div class="pain-d">Siempre hay algo que falta. El momento perfecto no llega porque nunca se crea solo.</div>
-          </div>
-        </div>
-        <div style="margin-top:36px" class="rv">
-          <a href="#" class="btn" id="painCta">Quiero Ordenar Todo Esto →</a>
-          <p class="proof" style="margin-top:10px">
-            <span class="avs" aria-hidden="true"><span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span></span>
-            Cupos limitados por mes
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- MÓDULOS -->
     <section class="sec" id="modulos">
       <div class="wrap">
         <div class="mod-header-line rv">
-          <span class="mod-header-txt">5 Módulos Para Transformar Tu Futuro</span>
+          <span class="mod-header-txt">Escoge 2 Módulos Para Tu Educación 1:1</span>
         </div>
         <div class="mod-list">
 
@@ -1385,7 +1351,7 @@
               <div class="trw-vline"></div>
               <div class="trw-dot"></div>
             </div>
-            <div class="trw-lbl">Sin mentoría</div>
+            <div class="trw-lbl">Sin guía</div>
             <div class="trw-title">Seguir<br>Igual</div>
             <p class="trw-desc">Dando vueltas en los mismos problemas, tomando decisiones a ciegas, sin nadie que te dé una perspectiva real.</p>
             <div class="trw-btn-bad">Seguir Solo</div>
@@ -1402,10 +1368,10 @@
               <div class="trw-vline"></div>
               <div class="trw-dot"></div>
             </div>
-            <div class="trw-lbl">Mentoría 1 a 1</div>
+            <div class="trw-lbl">Educación 1:1</div>
             <div class="trw-title gold-text">Tomar<br>Dirección</div>
             <p class="trw-desc">Claridad de dónde estás y hacia dónde ir. Un plan concreto, decisiones más ordenadas y pasos reales desde la primera sesión.</p>
-            <a href="#" class="btn" id="cmpCta">Reservar Mentoría →</a>
+            <a href="#" class="btn" id="cmpCta">Reservar Clase 1:1 →</a>
           </div>
         </div>
       </div>
@@ -1416,7 +1382,6 @@
       <div class="wrap">
         <div class="bio-real rv">
           <div class="bio-real-left">
-            <div class="pill pill-g">Quién está detrás</div>
             <h2 class="bio-real-name">Soy <span class="gold-text">Angelo León</span></h2>
             <div class="bio-real-roles">
               <span>Agencia de marketing</span>
@@ -1443,7 +1408,7 @@
       <div class="wrap">
         <div class="urg-inner">
           <span class="urg-dot"></span>
-          <span class="urg-txt">Solo <strong>cupos limitados disponibles</strong> este mes — Una vez llenos, cierra el acceso.</span>
+          <span class="urg-txt">Solo <strong>cupos limitados disponibles</strong> este mes. Una vez llenos, cierra el acceso.</span>
           <a href="#" class="btn" id="urgCta" style="min-width:0;padding:10px 22px;font-size:13.5px">Asegurar Mi Lugar</a>
         </div>
       </div>
@@ -1454,7 +1419,6 @@
     <section class="sec" id="llevas">
       <div class="wrap center">
         <div class="rv">
-          <div class="pill pill-g">Resultado</div>
           <h2 class="headline sm">Qué te llevas</h2>
         </div>
         <div class="llevas-g">
@@ -1474,8 +1438,7 @@
     <section class="sec" id="precio">
       <div class="wrap">
         <div class="center rv">
-          <div class="pill pill-g">Inversión</div>
-          <h2 class="headline sm">Reserva tu mentoría</h2>
+          <h2 class="headline sm">Reserva tu clase 1:1</h2>
         </div>
         <div class="pricing-lay rv">
           <!-- Price card -->
@@ -1483,9 +1446,9 @@
             <div class="pcrd-wrap">
               <div class="pcrd">
                 <div class="pcrd-head">
-                  <div class="pcrd-lbl">Mentoría 1 a 1</div>
-                  <div class="pcrd-title">Sesión con Angelo León</div>
-                  <div class="pcrd-desc">Una sesión privada para revisar tu situación, ordenar prioridades y definir una ruta de acción clara.</div>
+                  <div class="pcrd-lbl">Educación 1:1</div>
+                  <div class="pcrd-title">Clase 1:1 con Angelo León</div>
+                  <div class="pcrd-desc">Una clase privada y cercana para revisar tu situación, ordenar prioridades y definir una ruta de acción clara.</div>
                 </div>
                 <div class="pcrd-body">
                   <div class="pcrd-meta">
@@ -1508,7 +1471,7 @@
                     <sup>$</sup><span class="amt">50.000</span>
                   </div>
                   <div class="pcrd-btns">
-                    <a href="#" class="btn" id="priceCta">Reservar mentoría</a>
+                    <a href="#" class="btn" id="priceCta">Reservar clase 1:1</a>
                     <a href="#" class="btn sec" id="priceWa">
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                       Consultar antes de reservar
@@ -1536,7 +1499,7 @@
               <div class="step-item">
                 <div class="step-line"></div>
                 <div class="step-n">3</div>
-                <div class="step-c"><div class="step-t">Sesión de mentoría</div><div class="step-d">Trabajamos tu caso con foco, orden y conversación directa.</div></div>
+                <div class="step-c"><div class="step-t">Tu clase 1:1</div><div class="step-d">Trabajamos tu caso con foco, orden y conversación directa.</div></div>
               </div>
               <div class="step-item">
                 <div class="step-n">4</div>
@@ -1552,13 +1515,12 @@
     <section class="sec compact" id="faq">
       <div class="wrap center">
         <div class="rv">
-          <div class="pill pill-g">Dudas frecuentes</div>
           <h2 class="headline sm">Preguntas frecuentes</h2>
         </div>
         <div class="faq-list rv">
           <div class="faq-item open">
             <button class="faq-q" type="button"><span>¿Necesito tener todo claro antes de empezar?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">No. La mentoría sirve para ordenar exactamente eso. Puedes llegar con dudas o varias ideas sin saber por dónde empezar.</div>
+            <div class="faq-a">No. La clase 1:1 sirve para ordenar exactamente eso. Puedes llegar con dudas o varias ideas sin saber por dónde empezar.</div>
           </div>
           <div class="faq-item">
             <button class="faq-q" type="button"><span>¿Cuánto dura la sesión y qué formato tiene?</span><span class="faq-icon">+</span></button>
@@ -1590,7 +1552,7 @@
           <div style="display:flex;align-items:center;gap:9px">
             <span style="font-size:14px;font-weight:700;color:#fff">Angelo León</span>
           </div>
-          <p>Mentoría personalizada para avanzar con claridad, estructura y dirección.</p>
+          <p>Educación personalizada 1:1 para avanzar con claridad, estructura y dirección.</p>
         </div>
         <div>
           <div class="f-lbl">Navegación</div>
@@ -1626,9 +1588,9 @@
         <button class="modal-close-btn" id="modalClose">×</button>
         <div class="modal-badge">
           <span class="badge-dot"></span>
-          Mentoría 1 a 1
+          Educación 1:1
         </div>
-        <h3>Solicitar Mentoría</h3>
+        <h3>Solicitar Clase 1:1</h3>
         <p>Completa tus datos y coordinamos tu sesión directamente por WhatsApp.</p>
       </div>
       <div class="modal-body">
@@ -1699,16 +1661,6 @@
     </div>
   </div>
 
-  <!-- FLOATING TOAST -->
-  <div class="toast" id="toast">
-    <div class="toast-av"></div>
-    <div class="toast-body">
-      <div class="toast-name" id="toastName">Carlos M.</div>
-      <div class="toast-msg" id="toastMsg">acaba de reservar su mentoría</div>
-      <div class="toast-gold">✓ Cupo confirmado</div>
-    </div>
-    <button class="toast-x" id="toastX">×</button>
-  </div>
 
 </div>
 <script>
@@ -1721,7 +1673,7 @@
     precio:   '50.000',
     moneda:   'CLP',
   };
-  C.waMsg  = encodeURIComponent('Hola Angelo, vengo desde tu página y quiero consultar por la mentoría.');
+  C.waMsg  = encodeURIComponent('Hola Angelo, vengo desde tu página y quiero consultar por la clase 1:1.');
   C.waHref = 'https://wa.me/' + C.whatsapp + '?text=' + C.waMsg;
 
   /* ── Modal reserva ── */
@@ -1754,7 +1706,7 @@
     btn.disabled = true;
 
     const msg = encodeURIComponent(
-      '✅ Nueva reserva de mentoría\n\n' +
+      '✅ Nueva reserva de clase 1:1\n\n' +
       '• Nombre: '   + nombre  + '\n' +
       '• Edad: '     + edad    + '\n' +
       '• País: '     + pais    + '\n' +
@@ -1826,43 +1778,6 @@
     io.observe(el);
   });
   setTimeout(() => rvEls.forEach(el => el.classList.add('on')), 800);
-
-  /* Floating toast */
-  const toastEl = document.getElementById('toast');
-  const toastName = document.getElementById('toastName');
-  const toastMsg  = document.getElementById('toastMsg');
-  const toastX    = document.getElementById('toastX');
-  // Nombres reales de quienes se han suscrito (se agregan automáticamente)
-  let realPeople = [];
-  try { realPeople = JSON.parse(localStorage.getItem('al_subs') || '[]'); } catch(_) {}
-
-  const peopleFallback = [
-    { name: 'Matías R.',    loc: 'Santiago 🇨🇱'      },
-    { name: 'Valentina C.', loc: 'Viña del Mar 🇨🇱'  },
-    { name: 'Sebastián M.', loc: 'Concepción 🇨🇱'    },
-    { name: 'Catalina F.',  loc: 'Antofagasta 🇨🇱'   },
-    { name: 'Nicolás P.',   loc: 'Valparaíso 🇨🇱'    },
-    { name: 'Camila H.',    loc: 'Temuco 🇨🇱'        },
-    { name: 'Felipe O.',    loc: 'La Serena 🇨🇱'     },
-    { name: 'Isidora V.',   loc: 'Rancagua 🇨🇱'      },
-    { name: 'Diego A.',     loc: 'Puerto Montt 🇨🇱'  },
-    { name: 'Javiera T.',   loc: 'Iquique 🇨🇱'       },
-  ];
-  // Mezclar reales primero, luego fallback
-  const people = [...realPeople, ...peopleFallback];
-  let toastIdx = 0, toastTimer;
-  function showToast() {
-    const p = people[toastIdx % people.length];
-    toastIdx++;
-    toastName.textContent = p.name + ' · ' + p.loc;
-    toastMsg.textContent  = 'acaba de reservar su mentoría';
-    toastEl.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 4200);
-  }
-  toastX.addEventListener('click', () => { toastEl.classList.remove('show'); clearTimeout(toastTimer); });
-  setTimeout(showToast, 5000);
-  setInterval(showToast, 14000);
 
 </script>
 </body>
